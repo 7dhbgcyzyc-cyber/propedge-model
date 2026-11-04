@@ -232,6 +232,34 @@ def project(name, current, previous):
             'last20_games_used': len(last20)
         })
 
+    # Add combined-stat projections
+    individual = {
+        r['stat']: r['projection']
+        for r in result
+    }
+
+    combinations = {
+        'Pts+Rebs+Asts': ['Points', 'Rebounds', 'Assists'],
+        'Pts+Rebs': ['Points', 'Rebounds'],
+        'Pts+Asts': ['Points', 'Assists'],
+        'Rebs+Asts': ['Rebounds', 'Assists']
+    }
+
+    for label, stats in combinations.items():
+        result.append({
+            'player': name,
+            'league': 'NBA',
+            'stat': label,
+            'projection': round(
+                sum(individual[s] for s in stats), 2
+            ),
+            'source': 'PropEdge NBA v0.3 (ESPN game logs)',
+            'games_current': len(current),
+            'games_previous': len(previous),
+            'sample_status': confidence,
+            'minutes_est': round(expected_minutes, 1)
+        })
+
     return result
 
 
