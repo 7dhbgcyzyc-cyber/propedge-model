@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-04T03:35:07.273633+00:00",
+  "updated_utc": "2026-11-04T03:48:52.469301+00:00",
   "lines": [
     {
       "id": "pp_16579971",
@@ -428,7 +428,7 @@
       "team": "NOP",
       "opponent": "UTA",
       "stat": "Pts+Rebs+Asts",
-      "line": 28.5,
+      "line": 29.5,
       "tier": "standard",
       "period": "Full game",
       "projection": null,
@@ -3146,20 +3146,6 @@
       "stat": "Pts+Rebs+Asts",
       "line": 29.5,
       "tier": "goblin",
-      "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
-    },
-    {
-      "id": "pp_16592816",
-      "league": "NBA",
-      "player": "Paul Reed",
-      "team": "DET",
-      "opponent": "PHI",
-      "stat": "Points",
-      "line": 13.5,
-      "tier": "demon",
       "period": "Full game",
       "projection": null,
       "source": null,
@@ -6730,6 +6716,20 @@
       "stat": "Points",
       "line": 19.5,
       "tier": "goblin",
+      "period": "Full game",
+      "projection": null,
+      "source": null,
+      "difference": null
+    },
+    {
+      "id": "pp_16594930",
+      "league": "NBA",
+      "player": "Paul Reed",
+      "team": "DET",
+      "opponent": "PHI",
+      "stat": "Points",
+      "line": 14.5,
+      "tier": "demon",
       "period": "Full game",
       "projection": null,
       "source": null,
