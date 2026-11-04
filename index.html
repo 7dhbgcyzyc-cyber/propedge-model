@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,115 +8,51 @@
 <style>
 :root {
   color-scheme: dark;
-  --bg:#080e1b;
-  --panel:#111b2e;
-  --panel2:#17243a;
-  --border:#2a3953;
-  --text:#eef3ff;
-  --muted:#9eafc9;
-  --green:#4ade80;
-  --red:#fb7185;
-  --blue:#60a5fa;
+  --bg:#080e1b; --panel:#111b2e; --panel2:#17243a;
+  --border:#2a3953; --text:#eef3ff; --muted:#9eafc9;
+  --green:#4ade80; --red:#fb7185; --blue:#60a5fa;
 }
 * { box-sizing:border-box; }
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font:14px system-ui,-apple-system,sans-serif;
-}
-main { max-width:1450px; margin:auto; padding:30px 20px; }
-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
-}
+body { margin:0; background:var(--bg); color:var(--text); font:14px system-ui,-apple-system,sans-serif; }
+main { max-width:1550px; margin:auto; padding:30px 20px; }
+header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
 h1 { margin:0; font-size:32px; letter-spacing:-1px; }
 h2 { margin:0; font-size:15px; }
 p { color:var(--muted); line-height:1.6; }
 .logo { color:var(--green); }
 .subtitle { margin:8px 0 22px; }
-.status {
-  padding:12px 16px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--panel);
-  color:var(--muted);
-  margin-bottom:20px;
-}
-.cards {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-  margin-bottom:22px;
-}
-.card {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
-}
+.status { padding:12px 16px; border:1px solid var(--border); border-radius:10px; background:var(--panel); color:var(--muted); margin-bottom:20px; }
+.cards { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:22px; }
+.card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:18px; }
 .card .label { color:var(--muted); font-size:12px; }
 .card .value { font-size:27px; font-weight:750; margin-top:6px; }
 .green { color:var(--green); }
 .red { color:var(--red); }
-.controls {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:16px 0;
-}
-input,select {
-  background:var(--panel2);
-  border:1px solid var(--border);
-  color:var(--text);
-  border-radius:9px;
-  padding:11px 12px;
-  font:inherit;
-}
+.controls { display:flex; gap:10px; flex-wrap:wrap; margin:16px 0; }
+input,select { background:var(--panel2); border:1px solid var(--border); color:var(--text); border-radius:9px; padding:11px 12px; font:inherit; }
 input { flex:1; min-width:190px; }
 select { min-width:145px; }
-.tablebox {
-  overflow:auto;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:var(--panel);
-}
-table {
-  width:100%;
-  border-collapse:collapse;
-  min-width:950px;
-}
-th {
-  text-align:left;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.6px;
-  color:var(--muted);
-  background:#152139;
-  white-space:nowrap;
-}
+.tablebox { overflow:auto; border:1px solid var(--border); border-radius:12px; background:var(--panel); }
+table { width:100%; border-collapse:collapse; min-width:1200px; }
+th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); background:#152139; white-space:nowrap; }
 th,td { padding:13px 14px; border-bottom:1px solid #25334b; }
 tbody tr:hover { background:#1b2941; }
 .player { font-weight:650; }
 .small { font-size:12px; color:var(--muted); margin-top:4px; }
 .num { font-variant-numeric:tabular-nums; font-weight:650; }
-.badge {
-  display:inline-block;
-  border-radius:6px;
-  padding:5px 9px;
-  font-size:11px;
-  font-weight:750;
-  white-space:nowrap;
-}
+.badge { display:inline-block; border-radius:6px; padding:5px 9px; font-size:11px; font-weight:750; white-space:nowrap; }
 .normal { background:#263650; color:#dce6f8; }
 .goblin { background:#123c2c; color:#75f4aa; }
 .demon { background:#49212c; color:#ff9aab; }
 .unknown { background:#353247; color:#c8c1dc; }
 .note { font-size:12px; margin-top:15px; }
-.empty { text-align:center; padding:35px; color:var(--muted); }
+.details { background:#0d1729; padding:16px 22px; color:var(--muted); }
+.details-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+.details strong { color:var(--text); }
+.details-button { background:#223653; border:1px solid var(--border); color:#dceaff; border-radius:6px; padding:6px 9px; cursor:pointer; }
+.details-button:hover { background:#304766; }
+.adjusted { color:#b7d8ff; }
+.muted { color:var(--muted); }
 @media(max-width:750px) {
   main { padding:20px 12px; }
   .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -132,41 +69,27 @@ tbody tr:hover { background:#1b2941; }
 
 <p class="subtitle">
   Compare PrizePicks lines with independent statistical projections.
-  Positive differences appear first; negative differences appear last.
+  Base and matchup-adjusted estimates are shown separately when available.
 </p>
 
 <div id="status" class="status">Loading latest data...</div>
 
 <div class="cards">
-  <div class="card">
-    <div class="label">PrizePicks Lines</div>
-    <div class="value" id="total">—</div>
-  </div>
-  <div class="card">
-    <div class="label">Matched Projections</div>
-    <div class="value green" id="matched">—</div>
-  </div>
-  <div class="card">
-    <div class="label">Above Line</div>
-    <div class="value green" id="above">—</div>
-  </div>
-  <div class="card">
-    <div class="label">Below Line</div>
-    <div class="value red" id="below">—</div>
-  </div>
+  <div class="card"><div class="label">PrizePicks Lines</div><div class="value" id="total">—</div></div>
+  <div class="card"><div class="label">Matched Projections</div><div class="value green" id="matched">—</div></div>
+  <div class="card"><div class="label">Above Line</div><div class="value green" id="above">—</div></div>
+  <div class="card"><div class="label">Below Line</div><div class="value red" id="below">—</div></div>
 </div>
 
 <h2>Player Prop Comparison</h2>
 
 <div class="controls">
-  <input id="search" placeholder="Search player, team, or stat">
-
+  <input id="search" placeholder="Search player, team, opponent, or stat">
   <select id="league">
     <option value="">All Sports</option>
     <option value="NBA">NBA</option>
     <option value="NFL">NFL</option>
   </select>
-
   <select id="lineType">
     <option value="">All Line Types</option>
     <option value="normal">Normal</option>
@@ -174,13 +97,16 @@ tbody tr:hover { background:#1b2941; }
     <option value="demon">Red Demon</option>
     <option value="unknown">Unidentified</option>
   </select>
-
   <select id="filter">
     <option value="">All Projections</option>
     <option value="projected">With Projections</option>
     <option value="unprojected">Missing Projections</option>
   </select>
-
+  <select id="matchupFilter">
+    <option value="">All Matchups</option>
+    <option value="adjusted">Matchup Adjusted</option>
+    <option value="base">Base Only</option>
+  </select>
   <select id="sort">
     <option value="positive">Highest Above Line First</option>
     <option value="negative">Lowest Below Line First</option>
@@ -198,20 +124,22 @@ tbody tr:hover { background:#1b2941; }
   <th>Statistic</th>
   <th>Line Type</th>
   <th>PP Line</th>
-  <th>Our Projection</th>
+  <th>Base Projection</th>
+  <th>Adjusted Projection</th>
   <th>Difference</th>
+  <th>Matchup</th>
   <th>Source</th>
 </tr>
 </thead>
 <tbody id="body">
-<tr><td colspan="8" class="empty">Loading...</td></tr>
+<tr><td colspan="10" class="empty">Loading...</td></tr>
 </tbody>
 </table>
 </div>
 
 <p class="note">
-  Line types are shown only when identifiable from the supplied data.
-  Unidentified lines are not assumed to be normal.
+  Matchup adjustments are experimental and not calibrated or backtested.
+  Base-only projections remain unchanged when matchup data is missing.
   Green/red differences indicate model direction, not guaranteed outcomes.
   Confirm lines and payouts directly in PrizePicks.
 </p>
@@ -219,90 +147,115 @@ tbody tr:hover { background:#1b2941; }
 
 <script>
 let rows = [];
-
+let matchupTeams = {};
 const $ = id => document.getElementById(id);
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
   }[c]));
 }
 
+function finite(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+function baseProjection(r) {
+  return finite(r.base_projection ?? r.projection);
+}
+
+function adjustedProjection(r) {
+  return finite(r.adjusted_projection ?? r.projection);
+}
+
 function hasProjection(r) {
-  return r.projection !== null &&
-    r.projection !== undefined &&
-    Number.isFinite(Number(r.projection));
+  return adjustedProjection(r) !== null;
 }
 
 function getDifference(r) {
-  if (!hasProjection(r)) return null;
+  const projection = adjustedProjection(r);
+  const line = finite(r.line);
+  if (projection === null || line === null) return null;
+  return projection - line;
+}
 
-  const line = Number(r.line);
-  const projection = Number(r.projection);
-
-  if (!Number.isFinite(line)) return null;
-
-  return Number.isFinite(Number(r.difference))
-    && r.difference !== null
-    ? Number(r.difference)
-    : projection - line;
+function isAdjusted(r) {
+  return r.matchup_applied === true;
 }
 
 function getLineType(r) {
-  // Uses line-type metadata when the feed provides it.
-  // Does not guess from the numerical line value.
   const candidates = [
-    r.line_type,
-    r.lineType,
-    r.odds_type,
-    r.oddsType,
-    r.pick_type,
-    r.pickType,
-    r.promotion_type
+    r.line_type, r.lineType, r.odds_type, r.oddsType,
+    r.pick_type, r.pickType, r.promotion_type, r.tier
   ];
-
   for (const value of candidates) {
     if (value === null || value === undefined) continue;
-
     const v = String(value).toLowerCase().trim();
-
     if (v.includes("goblin")) return "goblin";
     if (v.includes("demon")) return "demon";
-
-    if (
-      v === "standard" ||
-      v === "normal" ||
-      v === "regular"
-    ) return "normal";
+    if (["standard","normal","regular"].includes(v)) return "normal";
   }
-
   return "unknown";
 }
 
 function lineBadge(type) {
   const labels = {
-    normal:"Normal",
-    goblin:"Green Goblin",
-    demon:"Red Demon",
-    unknown:"Unidentified"
+    normal:"Normal", goblin:"Green Goblin",
+    demon:"Red Demon", unknown:"Unidentified"
   };
-
   return `<span class="badge ${type}">${labels[type]}</span>`;
+}
+
+function fmt(value, decimals=2) {
+  const n = finite(value);
+  return n === null ? "—" : n.toFixed(decimals);
+}
+
+function signed(value) {
+  const n = finite(value);
+  if (n === null) return "—";
+  return (n > 0 ? "+" : "") + n.toFixed(2);
 }
 
 function updateCards() {
   const valid = rows.filter(hasProjection);
-
   $("total").textContent = rows.length.toLocaleString();
   $("matched").textContent = valid.length.toLocaleString();
-  $("above").textContent =
-    valid.filter(r => getDifference(r) > 0).length.toLocaleString();
-  $("below").textContent =
-    valid.filter(r => getDifference(r) < 0).length.toLocaleString();
+  $("above").textContent = valid.filter(r => getDifference(r) > 0).length.toLocaleString();
+  $("below").textContent = valid.filter(r => getDifference(r) < 0).length.toLocaleString();
+}
+
+function matchupDetails(r) {
+  const adjustments = r.matchup_adjustments || {};
+  const team = String(r.matchup_opponent || "").toUpperCase();
+  const metrics = matchupTeams[team] || {};
+  const entries = Object.entries(adjustments);
+  const gameDate = r.matchup_game_date
+    ? new Date(r.matchup_game_date).toLocaleString()
+    : "Not available";
+
+  return `
+    <div class="details">
+      <div class="details-grid">
+        <div><strong>Opponent</strong><div>${esc(team || r.opponent || "Not available")}</div></div>
+        <div><strong>Game date</strong><div>${esc(gameDate)}</div></div>
+        <div><strong>Home / Away</strong><div>${esc(r.matchup_home_away || "Unknown")}</div></div>
+        <div><strong>Opponent defensive rating proxy</strong><div>${fmt(metrics.defensive_rating_proxy)}</div></div>
+        <div><strong>Opponent pace proxy</strong><div>${fmt(metrics.pace_proxy)}</div></div>
+        <div><strong>Opponent missed FG / game</strong><div>${fmt(metrics.opponent_missed_fg_per_game)}</div></div>
+        <div><strong>Matchup status</strong><div>${isAdjusted(r) ? "Experimental adjustment applied" : "Base projection only"}</div></div>
+      </div>
+      <div style="margin-top:12px">
+        <strong>Projection adjustments</strong>
+        <div class="small">
+          ${entries.length
+            ? entries.map(([key,value]) => `${esc(key.replaceAll("_"," "))}: ${signed(value)}`).join(" · ")
+            : "No individual adjustments available"}
+        </div>
+      </div>
+    </div>`;
 }
 
 function draw() {
@@ -310,120 +263,106 @@ function draw() {
   const league = $("league").value;
   const type = $("lineType").value;
   const filter = $("filter").value;
+  const matchupFilter = $("matchupFilter").value;
   const sort = $("sort").value;
 
   let visible = rows.filter(r => {
     const searchText = [
-      r.player, r.stat, r.team, r.opponent
+      r.player, r.stat, r.team, r.opponent, r.matchup_opponent
     ].join(" ").toLowerCase();
 
     return (
       (!league || r.league === league) &&
       (!q || searchText.includes(q)) &&
       (!type || getLineType(r) === type) &&
-      (!filter ||
-        (filter === "projected"
-          ? hasProjection(r)
-          : !hasProjection(r)))
+      (!filter || (filter === "projected" ? hasProjection(r) : !hasProjection(r))) &&
+      (!matchupFilter || (matchupFilter === "adjusted" ? isAdjusted(r) : !isAdjusted(r)))
     );
   });
 
   visible.sort((a,b) => {
+    if (sort === "player") return String(a.player).localeCompare(String(b.player));
     const da = getDifference(a);
     const db = getDifference(b);
-
-    if (sort === "player") {
-      return String(a.player).localeCompare(String(b.player));
-    }
-
-    // Always place missing projections after ranked ones.
     if (da === null && db !== null) return 1;
     if (db === null && da !== null) return -1;
     if (da === null && db === null) return 0;
-
     if (sort === "negative") return da - db;
     if (sort === "absolute") return Math.abs(db) - Math.abs(da);
-
-    // Default: biggest positive to biggest negative.
     return db - da;
   });
 
-  $("body").innerHTML = visible.map(r => {
+  $("body").innerHTML = visible.map((r,index) => {
     const diff = getDifference(r);
     const type = getLineType(r);
-    const valid = hasProjection(r);
-
-    const diffText = diff === null
-      ? "—"
-      : (diff > 0 ? "+" : "") + diff.toFixed(2);
-
-    const diffClass = diff === null
-      ? ""
-      : diff > 0 ? "green" : diff < 0 ? "red" : "";
-
-    const projectionText = valid
-      ? esc(r.projection)
-      : '<span class="small">No projection</span>';
+    const base = baseProjection(r);
+    const adjusted = adjustedProjection(r);
+    const diffClass = diff === null ? "" : diff > 0 ? "green" : diff < 0 ? "red" : "";
+    const detailId = "detail-" + index;
 
     return `
       <tr>
         <td>${esc(r.league)}</td>
         <td>
           <div class="player">${esc(r.player)}</div>
-          <div class="small">
-            ${esc(r.team || "")}
-            ${r.opponent ? " vs " + esc(r.opponent) : ""}
-          </div>
+          <div class="small">${esc(r.team || "")}${r.opponent ? " vs " + esc(r.opponent) : ""}</div>
         </td>
         <td>${esc(r.stat)}</td>
         <td>${lineBadge(type)}</td>
         <td class="num">${esc(r.line)}</td>
-        <td class="num">${projectionText}</td>
-        <td class="num ${diffClass}">${diffText}</td>
+        <td class="num">${base === null ? "—" : fmt(base)}</td>
+        <td class="num adjusted">${adjusted === null ? "—" : fmt(adjusted)}</td>
+        <td class="num ${diffClass}">${diff === null ? "—" : signed(diff)}</td>
+        <td><button class="details-button" data-detail="${detailId}">Details</button></td>
         <td class="small">${esc(r.source || "—")}</td>
+      </tr>
+      <tr id="${detailId}" hidden>
+        <td colspan="10">${matchupDetails(r)}</td>
       </tr>`;
-  }).join("") || `
-    <tr><td colspan="8" class="empty">No matching lines found.</td></tr>`;
+  }).join("") || `<tr><td colspan="10" class="empty">No matching lines found.</td></tr>`;
+
+  document.querySelectorAll(".details-button").forEach(button => {
+    button.addEventListener("click", () => {
+      const detail = document.getElementById(button.dataset.detail);
+      if (detail) detail.hidden = !detail.hidden;
+    });
+  });
 }
 
-for (const id of ["search","league","lineType","filter","sort"]) {
+for (const id of ["search","league","lineType","filter","matchupFilter","sort"]) {
   $(id).addEventListener("input", draw);
 }
 
-fetch("./data/latest.json?cache=" + Date.now())
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Published data not available");
-    }
+Promise.all([
+  fetch("./data/latest.json?cache=" + Date.now()).then(response => {
+    if (!response.ok) throw new Error("Published data not available");
     return response.json();
-  })
-  .then(data => {
-    rows = Array.isArray(data.lines) ? data.lines : [];
+  }),
+  fetch("./data/nba_matchups.json?cache=" + Date.now())
+    .then(response => response.ok ? response.json() : null)
+    .catch(() => null)
+]).then(([data, matchupData]) => {
+  rows = Array.isArray(data.lines) ? data.lines : [];
+  matchupTeams = matchupData && matchupData.teams ? matchupData.teams : {};
+  const updated = data.updated_utc
+    ? new Date(data.updated_utc).toLocaleString()
+    : "Unknown";
 
-    const updated = data.updated_utc
-      ? new Date(data.updated_utc).toLocaleString()
-      : "Unknown";
+  $("status").textContent =
+    `Updated: ${updated} | ${rows.length.toLocaleString()} lines | ` +
+    `${rows.filter(hasProjection).length.toLocaleString()} matched projections | ` +
+    `${rows.filter(isAdjusted).length.toLocaleString()} matchup-adjusted`;
 
-    $("status").textContent =
-      `Updated: ${updated} | ` +
-      `${rows.length.toLocaleString()} lines | ` +
-      `${rows.filter(hasProjection).length.toLocaleString()} matched projections`;
+  if (data.errors && data.errors.length) {
+    $("status").textContent += ` | Feed warnings: ${data.errors.join("; ")}`;
+  }
 
-    if (data.errors && data.errors.length) {
-      $("status").textContent +=
-        ` | Feed warnings: ${data.errors.join("; ")}`;
-    }
-
-    updateCards();
-    draw();
-  })
-  .catch(error => {
-    $("status").textContent =
-      "Unable to load data: " + error.message;
-
-    $("body").innerHTML =
-      '<tr><td colspan="8" class="empty">No published data available.</td></tr>';
-  });
+  updateCards();
+  draw();
+}).catch(error => {
+  $("status").textContent = "Unable to load data: " + error.message;
+  $("body").innerHTML = '<tr><td colspan="10" class="empty">No published data available.</td></tr>';
+});
 </script>
 </body>
 </html>
