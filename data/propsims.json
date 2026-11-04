@@ -1,1176 +1,363 @@
 
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PropEdge | Player Prop Research</title>
-
-<style>
-:root {
-  color-scheme: dark;
-  --bg: #080e1b;
-  --panel: #111b2e;
-  --panel2: #17243a;
-  --border: #2a3953;
-  --text: #eef3ff;
-  --muted: #9eafc9;
-  --green: #4ade80;
-  --red: #fb7185;
-  --blue: #60a5fa;
-  --yellow: #facc15;
+{
+  "source": "PropSims",
+  "model_run": "2026-11-03T10:01:00-06:00",
+  "collection_method": "Manual screenshot transcription",
+  "automatic_updates": false,
+  "columns": ["player", "points", "rebounds", "assists", "threes"],
+  "points_definition": "PTS IF PLAY",
+  "players": [
+    ["Nikola Jokic",24.1,11,9,1],
+    ["Victor Wembanyama",27.5,10,3,2],
+    ["Luka Doncic",30.8,6,7,4],
+    ["Giannis Antetokounmpo",26.9,11,6,0],
+    ["Shai Gilgeous-Alexander",32.1,4,6,2],
+    ["Jayson Tatum",29.4,8,7,3],
+    ["Scottie Barnes",23.2,7,6,1],
+    ["Cade Cunningham",27.5,5,7,2],
+    ["Alperen Sengun",20.1,9,6,0],
+    ["Cooper Flagg",22.7,6,5,1],
+    ["Karl-Anthony Towns",20.6,11,4,1],
+    ["Anthony Davis",22.6,10,2,1],
+    ["Jalen Brunson",26.8,3,6,2],
+    ["Cameron Boozer",18,10,6,2],
+    ["Deni Avdija",23.9,6,6,2],
+    ["Darius Acuff Jr.",25.9,4,6,2],
+    ["Jamal Murray",23.6,4,5,3],
+    ["Tyrese Maxey",23,3,4,2],
+    ["Domantas Sabonis",14.8,11,6,0],
+    ["Trae Young",19.8,3,10,2],
+    ["Darius Garland",22.1,2,8,3],
+    ["Brandon Miller",22.5,5,3,3],
+    ["Donovan Mitchell",22.3,4,5,3],
+    ["Caleb Wilson",18.7,6,3,2],
+    ["Devin Booker",24.1,3,5,1],
+    ["Ty Jerome",22.4,4,6,2],
+    ["Bam Adebayo",17.2,8,3,1],
+    ["LaMelo Ball",20.7,4,6,4],
+    ["Austin Reaves",20.8,4,5,2],
+    ["Zion Williamson",20.1,5,3,0],
+    ["RJ Barrett",21.7,6,3,2],
+    ["Evan Mobley",15.8,8,3,1],
+    ["Walker Kessler",12.8,11,1,0],
+    ["LeBron James",15.9,6,6,1],
+    ["Keyonte George",23,4,6,2],
+    ["Nickeil Alexander-Walker",21.2,3,3,3],
+    ["Kevin Durant",20.2,5,3,1],
+    ["James Harden",17.3,4,7,3],
+    ["Quenton Jackson",12,3,3,1],
+    ["Damian Lillard",20.7,4,5,3],
+    ["Lauri Markkanen",22,6,2,2],
+    ["Julius Randle",19,6,5,1],
+    ["Josh Giddey",12.1,6,8,1],
+    ["Immanuel Quickley",18,4,6,3],
+    ["Jarace Walker",11.8,6,3,1],
+    ["Trey Murphy III",17.1,4,3,2],
+    ["Jaylen Brown",19.3,6,3,1],
+    ["Dyson Daniels",10.5,6,5,0],
+    ["Paul Reed",14,7,2,0],
+    ["Dylan Harper",15.8,5,5,1],
+    ["Amen Thompson",16.1,6,3,0],
+    ["OG Anunoby",18.6,5,2,2],
+    ["Stephon Castle",15.4,5,6,1],
+    ["Onyeka Okongwu",13.9,7,3,1],
+    ["Ajay Mitchell",16.8,4,4,1],
+    ["De'Aaron Fox",15.2,3,6,1],
+    ["Kyshawn George",16,5,4,2],
+    ["Michael Porter Jr.",18.9,5,2,3],
+    ["Jarrett Allen",14.1,8,2,0],
+    ["Donovan Clingan",10.8,10,2,1],
+    ["Jeremiah Fears",15,4,5,1],
+    ["Jay Huff",10.4,4,1,1],
+    ["Naz Reid",14.9,7,2,2],
+    ["Ayo Dosunmu",17.1,4,4,2],
+    ["Ausar Thompson",10.7,7,4,0],
+    ["CJ McCollum",16.6,3,4,2],
+    ["Derrick White",17.7,4,6,3],
+    ["Tyler Herro",18.1,4,4,2],
+    ["AJ Dybantsa",17.9,5,2,1],
+    ["Jaden McDaniels",17.3,5,3,1],
+    ["Precious Achiuwa",13,7,2,0],
+    ["Derik Queen",12,7,3,0],
+    ["Miles Bridges",15.2,6,2,1],
+    ["Jabari Smith Jr.",16.1,6,1,2],
+    ["Zach LaVine",20.7,3,3,2],
+    ["Isaiah Hartenstein",9.7,9,3,0],
+    ["Jalen Green",16.9,4,3,2],
+    ["Darryn Peterson",14.7,4,3,1],
+    ["Payton Pritchard",19.3,3,5,3],
+    ["Jalen Slawson",6.5,4,2,0],
+    ["Isaiah Jackson",9.9,7,2,0],
+    ["Josh Hart",9.6,7,4,2],
+    ["Jrue Holiday",13.7,4,5,2],
+    ["Braden Smith",6.6,2,3,1],
+    ["Cedric Coward",12.6,6,2,1],
+    ["Rudy Gobert",9.6,10,1,0],
+    ["Kobe Brown",7.8,3,2,1],
+    ["Jaime Jaquez Jr.",14.5,5,3,1],
+    ["P.J. Washington",12.1,6,1,1],
+    ["Joel Embiid",20.8,8,4,1],
+    ["Keaton Wagler",12.7,4,4,1],
+    ["Dillon Brooks",17.6,3,2,2],
+    ["Fred VanVleet",12.2,3,5,2],
+    ["Ace Bailey",13.7,5,2,2],
+    ["Daniel Gafford",9.9,7,1,0],
+    ["Devin Vassell",12.8,4,3,2],
+    ["Davion Mitchell",11.9,2,6,2],
+    ["Neemias Queta",11.6,7,2,0],
+    ["Saddiq Bey",15.9,4,2,2],
+    ["Moussa Diabate",7.7,8,2,0],
+    ["Matas Buzelis",13.9,4,2,2],
+    ["VJ Edgecombe",11.6,5,2,1],
+    ["Zach Edey",8.5,8,1,0],
+    ["Jonathan Kuminga",13.1,5,2,1],
+    ["Duncan Robinson",15.3,3,2,3],
+    ["Jalen Smith",11.1,6,1,1],
+    ["Myles Turner",10.5,5,1,1],
+    ["Day'Ron Sharpe",9.2,7,2,0],
+    ["Norman Powell",16.8,3,2,2],
+    ["De'Andre Hunter",14.3,4,2,2],
+    ["Christian Braun",12.2,4,2,2],
+    ["Kris Dunn",7.5,3,4,1],
+    ["Toumani Camara",12.6,4,2,2],
+    ["Collin Murray-Boyles",10.6,5,1,0],
+    ["Ja'Kobe Walter",12,4,2,2],
+    ["Bilal Coulibaly",10.9,4,2,1],
+    ["Brook Lopez",10.4,4,1,1],
+    ["Aday Mara",8.1,6,1,0],
+    ["Jaxson Hayes",9.4,6,1,0],
+    ["Aaron Gordon",12.2,5,2,1],
+    ["Kobe Sanders",10.4,3,2,1],
+    ["Pelle Larsson",11.2,3,3,1],
+    ["John Collins",11.3,6,1,1],
+    ["Cameron Johnson",12,4,2,2],
+    ["Naji Marshall",10.9,3,3,0],
+    ["Sandro Mamukelashvili",10.2,4,2,1],
+    ["Max Strus",9.7,3,3,2],
+    ["Scoot Henderson",13.2,3,3,2],
+    ["Dennis Schroder",9.8,2,4,1],
+    ["Jaylen Wells",12.4,3,1,2],
+    ["Tari Eason",9.7,5,1,1],
+    ["Jared McCain",13.5,3,2,2],
+    ["Andrew Wiggins",11.4,4,2,2],
+    ["Julian Champagnie",10.3,4,1,2],
+    ["Collin Gillespie",8.9,3,3,2],
+    ["Mikal Bridges",11.4,3,3,1],
+    ["Karlo Matkovic",8.9,4,1,1],
+    ["Kingston Flemings",8.1,3,5,1],
+    ["Ryan Rollins",11.7,3,4,2],
+    ["Aaron Wiggins",11.3,3,2,2],
+    ["Dejounte Murray",17.4,5,6,1],
+    ["Zaccharie Risacher",8,4,1,1],
+    ["Keldon Johnson",11.1,4,1,1],
+    ["Bobby Portis",10,5,1,1],
+    ["Daniss Jenkins",10.7,3,4,1],
+    ["Cam Spencer",8.5,2,5,1],
+    ["Oso Ighodaro",7,5,2,0],
+    ["Meleek Thomas",12.3,3,1,2],
+    ["Kel'el Ware",8.7,6,1,1],
+    ["Grayson Allen",10.8,2,2,2],
+    ["Kyle Kuzma",10.5,4,2,1],
+    ["Deandre Ayton",8.7,6,1,0],
+    ["Nolan Traore",11.2,2,4,1],
+    ["DeMar DeRozan",12.2,2,2,0],
+    ["Tre Jones",9.6,2,3,0],
+    ["Isaiah Collier",9.1,2,5,0],
+    ["Quentin Grimes",9.8,3,2,1],
+    ["Mikel Brown Jr.",11.8,2,4,2],
+    ["Jaylin Williams",6.8,5,2,1],
+    ["Mario Hezonja",8.5,5,2,1],
+    ["Jerami Grant",10.7,2,1,1],
+    ["Reed Sheppard",9.9,2,3,2],
+    ["Isaiah Stewart",8.7,4,1,0],
+    ["Kenrich Williams",8.5,4,1,1],
+    ["Luguentz Dort",9.1,3,1,1],
+    ["Jamal Shead",6.9,2,5,1],
+    ["Khaman Maluach",6.5,5,1,0],
+    ["Brayden Burries",9.9,4,1,1],
+    ["Matisse Thybulle",7.4,2,1,1],
+    ["Coby White",10.9,2,3,1],
+    ["Jake LaRavia",6.6,4,1,1],
+    ["Brice Sensabaugh",12.2,2,2,1],
+    ["Trevon Brazile",7.2,5,0,1],
+    ["Malik Monk",9.8,1,3,1],
+    ["Bones Hyland",10.4,2,3,2],
+    ["Mitchell Robinson",6.3,7,1,0],
+    ["Collin Sexton",10.1,2,2,1],
+    ["Herbert Jones",7.6,2,2,1],
+    ["Marcus Smart",8.1,2,2,1],
+    ["Baylor Scheierman",8.4,4,2,2],
+    ["Moritz Wagner",9.6,4,1,1],
+    ["Sam Merrill",9.3,2,2,2],
+    ["Tre Johnson",10.6,2,1,1],
+    ["GG Jackson",8.9,3,1,1],
+    ["Joan Beringer",7,4,1,0],
+    ["Andre Drummond",5.6,6,1,0],
+    ["Robert Williams III",6.1,6,1,0],
+    ["Bub Carrington",8.2,2,3,1],
+    ["Walter Clayton Jr.",6.2,1,3,1],
+    ["Ronald Holland II",7.5,3,1,1],
+    ["Noah Clowney",8,4,1,1],
+    ["Chaney Johnson",6.6,3,1,1],
+    ["Kasparas Jakucionis",6.7,2,3,1],
+    ["Mo Bamba",6.2,4,1,0],
+    ["Luka Garza",9.4,4,1,1],
+    ["Bennedict Mathurin",9.3,2,1,1],
+    ["Kevin Huerter",7.5,2,2,1],
+    ["Klay Thompson",10.8,1,1,3],
+    ["Keon Ellis",5.6,2,1,1],
+    ["Tyrese Proctor",7.5,3,3,1],
+    ["Sam Hauser",9.7,3,1,2],
+    ["Sion James",5.2,3,2,1],
+    ["Landry Shamet",10.3,2,1,2],
+    ["Anfernee Simons",9,2,1,2],
+    ["Miles McBride",8.6,2,2,2],
+    ["Ziaire Williams",9.5,3,1,1],
+    ["Gradey Dick",6,2,1,1],
+    ["Luke Kornet",3.9,5,1,0],
+    ["Ryan Kalkbrenner",4.1,4,1,0],
+    ["Dean Wade",4.4,3,1,1],
+    ["Javonte Green",5.9,3,1,1],
+    ["Caleb Martin",5.3,3,1,1],
+    ["Ivica Zubac",8.1,5,1,0],
+    ["Royce O'Neale",4.6,3,1,1],
+    ["Jaylen Clark",6.5,2,1,1],
+    ["Jalen Johnson",20.4,9,7,1],
+    ["Marcus Sasser",5.6,1,1,1],
+    ["Sidy Cissoko",5.4,3,1,1],
+    ["Morez Johnson Jr.",5.9,3,1,0],
+    ["Josh Okogie",4.1,2,1,0],
+    ["Andrew Nembhard",18.5,3,8,2],
+    ["Nic Claxton",7.2,4,2,0],
+    ["Kentavious Caldwell-Pope",4.7,2,1,1],
+    ["Leonard Miller",6,3,0,0],
+    ["Paul George",24.9,5,5,3],
+    ["Allen Graves",4.7,2,1,0],
+    ["Jose Alvarado",5.6,2,2,1],
+    ["Baba Miller",2.6,1,0,0],
+    ["Santi Aldama",6.6,3,1,0],
+    ["Leaky Black",4.7,2,1,1],
+    ["Tidjane Salaun",3.9,3,0,1],
+    ["Trendon Watford",4.5,2,1,0],
+    ["Buddy Hield",5.5,1,1,1],
+    ["Kyrie Irving",18.6,4,4,2],
+    ["Dylan Cardwell",5.8,5,1,0],
+    ["Kris Murray",3.2,2,0,0],
+    ["Alex Sarr",12.9,6,2,1],
+    ["Noa Essengue",4.3,2,0,0],
+    ["Dru Smith",3.4,1,1,0],
+    ["Aaron Nesmith",13.9,3,2,2],
+    ["Nikola Jovic",4.2,2,1,0],
+    ["Jordan Poole",8.4,1,2,1],
+    ["Josh Dix",3.9,1,0,0],
+    ["Rui Hachimura",15.1,4,1,2],
+    ["Khris Middleton",5.2,2,1,0],
+    ["Carter Bryant",3.5,2,0,1],
+    ["Craig Porter Jr.",3.1,2,2,0],
+    ["Nate Ament",4.9,2,0,0],
+    ["Peyton Watson",12,3,2,1],
+    ["Tyler Kolek",4.6,1,3,1],
+    ["Kyle Filipowski",5.4,2,1,0],
+    ["Chris Youngblood",4.5,1,1,1],
+    ["Derrick Jones Jr.",10.3,4,1,1],
+    ["Jakob Poeltl",9.3,6,1,0],
+    ["Josh Green",3.3,1,1,0],
+    ["Jordan Clarkson",6.9,2,1,0],
+    ["Kelly Oubre Jr.",8.5,3,1,1],
+    ["Harrison Barnes",3.7,1,0,1],
+    ["Zuby Ejiofor",3.5,2,1,0],
+    ["Will Riley",5.7,1,1,0],
+    ["Vit Krejci",3.8,1,1,1],
+    ["Trayce Jackson-Davis",3.3,2,0,0],
+    ["Christian Anderson",2.5,1,1,0],
+    ["Jonathan Mogbo",2.7,1,0,0],
+    ["Larry Nance Jr.",5.3,4,1,1],
+    ["Jabari Walker",3.1,1,0,0],
+    ["Jericho Sims",2.8,2,0,0],
+    ["Malachi Smith",4,1,1,0],
+    ["Jarred Vanderbilt",2.3,2,0,0],
+    ["Terrence Shannon Jr.",11.3,2,1,1],
+    ["Isaiah Joe",6.1,1,1,1],
+    ["Nique Clifford",3.6,1,1,0],
+    ["Ben Saraf",3.8,0,1,0],
+    ["Jaylon Tyson",8.4,3,2,1],
+    ["Cam Christie",2.4,1,0,0],
+    ["Tyus Jones",2.6,0,1,0],
+    ["Mike Conley",4.4,1,2,1],
+    ["Max Christie",8.4,2,1,2],
+    ["Zach Collins",3.4,2,0,0],
+    ["Brooks Barnhizer",2.6,1,0,0],
+    ["Jordan Goodwin",6.2,3,1,1],
+    ["Scotty Pippen Jr.",7.1,2,3,0],
+    ["Alijah Martin",3.5,1,1,0],
+    ["Tobe Awaka",2.5,2,0,0],
+    ["Jalen Pickett",2.1,0,1,0],
+    ["Pat Spencer",3.1,1,1,0],
+    ["Bogdan Bogdanovic",3.5,1,0,0],
+    ["Jock Landale",7,3.5,1,0],
+    ["Keshad Johnson",3,1,0,0],
+    ["Blake Wesley",2.8,1,1,0],
+    ["Alpha Diallo",3,1,1,0],
+    ["Ousmane Dieng",3.3,1,1,0],
+    ["Kyle Anderson",2.3,1,1,0],
+    ["Nick Richards",2.8,2,0,0],
+    ["Thomas Bryant",3.6,1,0,0],
+    ["Daeqwon Plowden",3.2,1,0,0],
+    ["Duop Reath",2.6,1,0,0],
+    ["Bryce McGowens",2.6,0,0,0],
+    ["Cody Williams",3.2,1,0,0],
+    ["Quinten Post",6.2,2,1,0],
+    ["Patrick Williams",3.7,1,0,0],
+    ["Ron Harper Jr.",4.3,1,0,1],
+    ["Danny Wolf",4,1,1,0],
+    ["Mohamed Diawara",2.9,1,0,0],
+    ["Terance Mann",3.2,1,1,0],
+    ["Liam McNeeley",1.4,0,0,0],
+    ["Pete Nance",2.8,1,0,0],
+    ["DeAndre Jordan",2.6,3,0,0],
+    ["Ryan Conwell",2.9,0,0,0],
+    ["Moussa Cisse",2.1,2,0,0],
+    ["Ryan Nembhard",2.4,0,1,0],
+    ["Lawson Lovering",2.8,1,0,0],
+    ["Oscar Tshiebwe",2.6,2,0,0],
+    ["Clint Capela",3.2,3,0,0],
+    ["Micah Potter",3,1,0,0],
+    ["Jaden Bradley",2.3,1,0,0],
+    ["Yang Hansen",2.1,1,0,0],
+    ["Alex Karaban",2.3,0,0,0],
+    ["Simone Fontecchio",2.7,1,0,0],
+    ["Rasheer Fleming",2.3,1,0,0],
+    ["Dorian Finney-Smith",2.1,1,0,0],
+    ["Jett Howard",2.2,0,0,0],
+    ["Hannes Steinbach",2.1,1,0,0],
+    ["Tarris Reed Jr.",2.1,2,0,0],
+    ["Tolu Smith",2,1,0,0],
+    ["Tony Bradley",2.2,1,0,0],
+    ["Branden Carlson",2.3,1,0,0],
+    ["Julian Reese",2.9,2,0,0],
+    ["Cormac Ryan",3.5,0,0,0],
+    ["Joshua Jefferson",2.2,1,0,0],
+    ["Taurean Prince",2.8,0,0,0],
+    ["Zyon Pullin",2.6,1,1,0],
+    ["Cam Whitmore",2.9,0.5,0,0],
+    ["AJ Green",6.9,2,1,2],
+    ["Luke Kennard",6.4,2,1,1],
+    ["Asa Newell",5.4,3,1,0],
+    ["Adem Bona",3.3,3,0,0],
+    ["Hugo Gonzalez",5.7,4,1,1],
+    ["Jordan Walsh",6.1,4,1,1],
+    ["Jamison Battle",7.4,2,1,1],
+    ["Marvin Bagley III",5.7,4,1,0],
+    ["Javon Small",6.2,2,2,1],
+    ["Bennett Stirtz",6.9,1,1,1],
+    ["Trey Lyles",6,3,1,1],
+    ["Tim Hardaway Jr.",7.7,2,1,2],
+    ["Pascal Siakam",23.6,6,4,1],
+    ["Svi Mykhailiuk",6.7,2,1,1],
+    ["Corey Kispert",7,1,1,1],
+    ["Emanuel Sharp",5.6,1,1,1],
+    ["Isaac Okoro",5.5,2,1,1],
+    ["Micah Peavy",4.5,2,1,0],
+    ["Ryan Dunn",4.7,3,1,0]
+  ]
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 14px system-ui, -apple-system, sans-serif;
-}
-
-main {
-  max-width: 1750px;
-  margin: auto;
-  padding: 30px 20px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 34px;
-  letter-spacing: -1px;
-}
-
-h2 {
-  margin: 0 0 12px;
-  font-size: 17px;
-}
-
-p {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.logo { color: var(--green); }
-
-.subtitle {
-  margin: 8px 0 22px;
-}
-
-.status {
-  padding: 13px 16px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--panel);
-  color: var(--muted);
-  margin-bottom: 20px;
-  line-height: 1.8;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px;
-}
-
-.card .label {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.card .value {
-  font-size: 28px;
-  font-weight: 750;
-  margin-top: 7px;
-}
-
-.green { color: var(--green); }
-.red { color: var(--red); }
-.blue { color: var(--blue); }
-.yellow { color: var(--yellow); }
-.muted { color: var(--muted); }
-.adjusted { color: #b7d8ff; }
-
-.controls {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 16px 0;
-}
-
-input, select {
-  background: var(--panel2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 9px;
-  padding: 11px 12px;
-  font: inherit;
-}
-
-input {
-  flex: 1;
-  min-width: 200px;
-}
-
-select { min-width: 145px; }
-
-.tablebox {
-  overflow: auto;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--panel);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 1650px;
-}
-
-th {
-  text-align: left;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .6px;
-  color: var(--muted);
-  background: #152139;
-  white-space: nowrap;
-}
-
-th, td {
-  padding: 13px 14px;
-  border-bottom: 1px solid #25334b;
-}
-
-tbody tr:hover { background: #1b2941; }
-
-.player { font-weight: 650; }
-
-.small {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.num {
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-  white-space: nowrap;
-}
-
-.badge {
-  display: inline-block;
-  border-radius: 6px;
-  padding: 5px 9px;
-  font-size: 11px;
-  font-weight: 750;
-  white-space: nowrap;
-}
-
-.normal {
-  background: #263650;
-  color: #dce6f8;
-}
-
-.goblin {
-  background: #123c2c;
-  color: #75f4aa;
-}
-
-.demon {
-  background: #49212c;
-  color: #ff9aab;
-}
-
-.unknown {
-  background: #353247;
-  color: #c8c1dc;
-}
-
-.agree-over {
-  background: #123c2c;
-  color: #75f4aa;
-}
-
-.agree-under {
-  background: #49212c;
-  color: #ff9aab;
-}
-
-.disagree {
-  background: #47391d;
-  color: #facc15;
-}
-
-.unavailable {
-  background: #263650;
-  color: #9eafc9;
-}
-
-.note {
-  font-size: 12px;
-  margin-top: 15px;
-}
-
-.details {
-  background: #0d1729;
-  padding: 16px 22px;
-  color: var(--muted);
-}
-
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-}
-
-.details strong { color: var(--text); }
-
-.details-button {
-  background: #223653;
-  border: 1px solid var(--border);
-  color: #dceaff;
-  border-radius: 6px;
-  padding: 7px 10px;
-  cursor: pointer;
-}
-
-.details-button:hover { background: #304766; }
-
-.empty {
-  text-align: center;
-  color: var(--muted);
-}
-
-@media(max-width: 950px) {
-  .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media(max-width: 750px) {
-  main { padding: 20px 12px; }
-  h1 { font-size: 28px; }
-}
-</style>
-</head>
-
-<body>
-<main>
-
-<header>
-  <h1><span class="logo">Prop</span>Edge</h1>
-  <span class="small">
-    NBA · NFL | Independent Prop Research
-  </span>
-</header>
-
-<p class="subtitle">
-  Compare PrizePicks player prop lines against independent
-  PropEdge projections and PropSims NBA estimates.
-  Explore matchup adjustments and identify where the
-  two projection models agree or disagree.
-</p>
-
-<div id="status" class="status">
-  Loading latest data...
-</div>
-
-<div class="cards">
-
-  <div class="card">
-    <div class="label">PrizePicks Lines</div>
-    <div class="value" id="total">—</div>
-  </div>
-
-  <div class="card">
-    <div class="label">PropEdge Matched</div>
-    <div class="value blue" id="matched">—</div>
-  </div>
-
-  <div class="card">
-    <div class="label">PropSims Matched</div>
-    <div class="value blue" id="simsMatched">—</div>
-  </div>
-
-  <div class="card">
-    <div class="label">Both Over</div>
-    <div class="value green" id="bothOver">—</div>
-  </div>
-
-  <div class="card">
-    <div class="label">Both Under</div>
-    <div class="value red" id="bothUnder">—</div>
-  </div>
-
-</div>
-
-<h2>Player Prop Comparison</h2>
-
-<div class="controls">
-
-  <input
-    id="search"
-    placeholder="Search player, team, opponent, or stat"
-  >
-
-  <select id="league">
-    <option value="">All Sports</option>
-    <option value="NBA">NBA</option>
-    <option value="NFL">NFL</option>
-  </select>
-
-  <select id="lineType">
-    <option value="">All Line Types</option>
-    <option value="normal">Normal</option>
-    <option value="goblin">Green Goblin</option>
-    <option value="demon">Red Demon</option>
-    <option value="unknown">Unidentified</option>
-  </select>
-
-  <select id="filter">
-    <option value="">All Projections</option>
-    <option value="projected">With PropEdge Projection</option>
-    <option value="unprojected">Missing PropEdge Projection</option>
-  </select>
-
-  <select id="matchupFilter">
-    <option value="">All Matchups</option>
-    <option value="adjusted">Matchup Adjusted</option>
-    <option value="base">Base Only</option>
-  </select>
-
-  <select id="agreementFilter">
-    <option value="">All Model Agreements</option>
-    <option value="over">Both Over</option>
-    <option value="under">Both Under</option>
-    <option value="disagree">Models Disagree</option>
-    <option value="missing">Comparison Unavailable</option>
-  </select>
-
-  <select id="sort">
-    <option value="positive">Highest Above Line First</option>
-    <option value="negative">Lowest Below Line First</option>
-    <option value="absolute">Largest PropEdge Differences</option>
-    <option value="sims">Largest PropSims Differences</option>
-    <option value="player">Player Name A-Z</option>
-  </select>
-
-</div>
-
-<div class="tablebox">
-<table>
-
-<thead>
-<tr>
-  <th>Sport</th>
-  <th>Player / Matchup</th>
-  <th>Statistic</th>
-  <th>Line Type</th>
-  <th>PP Line</th>
-  <th>Base Projection</th>
-  <th>Adjusted Projection</th>
-  <th>PropSims</th>
-  <th>PropEdge Difference</th>
-  <th>PropSims Difference</th>
-  <th>Model Agreement</th>
-  <th>Matchup</th>
-  <th>Source</th>
-</tr>
-</thead>
-
-<tbody id="body">
-<tr>
-  <td colspan="13" class="empty">Loading...</td>
-</tr>
-</tbody>
-
-</table>
-</div>
-
-<p class="note">
-  PropSims projections are a manually recorded snapshot,
-  not automatically updated. PropSims points use its
-  "PTS IF PLAY" estimate. Rebounds, assists and three-pointers
-  use the values recorded from its projections table.
-  The models may use different statistical methods.
-  Agreement means both projections fall on the same side
-  of the PrizePicks line; it does not establish a winning
-  probability. Matchup adjustments are experimental and
-  have not been backtested. Verify current lines and
-  projection dates before relying on any comparison.
-</p>
-
-</main>
-
-<script>
-"use strict";
-
-let rows = [];
-let matchupTeams = {};
-let simsPlayers = new Map();
-let simsInfo = null;
-
-const $ = id => document.getElementById(id);
-
-function esc(value) {
-  return String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[c]));
-}
-
-function finite(value) {
-  if (
-    value === null ||
-    value === undefined ||
-    value === ""
-  ) return null;
-
-  const n = Number(value);
-
-  return Number.isFinite(n) ? n : null;
-}
-
-function fmt(value, decimals = 2) {
-  const n = finite(value);
-  return n === null ? "—" : n.toFixed(decimals);
-}
-
-function signed(value) {
-  const n = finite(value);
-
-  if (n === null) return "—";
-
-  return (n > 0 ? "+" : "") + n.toFixed(2);
-}
-
-function normalizeName(name) {
-  return String(name || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/\b(jr|sr|ii|iii|iv)\b\.?/g, "")
-    .replace(/[^a-z0-9]/g, "");
-}
-
-function normalizeTeam(team) {
-  return String(team || "")
-    .trim()
-    .toUpperCase()
-    .replace(/[^A-Z]/g, "");
-}
-
-function baseProjection(r) {
-  return finite(r.base_projection ?? r.projection);
-}
-
-function adjustedProjection(r) {
-  return finite(r.adjusted_projection ?? r.projection);
-}
-
-function hasProjection(r) {
-  return adjustedProjection(r) !== null;
-}
-
-function getDifference(r) {
-  const projection = adjustedProjection(r);
-  const line = finite(r.line);
-
-  if (projection === null || line === null) {
-    return null;
-  }
-
-  return projection - line;
-}
-
-function isAdjusted(r) {
-  return r.matchup_applied === true;
-}
-
-function getLineType(r) {
-  const candidates = [
-    r.line_type,
-    r.lineType,
-    r.odds_type,
-    r.oddsType,
-    r.pick_type,
-    r.pickType,
-    r.promotion_type,
-    r.tier
-  ];
-
-  for (const value of candidates) {
-    if (value === null || value === undefined) continue;
-
-    const v = String(value).toLowerCase().trim();
-
-    if (v.includes("goblin")) return "goblin";
-    if (v.includes("demon")) return "demon";
-
-    if (["standard", "normal", "regular"].includes(v)) {
-      return "normal";
-    }
-  }
-
-  return "unknown";
-}
-
-function lineBadge(type) {
-  const labels = {
-    normal: "Normal",
-    goblin: "Green Goblin",
-    demon: "Red Demon",
-    unknown: "Unidentified"
-  };
-
-  return `<span class="badge ${type}">
-    ${labels[type]}
-  </span>`;
-}
-
-/*
-  Convert the stat label into a supported
-  PropSims projection field.
-*/
-
-function statField(stat) {
-  const s = String(stat || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "");
-
-  const mapping = {
-    points: "pts_if_play",
-    point: "pts_if_play",
-    pts: "pts_if_play",
-
-    rebounds: "reb_p50",
-    rebound: "reb_p50",
-    reb: "reb_p50",
-
-    assists: "ast_p50",
-    assist: "ast_p50",
-    ast: "ast_p50",
-
-    "3ptmade": "fg3m_p50",
-    "3ptm": "fg3m_p50",
-    "3pointersmade": "fg3m_p50",
-    "3pointers": "fg3m_p50",
-    "3pointsmade": "fg3m_p50",
-    "threepointersmade": "fg3m_p50",
-    "threepointsmade": "fg3m_p50",
-    "3pm": "fg3m_p50",
-    "threes": "fg3m_p50"
-  };
-
-  return mapping[s] || null;
-}
-
-/*
-  Supports both the compact propsims.json
-  array format and the original object format.
-*/
-
-function buildSimsIndex(data) {
-  simsPlayers = new Map();
-
-  if (!data || !Array.isArray(data.players)) {
-    return;
-  }
-
-  for (const entry of data.players) {
-    let player;
-
-    if (Array.isArray(entry)) {
-      if (entry.length < 5) continue;
-
-      player = {
-        player: entry[0],
-        raw_projection_fields: {
-          pts_if_play: entry[1],
-          reb_p50: entry[2],
-          ast_p50: entry[3],
-          fg3m_p50: entry[4]
-        }
-      };
-    } else if (entry && typeof entry === "object") {
-      player = entry;
-    } else {
-      continue;
-    }
-
-    const key = normalizeName(player.player);
-
-    if (!key) continue;
-
-    if (!simsPlayers.has(key)) {
-      simsPlayers.set(key, []);
-    }
-
-    simsPlayers.get(key).push(player);
-  }
-}
-
-function findSimsPlayer(r) {
-  if (String(r.league).toUpperCase() !== "NBA") {
-    return null;
-  }
-
-  const key = normalizeName(r.player);
-  const candidates = simsPlayers.get(key) || [];
-
-  if (candidates.length === 0) return null;
-
-  if (candidates.length === 1) {
-    const candidate = candidates[0];
-
-    const a = normalizeTeam(r.team);
-    const b = normalizeTeam(candidate.team);
-
-    if (a && b && a !== b) return null;
-
-    return candidate;
-  }
-
-  const team = normalizeTeam(r.team);
-
-  if (!team) return null;
-
-  const matches = candidates.filter(
-    p => normalizeTeam(p.team) === team
-  );
-
-  return matches.length === 1 ? matches[0] : null;
-}
-
-function getSimsData(r) {
-  const player = findSimsPlayer(r);
-
-  if (!player) return null;
-
-  const field = statField(r.stat);
-
-  if (!field) return null;
-
-  const raw = player.raw_projection_fields || {};
-  const projection = finite(raw[field]);
-
-  if (projection === null) return null;
-
-  return {
-    value: projection,
-    field: field,
-    player: player
-  };
-}
-
-function getSimsProjection(r) {
-  return getSimsData(r)?.value ?? null;
-}
-
-function getSimsDifference(r) {
-  const sims = getSimsProjection(r);
-  const line = finite(r.line);
-
-  if (sims === null || line === null) return null;
-
-  return sims - line;
-}
-
-function getAgreement(r) {
-  const line = finite(r.line);
-  const edge = adjustedProjection(r);
-  const sims = getSimsProjection(r);
-
-  if (
-    line === null ||
-    edge === null ||
-    sims === null
-  ) {
-    return "missing";
-  }
-
-  const edgeDiff = edge - line;
-  const simsDiff = sims - line;
-
-  if (edgeDiff > 0 && simsDiff > 0) {
-    return "over";
-  }
-
-  if (edgeDiff < 0 && simsDiff < 0) {
-    return "under";
-  }
-
-  if (edgeDiff === 0 || simsDiff === 0) {
-    return "missing";
-  }
-
-  return "disagree";
-}
-
-function agreementBadge(r) {
-  const value = getAgreement(r);
-
-  const labels = {
-    over: "Both Over",
-    under: "Both Under",
-    disagree: "Disagree",
-    missing: "N/A"
-  };
-
-  const classes = {
-    over: "agree-over",
-    under: "agree-under",
-    disagree: "disagree",
-    missing: "unavailable"
-  };
-
-  return `<span class="badge ${classes[value]}">
-    ${labels[value]}
-  </span>`;
-}
-
-function updateCards() {
-  $("total").textContent =
-    rows.length.toLocaleString();
-
-  $("matched").textContent =
-    rows.filter(hasProjection).length.toLocaleString();
-
-  $("simsMatched").textContent =
-    rows.filter(
-      r => getSimsProjection(r) !== null
-    ).length.toLocaleString();
-
-  $("bothOver").textContent =
-    rows.filter(
-      r => getAgreement(r) === "over"
-    ).length.toLocaleString();
-
-  $("bothUnder").textContent =
-    rows.filter(
-      r => getAgreement(r) === "under"
-    ).length.toLocaleString();
-}
-
-function matchupDetails(r) {
-  const adjustments = r.matchup_adjustments || {};
-
-  const team = String(
-    r.matchup_opponent || ""
-  ).toUpperCase();
-
-  const metrics = matchupTeams[team] || {};
-
-  const entries = Object.entries(adjustments);
-
-  const gameDate = r.matchup_game_date
-    ? new Date(r.matchup_game_date).toLocaleString()
-    : "Not available";
-
-  const sims = getSimsData(r);
-  const simsDiff = getSimsDifference(r);
-
-  return `
-    <div class="details">
-      <div class="details-grid">
-
-        <div>
-          <strong>Opponent</strong>
-          <div>
-            ${esc(team || r.opponent || "Not available")}
-          </div>
-        </div>
-
-        <div>
-          <strong>Game date</strong>
-          <div>${esc(gameDate)}</div>
-        </div>
-
-        <div>
-          <strong>Home / Away</strong>
-          <div>
-            ${esc(r.matchup_home_away || "Unknown")}
-          </div>
-        </div>
-
-        <div>
-          <strong>Opponent defensive rating proxy</strong>
-          <div>
-            ${fmt(metrics.defensive_rating_proxy)}
-          </div>
-        </div>
-
-        <div>
-          <strong>Opponent pace proxy</strong>
-          <div>${fmt(metrics.pace_proxy)}</div>
-        </div>
-
-        <div>
-          <strong>Opponent missed FG / game</strong>
-          <div>
-            ${fmt(metrics.opponent_missed_fg_per_game)}
-          </div>
-        </div>
-
-        <div>
-          <strong>Matchup status</strong>
-          <div>
-            ${
-              isAdjusted(r)
-                ? "Experimental adjustment applied"
-                : "Base projection only"
-            }
-          </div>
-        </div>
-
-        <div>
-          <strong>PropSims field</strong>
-          <div>
-            ${esc(sims?.field || "Unavailable")}
-          </div>
-        </div>
-
-        <div>
-          <strong>PropSims projection</strong>
-          <div>
-            ${sims ? fmt(sims.value) : "N/A"}
-          </div>
-        </div>
-
-        <div>
-          <strong>PropSims minus PP line</strong>
-          <div>
-            ${
-              simsDiff === null
-                ? "N/A"
-                : signed(simsDiff)
-            }
-          </div>
-        </div>
-
-      </div>
-
-      <div style="margin-top:12px">
-        <strong>Projection adjustments</strong>
-
-        <div class="small">
-          ${
-            entries.length
-              ? entries.map(([key, value]) =>
-                  `${esc(key.replaceAll("_", " "))}: ${signed(value)}`
-                ).join(" · ")
-              : "No individual adjustments available"
-          }
-        </div>
-      </div>
-
-    </div>
-  `;
-}
-
-function draw() {
-  const q = $("search").value.toLowerCase().trim();
-  const league = $("league").value;
-  const type = $("lineType").value;
-  const filter = $("filter").value;
-  const matchupFilter = $("matchupFilter").value;
-  const agreementFilter = $("agreementFilter").value;
-  const sort = $("sort").value;
-
-  let visible = rows.filter(r => {
-    const searchText = [
-      r.player,
-      r.stat,
-      r.team,
-      r.opponent,
-      r.matchup_opponent
-    ].join(" ").toLowerCase();
-
-    return (
-      (!league || String(r.league).toUpperCase() === league) &&
-      (!q || searchText.includes(q)) &&
-      (!type || getLineType(r) === type) &&
-      (!filter ||
-        (filter === "projected"
-          ? hasProjection(r)
-          : !hasProjection(r))) &&
-      (!matchupFilter ||
-        (matchupFilter === "adjusted"
-          ? isAdjusted(r)
-          : !isAdjusted(r))) &&
-      (!agreementFilter ||
-        getAgreement(r) === agreementFilter)
-    );
-  });
-
-  visible.sort((a, b) => {
-    if (sort === "player") {
-      return String(a.player).localeCompare(
-        String(b.player)
-      );
-    }
-
-    if (sort === "sims") {
-      const da = getSimsDifference(a);
-      const db = getSimsDifference(b);
-
-      if (da === null) return db === null ? 0 : 1;
-      if (db === null) return -1;
-
-      return Math.abs(db) - Math.abs(da);
-    }
-
-    const da = getDifference(a);
-    const db = getDifference(b);
-
-    if (da === null && db !== null) return 1;
-    if (db === null && da !== null) return -1;
-    if (da === null && db === null) return 0;
-
-    if (sort === "negative") return da - db;
-
-    if (sort === "absolute") {
-      return Math.abs(db) - Math.abs(da);
-    }
-
-    return db - da;
-  });
-
-  $("body").innerHTML = visible.map((r, index) => {
-    const diff = getDifference(r);
-    const simsDiff = getSimsDifference(r);
-
-    const type = getLineType(r);
-    const base = baseProjection(r);
-    const adjusted = adjustedProjection(r);
-    const sims = getSimsProjection(r);
-
-    const diffClass =
-      diff === null ? "" :
-      diff > 0 ? "green" :
-      diff < 0 ? "red" : "";
-
-    const simsDiffClass =
-      simsDiff === null ? "" :
-      simsDiff > 0 ? "green" :
-      simsDiff < 0 ? "red" : "";
-
-    const detailId = "detail-" + index;
-
-    return `
-      <tr>
-        <td>${esc(r.league)}</td>
-
-        <td>
-          <div class="player">
-            ${esc(r.player)}
-          </div>
-
-          <div class="small">
-            ${esc(r.team || "")}
-            ${
-              r.opponent
-                ? " vs " + esc(r.opponent)
-                : ""
-            }
-          </div>
-        </td>
-
-        <td>${esc(r.stat)}</td>
-
-        <td>${lineBadge(type)}</td>
-
-        <td class="num">
-          ${fmt(r.line, 1)}
-        </td>
-
-        <td class="num">
-          ${fmt(base)}
-        </td>
-
-        <td class="num adjusted">
-          ${fmt(adjusted)}
-        </td>
-
-        <td class="num blue">
-          ${sims === null ? "N/A" : fmt(sims)}
-        </td>
-
-        <td class="num ${diffClass}">
-          ${diff === null ? "—" : signed(diff)}
-        </td>
-
-        <td class="num ${simsDiffClass}">
-          ${
-            simsDiff === null
-              ? "N/A"
-              : signed(simsDiff)
-          }
-        </td>
-
-        <td>
-          ${agreementBadge(r)}
-        </td>
-
-        <td>
-          <button
-            class="details-button"
-            data-detail="${detailId}"
-          >
-            Details
-          </button>
-        </td>
-
-        <td class="small">
-          ${esc(r.source || "—")}
-        </td>
-      </tr>
-
-      <tr id="${detailId}" hidden>
-        <td colspan="13">
-          ${matchupDetails(r)}
-        </td>
-      </tr>
-    `;
-  }).join("") || `
-    <tr>
-      <td colspan="13" class="empty">
-        No matching lines found.
-      </td>
-    </tr>
-  `;
-
-  document.querySelectorAll(
-    ".details-button"
-  ).forEach(button => {
-    button.addEventListener("click", () => {
-      const detail = document.getElementById(
-        button.dataset.detail
-      );
-
-      if (detail) {
-        detail.hidden = !detail.hidden;
-      }
-    });
-  });
-}
-
-for (const id of [
-  "search",
-  "league",
-  "lineType",
-  "filter",
-  "matchupFilter",
-  "agreementFilter",
-  "sort"
-]) {
-  $(id).addEventListener("input", draw);
-}
-
-function loadJson(path, optional = false) {
-  return fetch(path + "?cache=" + Date.now())
-    .then(response => {
-      if (!response.ok) {
-        if (optional) return null;
-
-        throw new Error(
-          "Published data not available: " + path
-        );
-      }
-
-      return response.json();
-    })
-    .catch(error => {
-      if (optional) return null;
-      throw error;
-    });
-}
-
-Promise.all([
-  loadJson("./data/latest.json"),
-  loadJson("./data/nba_matchups.json", true),
-  loadJson("./data/propsims.json", true)
-]).then(([data, matchupData, propsimsData]) => {
-
-  rows = Array.isArray(data.lines)
-    ? data.lines
-    : [];
-
-  matchupTeams =
-    matchupData && matchupData.teams
-      ? matchupData.teams
-      : {};
-
-  simsInfo = propsimsData;
-
-  buildSimsIndex(propsimsData);
-
-  const updated = data.updated_utc
-    ? new Date(data.updated_utc).toLocaleString()
-    : "Unknown";
-
-  const simsCount =
-    propsimsData && Array.isArray(propsimsData.players)
-      ? propsimsData.players.length
-      : 0;
-
-  const simsModelRun = propsimsData?.model_run
-    ? new Date(propsimsData.model_run).toLocaleString()
-    : "Not available";
-
-  $("status").textContent =
-    `PrizePicks updated: ${updated} | ` +
-    `${rows.length.toLocaleString()} lines | ` +
-    `${rows.filter(hasProjection).length.toLocaleString()} PropEdge projections | ` +
-    `${rows.filter(isAdjusted).length.toLocaleString()} matchup-adjusted | ` +
-    `PropSims: ${simsCount.toLocaleString()} players | ` +
-    `PropSims model run: ${simsModelRun} (static snapshot)`;
-
-  if (!propsimsData) {
-    $("status").textContent +=
-      " | PropSims data not published yet";
-  }
-
-  if (data.errors && data.errors.length) {
-    $("status").textContent +=
-      ` | Feed warnings: ${data.errors.join("; ")}`;
-  }
-
-  updateCards();
-  draw();
-
-}).catch(error => {
-
-  $("status").textContent =
-    "Unable to load data: " + error.message;
-
-  $("body").innerHTML =
-    '<tr><td colspan="13" class="empty">' +
-    'No published data available.</td></tr>';
-
-});
-</script>
-
-</body>
-</html>
