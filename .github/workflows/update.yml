@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install NBA statistics dependencies
+        run: pip install nba_api pandas requests
+
       - name: Update PrizePicks data
         env:
           PRIZEPICKS_API_KEY: ${{ secrets.PRIZEPICKS_API_KEY }}
