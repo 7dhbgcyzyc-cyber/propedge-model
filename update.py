@@ -115,7 +115,11 @@ snapshot = {
 }
 if not rows:
     print(f'PrizePicks API errors: {errors}', flush=True)
-    raise SystemExit('No usable lines returned; leaving previous published snapshot unchanged.')
-(OUT / 'latest.json').write_text(json.dumps(snapshot, indent=2), encoding='utf-8')
+    print('Keeping previous PrizePicks lines while publishing updated NBA projections.')
+else:
+    (OUT / 'latest.json').write_text(
+        json.dumps(snapshot, indent=2),
+        encoding='utf-8'
+    )
 from collections import Counter
 print(f'Fetched {len(rows)} lines. Matched {sum(r["projection"] is not None for r in rows)}. Line types: {dict(Counter(r["line_type"] for r in rows))}. Errors: {errors}')
