@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-04T03:48:52.469301+00:00",
+  "updated_utc": "2026-11-04T04:04:09.596630+00:00",
   "lines": [
     {
       "id": "pp_16579971",
@@ -11,9 +11,9 @@
       "line": 22.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 23.09,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.59
     },
     {
       "id": "pp_16579972",
@@ -25,9 +25,9 @@
       "line": 31.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 27.8,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -3.7
     },
     {
       "id": "pp_16579973",
@@ -39,9 +39,9 @@
       "line": 23.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 21.47,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.03
     },
     {
       "id": "pp_16579974",
@@ -53,9 +53,9 @@
       "line": 23.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 22.5,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.0
     },
     {
       "id": "pp_16579975",
@@ -67,9 +67,9 @@
       "line": 24.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 24.69,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.19
     },
     {
       "id": "pp_16579976",
@@ -81,9 +81,9 @@
       "line": 20.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 18.94,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.56
     },
     {
       "id": "pp_16579977",
@@ -95,9 +95,9 @@
       "line": 23.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 26.44,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.94
     },
     {
       "id": "pp_16579979",
@@ -109,9 +109,9 @@
       "line": 24.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 21.69,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.81
     },
     {
       "id": "pp_16579980",
@@ -123,9 +123,9 @@
       "line": 20.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 19.55,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.95
     },
     {
       "id": "pp_16579981",
@@ -137,9 +137,9 @@
       "line": 22.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 24.96,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.46
     },
     {
       "id": "pp_16579982",
@@ -151,9 +151,9 @@
       "line": 20.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 20.73,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.23
     },
     {
       "id": "pp_16579984",
@@ -165,9 +165,9 @@
       "line": 27.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 23.76,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -3.74
     },
     {
       "id": "pp_16579985",
@@ -179,9 +179,9 @@
       "line": 26.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 24.37,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.13
     },
     {
       "id": "pp_16579986",
@@ -207,9 +207,9 @@
       "line": 20.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 22.95,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.45
     },
     {
       "id": "pp_16579988",
@@ -221,9 +221,9 @@
       "line": 21.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 19.33,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.17
     },
     {
       "id": "pp_16579989",
@@ -249,9 +249,9 @@
       "line": 30.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 27.58,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.92
     },
     {
       "id": "pp_16579991",
@@ -263,9 +263,9 @@
       "line": 23.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 23.97,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.47
     },
     {
       "id": "pp_16579992",
@@ -655,9 +655,9 @@
       "line": 5.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.85,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.65
     },
     {
       "id": "pp_16591015",
@@ -669,9 +669,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.3,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.2
     },
     {
       "id": "pp_16591016",
@@ -711,9 +711,9 @@
       "line": 3.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.78,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.28
     },
     {
       "id": "pp_16591021",
@@ -753,9 +753,9 @@
       "line": 3.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.41,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.09
     },
     {
       "id": "pp_16591029",
@@ -767,9 +767,9 @@
       "line": 3.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.16,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.34
     },
     {
       "id": "pp_16591030",
@@ -907,9 +907,9 @@
       "line": 11.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.32,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.18
     },
     {
       "id": "pp_16591044",
@@ -963,9 +963,9 @@
       "line": 29.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 27.8,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.7
     },
     {
       "id": "pp_16591050",
@@ -977,9 +977,9 @@
       "line": 5.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.68,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.18
     },
     {
       "id": "pp_16591051",
@@ -991,9 +991,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.64,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.86
     },
     {
       "id": "pp_16591054",
@@ -1005,9 +1005,9 @@
       "line": 2.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.93,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.43
     },
     {
       "id": "pp_16591056",
@@ -1033,9 +1033,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.33,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.17
     },
     {
       "id": "pp_16591058",
@@ -1047,9 +1047,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.31,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.19
     },
     {
       "id": "pp_16591059",
@@ -1061,9 +1061,9 @@
       "line": 3.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.74,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.24
     },
     {
       "id": "pp_16591064",
@@ -1159,9 +1159,9 @@
       "line": 4.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.44,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.06
     },
     {
       "id": "pp_16591082",
@@ -1271,9 +1271,9 @@
       "line": 17.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 19.22,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.72
     },
     {
       "id": "pp_16591099",
@@ -1299,9 +1299,9 @@
       "line": 13.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 12.3,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.2
     },
     {
       "id": "pp_16591102",
@@ -1341,9 +1341,9 @@
       "line": 6.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.5,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.0
     },
     {
       "id": "pp_16591111",
@@ -1383,9 +1383,9 @@
       "line": 8.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.85,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.65
     },
     {
       "id": "pp_16591115",
@@ -1397,9 +1397,9 @@
       "line": 16.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 17.35,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.85
     },
     {
       "id": "pp_16591116",
@@ -1425,9 +1425,9 @@
       "line": 6.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.4,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.1
     },
     {
       "id": "pp_16591122",
@@ -1439,9 +1439,9 @@
       "line": 8.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 10.03,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.53
     },
     {
       "id": "pp_16591126",
@@ -1621,9 +1621,9 @@
       "line": 11.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 13.89,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.39
     },
     {
       "id": "pp_16591158",
@@ -1635,23 +1635,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
-    },
-    {
-      "id": "pp_16591163",
-      "league": "NBA",
-      "player": "Donovan Mitchell",
-      "team": "CLE",
-      "opponent": "OKC",
-      "stat": "Rebs+Asts",
-      "line": 9.5,
-      "tier": "standard",
-      "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.32,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.18
     },
     {
       "id": "pp_16591170",
@@ -1663,9 +1649,9 @@
       "line": 7.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.97,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.47
     },
     {
       "id": "pp_16591172",
@@ -1719,9 +1705,9 @@
       "line": 3.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.5,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.0
     },
     {
       "id": "pp_16591178",
@@ -1761,9 +1747,9 @@
       "line": 18.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 15.37,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -3.13
     },
     {
       "id": "pp_16591190",
@@ -1775,9 +1761,9 @@
       "line": 8.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.34,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.16
     },
     {
       "id": "pp_16591191",
@@ -1803,9 +1789,9 @@
       "line": 8.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.62,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.12
     },
     {
       "id": "pp_16591200",
@@ -2937,9 +2923,9 @@
       "line": 8.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.75,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.75
     },
     {
       "id": "pp_16592789",
@@ -2979,9 +2965,9 @@
       "line": 3.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.53,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.03
     },
     {
       "id": "pp_16592795",
@@ -3021,9 +3007,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.38,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.12
     },
     {
       "id": "pp_16592801",
@@ -3063,9 +3049,9 @@
       "line": 6.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.04,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.54
     },
     {
       "id": "pp_16592806",
@@ -3161,9 +3147,9 @@
       "line": 8.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.22,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.28
     },
     {
       "id": "pp_16592820",
@@ -3273,9 +3259,9 @@
       "line": 5.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.51,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.01
     },
     {
       "id": "pp_16592832",
@@ -3301,9 +3287,9 @@
       "line": 8.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.11,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 5.61
     },
     {
       "id": "pp_16592834",
@@ -3399,9 +3385,9 @@
       "line": 11.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 10.59,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.91
     },
     {
       "id": "pp_16592859",
@@ -3413,9 +3399,9 @@
       "line": 9.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 10.69,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.19
     },
     {
       "id": "pp_16592861",
@@ -3441,9 +3427,9 @@
       "line": 4.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.57,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.07
     },
     {
       "id": "pp_16592864",
@@ -3455,9 +3441,9 @@
       "line": 3.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.44,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.94
     },
     {
       "id": "pp_16592866",
@@ -3511,9 +3497,9 @@
       "line": 2.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.53,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.03
     },
     {
       "id": "pp_16592871",
@@ -3567,9 +3553,9 @@
       "line": 14.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 18.92,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 4.42
     },
     {
       "id": "pp_16592885",
@@ -3581,9 +3567,9 @@
       "line": 5.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.92,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.58
     },
     {
       "id": "pp_16592886",
@@ -3609,9 +3595,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 13.99,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 3.49
     },
     {
       "id": "pp_16592893",
@@ -3623,9 +3609,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.71,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.79
     },
     {
       "id": "pp_16592894",
@@ -3651,9 +3637,9 @@
       "line": 2.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.96,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.46
     },
     {
       "id": "pp_16592899",
@@ -3665,9 +3651,9 @@
       "line": 4.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.67,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.17
     },
     {
       "id": "pp_16592901",
@@ -3679,9 +3665,9 @@
       "line": 12.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.97,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.47
     },
     {
       "id": "pp_16592906",
@@ -3693,9 +3679,9 @@
       "line": 19.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 24.31,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 4.81
     },
     {
       "id": "pp_16592907",
@@ -3707,9 +3693,9 @@
       "line": 2.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.46,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.96
     },
     {
       "id": "pp_16592909",
@@ -3749,9 +3735,9 @@
       "line": 13.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.76,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.26
     },
     {
       "id": "pp_16593214",
@@ -3847,9 +3833,9 @@
       "line": 4.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.11,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.61
     },
     {
       "id": "pp_16593233",
@@ -3861,9 +3847,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 10.44,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.06
     },
     {
       "id": "pp_16593234",
@@ -3889,9 +3875,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.53,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.03
     },
     {
       "id": "pp_16593236",
@@ -3903,9 +3889,9 @@
       "line": 3.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.63,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.13
     },
     {
       "id": "pp_16593237",
@@ -3917,9 +3903,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.25,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.25
     },
     {
       "id": "pp_16593240",
@@ -4029,9 +4015,9 @@
       "line": 3.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.39,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.11
     },
     {
       "id": "pp_16593255",
@@ -4043,9 +4029,9 @@
       "line": 2.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.95,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.45
     },
     {
       "id": "pp_16593256",
@@ -4155,9 +4141,9 @@
       "line": 22.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 21.47,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.03
     },
     {
       "id": "pp_16593266",
@@ -4281,9 +4267,9 @@
       "line": 21.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 19.19,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.31
     },
     {
       "id": "pp_16593284",
@@ -4309,9 +4295,9 @@
       "line": 14.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 17.18,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.68
     },
     {
       "id": "pp_16593290",
@@ -4421,9 +4407,9 @@
       "line": 20.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 19.7,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.8
     },
     {
       "id": "pp_16593308",
@@ -4449,9 +4435,9 @@
       "line": 14.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 13.61,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.89
     },
     {
       "id": "pp_16593312",
@@ -4505,9 +4491,9 @@
       "line": 16.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 15.48,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.02
     },
     {
       "id": "pp_16593322",
@@ -4617,9 +4603,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 12.95,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.45
     },
     {
       "id": "pp_16593337",
@@ -4743,9 +4729,9 @@
       "line": 11.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.32,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.18
     },
     {
       "id": "pp_16593362",
@@ -4757,9 +4743,9 @@
       "line": 19.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 20.88,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.38
     },
     {
       "id": "pp_16593387",
@@ -4897,9 +4883,9 @@
       "line": 19.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 18.94,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.56
     },
     {
       "id": "pp_16593564",
@@ -5023,9 +5009,9 @@
       "line": 17.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 21.11,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 3.61
     },
     {
       "id": "pp_16593580",
@@ -5051,9 +5037,9 @@
       "line": 7.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.18,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.32
     },
     {
       "id": "pp_16593584",
@@ -5065,9 +5051,9 @@
       "line": 12.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.32,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.82
     },
     {
       "id": "pp_16593585",
@@ -5079,9 +5065,9 @@
       "line": 6.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.03,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.47
     },
     {
       "id": "pp_16593586",
@@ -5093,9 +5079,9 @@
       "line": 5.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.4,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.1
     },
     {
       "id": "pp_16593587",
@@ -5177,9 +5163,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.27,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.23
     },
     {
       "id": "pp_16593595",
@@ -5205,9 +5191,9 @@
       "line": 17.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 17.01,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.49
     },
     {
       "id": "pp_16593600",
@@ -5233,9 +5219,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 12.14,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.64
     },
     {
       "id": "pp_16593606",
@@ -5247,9 +5233,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.19,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.31
     },
     {
       "id": "pp_16593607",
@@ -5275,9 +5261,9 @@
       "line": 12.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 12.45,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.05
     },
     {
       "id": "pp_16593615",
@@ -5317,9 +5303,9 @@
       "line": 7.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.9,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.4
     },
     {
       "id": "pp_16593621",
@@ -5359,9 +5345,9 @@
       "line": 4.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.76,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.26
     },
     {
       "id": "pp_16593625",
@@ -5471,9 +5457,9 @@
       "line": 2.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.14,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.36
     },
     {
       "id": "pp_16593637",
@@ -5499,9 +5485,9 @@
       "line": 7.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.89,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.39
     },
     {
       "id": "pp_16593642",
@@ -5555,9 +5541,9 @@
       "line": 9.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.34,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.16
     },
     {
       "id": "pp_16593651",
@@ -5597,9 +5583,9 @@
       "line": 6.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.86,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.64
     },
     {
       "id": "pp_16593655",
@@ -5695,9 +5681,9 @@
       "line": 18.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 20.76,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.26
     },
     {
       "id": "pp_16593668",
@@ -5737,9 +5723,9 @@
       "line": 12.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 12.36,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.14
     },
     {
       "id": "pp_16593682",
@@ -5751,9 +5737,9 @@
       "line": 13.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.32,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.82
     },
     {
       "id": "pp_16593683",
@@ -5793,9 +5779,9 @@
       "line": 4.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.21,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.29
     },
     {
       "id": "pp_16593690",
@@ -5821,9 +5807,9 @@
       "line": 9.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.96,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.46
     },
     {
       "id": "pp_16593693",
@@ -5835,9 +5821,9 @@
       "line": 19.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 21.11,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.61
     },
     {
       "id": "pp_16594091",
@@ -5947,9 +5933,9 @@
       "line": 7.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.76,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.26
     },
     {
       "id": "pp_16594105",
@@ -5961,9 +5947,9 @@
       "line": 4.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.05,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.55
     },
     {
       "id": "pp_16594106",
@@ -5989,9 +5975,9 @@
       "line": 2.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 3.31,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.81
     },
     {
       "id": "pp_16594110",
@@ -6017,9 +6003,9 @@
       "line": 3.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 4.67,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.17
     },
     {
       "id": "pp_16594116",
@@ -6031,9 +6017,9 @@
       "line": 4.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.21,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.71
     },
     {
       "id": "pp_16594119",
@@ -6087,9 +6073,9 @@
       "line": 5.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 5.22,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.28
     },
     {
       "id": "pp_16594128",
@@ -6101,9 +6087,9 @@
       "line": 19.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 19.55,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.05
     },
     {
       "id": "pp_16594132",
@@ -6143,9 +6129,9 @@
       "line": 9.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.82,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.32
     },
     {
       "id": "pp_16594146",
@@ -6157,9 +6143,9 @@
       "line": 20.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 16.61,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -3.89
     },
     {
       "id": "pp_16594152",
@@ -6171,9 +6157,9 @@
       "line": 15.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.37,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.13
     },
     {
       "id": "pp_16594162",
@@ -6381,9 +6367,9 @@
       "line": 15.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 12.72,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.78
     },
     {
       "id": "pp_16594195",
@@ -6409,9 +6395,9 @@
       "line": 2.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 2.58,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.08
     },
     {
       "id": "pp_16594197",
@@ -6521,9 +6507,9 @@
       "line": 10.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 9.42,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.08
     },
     {
       "id": "pp_16594210",
@@ -6577,9 +6563,9 @@
       "line": 9.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 11.29,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.79
     },
     {
       "id": "pp_16594224",
@@ -6605,9 +6591,9 @@
       "line": 14.5,
       "tier": "standard",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.29,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.21
     },
     {
       "id": "pp_16594227",
@@ -6689,9 +6675,9 @@
       "line": 14.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.22,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -6.28
     },
     {
       "id": "pp_16594927",
@@ -6703,9 +6689,9 @@
       "line": 11.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.04,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -4.46
     },
     {
       "id": "pp_16594928",
@@ -6717,9 +6703,9 @@
       "line": 19.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 26.44,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 6.94
     },
     {
       "id": "pp_16594930",
@@ -6731,9 +6717,9 @@
       "line": 14.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 14.97,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.47
     },
     {
       "id": "pp_16594931",
@@ -6745,9 +6731,9 @@
       "line": 5.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.04,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.54
     },
     {
       "id": "pp_16594932",
@@ -6759,9 +6745,9 @@
       "line": 9.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 7.04,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -2.46
     },
     {
       "id": "pp_16594935",
@@ -6787,9 +6773,9 @@
       "line": 6.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.22,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.72
     },
     {
       "id": "pp_16594938",
@@ -6801,9 +6787,9 @@
       "line": 9.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.22,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -1.28
     },
     {
       "id": "pp_16594939",
@@ -6815,9 +6801,9 @@
       "line": 9.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.28,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -3.22
     },
     {
       "id": "pp_16594940",
@@ -6829,9 +6815,9 @@
       "line": 3.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.28,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 2.78
     },
     {
       "id": "pp_16594941",
@@ -6843,9 +6829,9 @@
       "line": 5.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.28,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.78
     },
     {
       "id": "pp_16594943",
@@ -6857,9 +6843,9 @@
       "line": 7.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.22,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.72
     },
     {
       "id": "pp_16595004",
@@ -6871,9 +6857,9 @@
       "line": 14.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 13.99,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -0.51
     },
     {
       "id": "pp_16595005",
@@ -6885,9 +6871,9 @@
       "line": 39.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 26.44,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -13.06
     },
     {
       "id": "pp_16595007",
@@ -6899,9 +6885,9 @@
       "line": 6.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.57,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 0.07
     },
     {
       "id": "pp_16596245",
@@ -6913,9 +6899,9 @@
       "line": 6.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.08,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.58
     },
     {
       "id": "pp_16597925",
@@ -6941,9 +6927,9 @@
       "line": 14.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 8.08,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -6.42
     },
     {
       "id": "pp_16597927",
@@ -6955,9 +6941,9 @@
       "line": 11.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 6.57,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -4.93
     },
     {
       "id": "pp_16597929",
@@ -6969,9 +6955,9 @@
       "line": 24.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 26.44,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 1.94
     },
     {
       "id": "pp_16597930",
@@ -6983,9 +6969,9 @@
       "line": 14.5,
       "tier": "goblin",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 24.31,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": 9.81
     },
     {
       "id": "pp_16597932",
@@ -6997,9 +6983,23 @@
       "line": 19.5,
       "tier": "demon",
       "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
+      "projection": 10.59,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -8.91
+    },
+    {
+      "id": "pp_16597933",
+      "league": "NBA",
+      "player": "Jaylen Brown",
+      "team": "PHI",
+      "opponent": "DET",
+      "stat": "Points",
+      "line": 29.5,
+      "tier": "demon",
+      "period": "Full game",
+      "projection": 25.46,
+      "source": "PropEdge NBA v0.2 (ESPN game logs)",
+      "difference": -4.04
     },
     {
       "id": "pp_16532591",
@@ -10908,6 +10908,20 @@
       "difference": null
     },
     {
+      "id": "pp_16544617",
+      "league": "NFL",
+      "player": "Jahmyr Gibbs",
+      "team": "DET",
+      "opponent": "MIA",
+      "stat": "Anytime TDs",
+      "line": 2.5,
+      "tier": "demon",
+      "period": "Full game",
+      "projection": null,
+      "source": null,
+      "difference": null
+    },
+    {
       "id": "pp_16544619",
       "league": "NFL",
       "player": "Brock Wright",
@@ -13981,20 +13995,6 @@
       "opponent": "BAL",
       "stat": "Receiving Yards",
       "line": 29.5,
-      "tier": "demon",
-      "period": "Full game",
-      "projection": null,
-      "source": null,
-      "difference": null
-    },
-    {
-      "id": "pp_16556940",
-      "league": "NFL",
-      "player": "Brian Thomas Jr.",
-      "team": "JAC",
-      "opponent": "BAL",
-      "stat": "Receptions",
-      "line": 2.5,
       "tier": "demon",
       "period": "Full game",
       "projection": null,
