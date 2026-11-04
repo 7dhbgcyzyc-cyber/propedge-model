@@ -140,30 +140,98 @@ def average(games, stat):
 
 
 def project(name, current, previous):
-    if len(current) < 3 or len(current) + len(previous) < 8:
+    current = sorted(current, key=lambda x: x['date'], reverse=True)
+    previous = sorted(previous, key=lambda x: x['date'], reverse=True)
+
+    total_games = len(current) + len(previous)
+
+    # Allow established players with prior-season history.
+    # New players need at least 5 usable games.
+    if total_games < 5:
+        print(
+            f'SKIPPED {name}: only {total_games} usable games',
+            flush=True
+        )
         return []
-    current.sort(key=lambda x: x['date'], reverse=True)
-    previous.sort(key=lambda x: x['date'], reverse=True)
-    # Use current season preferentially; fill longer windows from last season.
+
     history = current + previous
-    last5, last10, last20 = history[:5], history[:10], history[:20]
-    minutes5 = average(last5, 'MIN')
-    minutes10 = average(last10, 'MIN')
-    expected_minutes = .65 * minutes5 + .35 * minutes10
+    last5 = history[:5]
+    last10 = history[:10]
+    last20 = history[:20]
+
+    # Recent minutes, with a fallback to historical minutes.
+    expected_minutes = (
+        0.65 * average(last5, 'MIN')
+        + 0.35 * average(last10, 'MIN')
+    )
+
+    if expected_minutes <= 0:
+        print(f'SKIPPED {name}: invalid minutes', flush=True)
+        return []
+
+    # Distinguish historical-only estimates from current-season ones.
+    if len(current) == 0:
+        confidence = 'Historical only'
+    elif len(current) < 3:
+        confidence = 'Limited current-season data'
+    elif total_games < 10:
+        confidence = 'Limited sample'
+    else:
+        confidence = 'Standard sample'
+
     result = []
-    for stat, label in (('PTS', 'Points'), ('REB', 'Rebounds'), ('AST', 'Assists')):
-        weighted_rate = .30 * rate(last5, stat) + .25 * rate(last10, stat) + .25 * rate(last20, stat) + .20 * rate(current, stat)
-        prior_rate = rate(previous, stat) if previous else weighted_rate
-        current_weight = min(.85, len(current) / (len(current) + 12))
-        predicted_rate = current_weight * weighted_rate + (1 - current_weight) * prior_rate
+
+    for stat, label in (
+        ('PTS', 'Points'),
+        ('REB', 'Rebounds'),
+        ('AST', 'Assists')
+    ):
+        weighted_rate = (
+            0.30 * rate(last5, stat)
+            + 0.25 * rate(last10, stat)
+            + 0.25 * rate(last20, stat)
+            + 0.20 * rate(current or history, stat)
+        )
+
+        prior_rate = (
+            rate(previous, stat)
+            if previous else weighted_rate
+        )
+
+        if not current:
+            predicted_rate = prior_rate
+        elif not previous:
+            predicted_rate = weighted_rate
+        else:
+            current_weight = min(
+                0.85,
+                len(current) / (len(current) + 12)
+            )
+            predicted_rate = (
+                current_weight * weighted_rate
+                + (1 - current_weight) * prior_rate
+            )
+
+        projection = round(
+            max(0, expected_minutes * predicted_rate), 2
+        )
+
         result.append({
-            'player': name, 'league': 'NBA', 'stat': label,
-            'projection': round(max(0, expected_minutes * predicted_rate), 2),
-            'source': 'PropEdge NBA v0.2 (ESPN game logs)',
-            'games_current': len(current), 'minutes_est': round(expected_minutes, 1),
-            'last5_avg': average(last5, stat), 'last10_avg': average(last10, stat),
-            'last20_avg': average(last20, stat), 'last20_games_used': len(last20)
+            'player': name,
+            'league': 'NBA',
+            'stat': label,
+            'projection': projection,
+            'source': 'PropEdge NBA v0.3 (ESPN game logs)',
+            'games_current': len(current),
+            'games_previous': len(previous),
+            'sample_status': confidence,
+            'minutes_est': round(expected_minutes, 1),
+            'last5_avg': average(last5, stat),
+            'last10_avg': average(last10, stat),
+            'last20_avg': average(last20, stat),
+            'last20_games_used': len(last20)
         })
+
     return result
 
 
