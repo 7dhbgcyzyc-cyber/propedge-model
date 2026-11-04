@@ -1,0 +1,56 @@
+
+name: Test PropSims Collector
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test-propsims:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Collect PropSims projections
+        run: python propsims.py
+
+      - name: Check collected data
+        run: |
+          python - <<'PY'
+          import json
+
+          with open("data/propsims.json") as f:
+              data = json.load(f)
+
+          players = data.get("players", [])
+          print("Players collected:", len(players))
+          print("Model run:", data.get("model_run"))
+
+          for player in players[:5]:
+              print(
+                  player["player"],
+                  player["team"],
+                  player["projections"]
+              )
+
+          assert len(players) >= 100, "Too few players"
+          PY
+
+      - name: Commit PropSims data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/propsims.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update PropSims NBA projections"
+            git push
+          fi
