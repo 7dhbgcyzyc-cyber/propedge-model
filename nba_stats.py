@@ -94,3 +94,306 @@ def roster_players():
             failures.append(f'{team.get("abbreviation", tid)}: {exc}')
     print(f'Roster discovery: {len(teams)} teams; {len(players)} unique players; {len(failures)} team errors', flush=True)
     if len(players) < 150:
+        raise RuntimeError(f'Incomplete roster: only {len(players)} players')
+    return players, failures
+
+def number(value):
+    try:
+        return float(str(value).replace(',', '').strip())
+    except (TypeError, ValueError):
+        return None
+
+def minutes(value):
+    if isinstance(value, str) and ':' in value:
+        parts = value.split(':')
+        try:
+            return float(parts[0]) + float(parts[1]) / 60
+        except (ValueError, IndexError):
+            return None
+    return number(value)
+
+def made_attempted(value):
+    # ESPN commonly represents made-attempted as "3-8"; also accept "3/8".
+    if value is None:
+        return None, None
+    match = re.fullmatch(r'\s*(\d+)\s*[-/]\s*(\d+)\s*', str(value))
+    if not match:
+        return None, None
+    made, attempted = map(float, match.groups())
+    if made > attempted:
+        return None, None
+    return made, attempted
+
+
+def game_location(meta, entry):
+    """Read an explicit player-team home/away indicator; never infer from venue."""
+    for obj in (entry, meta):
+        if not isinstance(obj, dict):
+            continue
+        for key in ('homeAway', 'home_away', 'atVs'):
+            value = str(obj.get(key) or '').strip().lower()
+            if value in ('home', 'vs', 'vs.'):
+                return 'home'
+            if value in ('away', '@'):
+                return 'away'
+    return None
+
+
+def game_opponent(meta, entry):
+    for obj in (entry, meta):
+        if not isinstance(obj, dict):
+            continue
+        for key in ('opponent', 'opponentAbbreviation', 'opponentName'):
+            value = obj.get(key)
+            if isinstance(value, dict):
+                value = value.get('abbreviation') or value.get('displayName')
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+    return None
+
+def parse_games(data, season):
+    labels = [str(v).upper().strip() for v in data.get('labels', [])]
+    lookup = {name: i for i, name in enumerate(labels)}
+    for field in ('MIN', 'PTS', 'REB', 'AST'):
+        if field not in lookup:
+            raise ValueError(f'Missing ESPN column {field}; got {labels}')
+    event_meta = data.get('events', {})
+    if isinstance(event_meta, list):
+        event_meta = {str(x.get('id', '')): x for x in event_meta if isinstance(x, dict)}
+    found = {}
+    for stype in data.get('seasonTypes', []):
+        # Exclude preseason and postseason when the ESPN category supplies a type.
+        kind = str(stype.get('type', stype.get('id', ''))).lower()
+        if kind in ('1', '3', 'preseason', 'postseason', 'playoffs'):
+            continue
+        for category in stype.get('categories', []):
+            for entry in category.get('events', []):
+                if not isinstance(entry, dict):
+                    continue
+                eid = str(entry.get('eventId') or entry.get('id') or '')
+                stats = entry.get('stats')
+                if not eid or not isinstance(stats, list):
+                    continue
+                meta = event_meta.get(eid, {})
+                date = meta.get('gameDate') or meta.get('date') or entry.get('gameDate') or entry.get('date')
+                if not date:
+                    continue
+                def field(label):
+                    i = lookup.get(label)
+                    return stats[i] if i is not None and i < len(stats) else None
+                mins = minutes(field('MIN'))
+                if mins is None or mins < 8:
+                    continue
+                values = {'MIN': mins}
+                for label in ('PTS', 'REB', 'AST', 'STL', 'BLK', 'TO', 'OREB', 'DREB'):
+                    values[label] = number(field(label))
+                for label, prefix in (('3PT', '3P'), ('FG', 'FG'), ('FT', 'FT')):
+                    made, attempts = made_attempted(field(label))
+                    values[prefix + 'M'] = made
+                    values[prefix + 'A'] = attempts
+                if any(values[k] is None for k in ('PTS', 'REB', 'AST')):
+                    continue
+                found[eid] = {'date': str(date), 'season': season, 'home_away': game_location(meta, entry), 'opponent': game_opponent(meta, entry), **values}
+    return sorted(found.values(), key=lambda x: x['date'], reverse=True)
+
+def rate(games, stat):
+    usable = [g for g in games if g.get(stat) is not None]
+    mins = sum(g['MIN'] for g in usable)
+    return sum(g[stat] for g in usable) / mins if mins else None
+
+def average(games, stat):
+    values = [g[stat] for g in games if g.get(stat) is not None]
+    return round(sum(values) / len(values), 2) if values else None
+
+def rounded(value, digits=2):
+    return round(value, digits) if value is not None else None
+
+
+def combine_game(game, components):
+    values = [game.get(k) for k in components]
+    return sum(values) if all(v is not None for v in values) else None
+
+
+def trend_data(games, components):
+    values = [combine_game(g, components) for g in games]
+    return [v for v in values if v is not None]
+
+
+def mean(values):
+    return rounded(statistics.mean(values)) if values else None
+
+
+def variability(values):
+    return rounded(statistics.pstdev(values)) if len(values) >= 3 else None
+
+
+def history_summary(games, components):
+    values = trend_data(games, components)
+    return {
+        'games': len(values),
+        'average': mean(values),
+        'median': rounded(statistics.median(values)) if values else None,
+        'std_dev': variability(values),
+    }
+
+
+def probability_at_least(games, predicate):
+    # Empirical historical frequency, NOT a calibrated future probability.
+    if not games:
+        return None
+    return rounded(sum(bool(predicate(g)) for g in games) / len(games), 4)
+
+
+def project(name, current, previous):
+    current = sorted(current, key=lambda x: x['date'], reverse=True)
+    previous = sorted(previous, key=lambda x: x['date'], reverse=True)
+    history = current + previous
+    if len(history) < 5:
+        return []
+
+    last5, last10, last20 = history[:5], history[:10], history[:20]
+    expected_minutes = 0.65 * average(last5, 'MIN') + 0.35 * average(last10, 'MIN')
+    if expected_minutes <= 0:
+        return []
+
+    status = ('Historical only' if not current else
+              'Limited current-season data' if len(current) < 3 else
+              'Limited sample' if len(history) < 10 else 'Standard sample')
+    predictions, output = {}, []
+    source = 'PropEdge NBA v0.5 (ESPN game logs)'
+
+    def common(components):
+        recent = trend_data(last20, components)
+        # Low/medium/high reflects observed volatility and sample size, not win probability.
+        cv = (statistics.pstdev(recent) / statistics.mean(recent)
+              if len(recent) >= 5 and statistics.mean(recent) > 0 else None)
+        confidence = ('Low' if len(current) < 3 or len(recent) < 10 or cv is None else
+                      'Higher' if cv < .25 and len(current) >= 10 else
+                      'Moderate' if cv < .55 else 'Low')
+        return {
+            'games_current': len(current),
+            'games_previous': len(previous),
+            'sample_status': status,
+            'minutes_est': round(expected_minutes, 1),
+            'minutes_last5': average(last5, 'MIN'),
+            'minutes_last10': average(last10, 'MIN'),
+            'minutes_last20': average(last20, 'MIN'),
+            'last5_avg': mean(trend_data(last5, components)),
+            'last10_avg': mean(trend_data(last10, components)),
+            'last20_avg': mean(recent),
+            'current_season_avg': mean(trend_data(current, components)),
+            'home_avg': mean(trend_data([g for g in current if g.get('home_away') == 'home'], components)),
+            'away_avg': mean(trend_data([g for g in current if g.get('home_away') == 'away'], components)),
+            'home_games': len(trend_data([g for g in current if g.get('home_away') == 'home'], components)),
+            'away_games': len(trend_data([g for g in current if g.get('home_away') == 'away'], components)),
+            'previous_season_avg': mean(trend_data(previous, components)),
+            'last20_median': rounded(statistics.median(recent)) if recent else None,
+            'last20_std_dev': variability(recent),
+            'confidence': confidence,
+            # Recent observations let update.py calculate hit rates against a LIVE line.
+            'recent_results': [
+                {'date': g['date'], 'value': v, 'home_away': g.get('home_away'), 'opponent': g.get('opponent')}
+                for g in history[:20]
+                if (v := combine_game(g, components)) is not None
+            ],
+        }
+
+    for stat, label in STATS.items():
+        if sum(g.get(stat) is not None for g in history) < 5:
+            continue
+        rates = [rate(window, stat) for window in (last5, last10, last20, current or history)]
+        if any(v is None for v in rates):
+            continue
+        weighted = sum(w * v for w, v in zip((.30, .25, .25, .20), rates))
+        prior = rate(previous, stat)
+        if not current:
+            predicted_rate = prior
+        elif prior is None:
+            predicted_rate = weighted
+        else:
+            weight = min(.85, len(current) / (len(current) + 12))
+            predicted_rate = weight * weighted + (1 - weight) * prior
+        if predicted_rate is None:
+            continue
+        estimate = round(max(0, expected_minutes * predicted_rate), 2)
+        predictions[stat] = estimate
+        output.append({
+            'player': name, 'league': 'NBA', 'stat': label,
+            'projection': estimate, 'source': source,
+            **common((stat,)),
+        })
+
+    for label, components in COMBOS.items():
+        if not all(s in predictions for s in components):
+            continue
+        output.append({
+            'player': name, 'league': 'NBA', 'stat': label,
+            'projection': round(sum(predictions[s] for s in components), 2),
+            'source': source, **common(components),
+        })
+
+    # Historical occurrence rates, deliberately labeled separately from projections.
+    # Requiring all three values prevents missing statistics being counted as zeros.
+    valid = [g for g in history[:20]
+             if all(g.get(k) is not None for k in ('PTS', 'REB', 'AST', 'STL', 'BLK'))]
+    if len(valid) >= 5:
+        def count_double(g):
+            return sum(g[k] >= 10 for k in ('PTS', 'REB', 'AST', 'STL', 'BLK'))
+        for label, threshold in (('Double Double', 2), ('Triple Double', 3)):
+            output.append({
+                'player': name, 'league': 'NBA', 'stat': label,
+                'projection': None, 'source': source,
+                'historical_hit_rate': probability_at_least(
+                    valid, lambda g, t=threshold: count_double(g) >= t),
+                'historical_sample': len(valid),
+                'sample_status': status,
+                'confidence': 'Historical frequency only',
+                'minutes_est': round(expected_minutes, 1),
+            })
+    return output
+
+def main():
+    CACHE.mkdir(parents=True, exist_ok=True)
+    players, roster_errors = roster_players()
+    errors = list(roster_errors)
+    projections = []
+    with_logs, projected_players = 0, 0
+    for index, (pid, name) in enumerate(players.items(), 1):
+        logs = {}
+        for season in SEASONS:
+            try:
+                obj = fetch(GAMELOG.format(pid, season), CACHE / f'gamelog_{pid}_{season}.json', 18 if season == SEASONS[0] else 24 * 14)
+                logs[season] = parse_games(obj, season)
+            except Exception as exc:
+                errors.append(f'{name} ({season}): {str(exc)[:160]}')
+                logs[season] = []
+        if logs[SEASONS[0]] or logs[SEASONS[1]]:
+            with_logs += 1
+        player_projections = project(name, logs[SEASONS[0]], logs[SEASONS[1]])
+        if player_projections:
+            projected_players += 1
+            projections.extend(player_projections)
+        if index % 25 == 0 or index == len(players):
+            print(f'Processed {index}/{len(players)} players; projections={len(projections)}; errors={len(errors)}', flush=True)
+    if not projections:
+        raise RuntimeError('No ESPN projections produced; keeping previous model file')
+    payload = {
+        'updated_utc': datetime.now(timezone.utc).isoformat(),
+        'projections': projections,
+        'errors': errors[:150],
+        'summary': {
+            'roster_players': len(players), 'players_with_logs': with_logs,
+            'projected_players': projected_players, 'projection_entries': len(projections),
+            'error_count': len(errors),
+        },
+        'matchup_status': 'Team defensive efficiency, pace, and rebound-opportunity feeds not yet validated; no matchup adjustment applied.',
+        'method': 'Experimental ESPN per-minute estimates, recent 5/10/20 and prior-season shrinkage; confidence describes sample/volatility only; double/triple-double figures are historical rates, not calibrated probabilities.'
+    }
+    OUT.parent.mkdir(exist_ok=True)
+    temp = OUT.with_suffix('.json.tmp')
+    temp.write_text(json.dumps(payload, indent=2), encoding='utf-8')
+    temp.replace(OUT)
+    print('Saved', OUT, 'summary:', payload['summary'], flush=True)
+
+if __name__ == '__main__':
+    main()
