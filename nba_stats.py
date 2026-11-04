@@ -291,7 +291,7 @@ def main():
         'updated_utc': datetime.now(timezone.utc).isoformat(),
         'projections': projections,
         'errors': errors[:150],
-        'summary': {'roster_players': len(players), 'players_with_logs': with_logs, 'projected_players': len(projections) // 3, 'error_count': len(errors)},
+        'summary': {'roster_players': len(players), 'players_with_logs': with_logs, 'projected_players': len(projections) // 7, 'error_count': len(errors)},
         'method': 'Experimental ESPN per-minute model; weighted last 5/10/20/current season; prior season shrinkage. Not backtested or calibrated.'
     }
     temp = OUT.with_suffix('.json.tmp')
