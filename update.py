@@ -114,6 +114,7 @@ snapshot = {
     'note': 'Projection differences are research signals, not estimated win probabilities. No projection is inferred from the PrizePicks line.'
 }
 if not rows:
+    print(f'PrizePicks API errors: {errors}', flush=True)
     raise SystemExit('No usable lines returned; leaving previous published snapshot unchanged.')
 (OUT / 'latest.json').write_text(json.dumps(snapshot, indent=2), encoding='utf-8')
 from collections import Counter
