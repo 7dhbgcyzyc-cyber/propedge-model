@@ -1,1 +1,429 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PropEdge</title><style>body{background:#0b1020;color:#eaf0ff;font:15px system-ui;margin:0}main{max-width:1180px;margin:auto;padding:32px 18px}h1{margin-bottom:6px}p{color:#aab7cf}section{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}select,input{background:#18233a;color:white;border:1px solid #35435e;border-radius:8px;padding:10px}table{width:100%;border-collapse:collapse}th{text-align:left;color:#aab7cf}td,th{padding:11px;border-bottom:1px solid #27344b}tr:hover{background:#162037}.up{color:#4ade80;font-weight:700}.down{color:#fb7185;font-weight:700}.muted{color:#94a3b8}.wrap{overflow:auto}.tag{border:1px solid #35435e;border-radius:8px;padding:9px}small{color:#9aa8c2}</style><main><h1>PropEdge <small>NBA · NFL</small></h1><p>PrizePicks lines vs independent projections. Green = above line; red = below line. Not a guarantee or betting recommendation.</p><div id="status" class="tag">Loading…</div><section><select id="league"><option value="">All sports</option><option>NBA</option><option>NFL</option></select><input id="search" placeholder="Search player or stat"><select id="filter"><option value="">All lines</option><option value="projected">With projections</option><option value="unprojected">Awaiting projections</option></select></section><div class="wrap"><table><thead><tr><th>Sport</th><th>Player</th><th>Stat</th><th>PP line</th><th>Our projection</th><th>Difference</th><th>Source</th></tr></thead><tbody id="body"></tbody></table></div><p><small>Source: independent third-party PrizePicks data feed. Lines may be delayed or change. Confirm in PrizePicks before use. Projection availability depends on independently supplied data.</small></p></main><script>let rows=[];const $=id=>document.getElementById(id);function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function draw(){let q=$('search').value.toLowerCase(),l=$('league').value,f=$('filter').value;let a=rows.filter(r=>(!l||r.league===l)&&(!q||(r.player+' '+r.stat).toLowerCase().includes(q))&&(!f||(f==='projected'?(r.projection!==null):(r.projection===null))));a.sort((x,y)=>Math.abs(y.difference??-1)-Math.abs(x.difference??-1));$('body').innerHTML=a.map(r=>`<tr><td>${esc(r.league)}</td><td>${esc(r.player)} <small>${esc(r.team)} ${r.opponent?'vs '+esc(r.opponent):''}</small></td><td>${esc(r.stat)}</td><td>${esc(r.line)}</td><td>${r.projection===null?'<span class="muted">Awaiting data</span>':esc(r.projection)}</td><td class="${r.difference===null?'muted':r.difference>0?'up':r.difference<0?'down':'muted'}">${r.difference===null?'—':(r.difference>0?'+':'')+r.difference}</td><td>${esc(r.source||'—')}</td></tr>`).join('')||'<tr><td colspan="7">No matching lines</td></tr>'}for(let id of ['league','search','filter'])$(id).addEventListener('input',draw);fetch('./data/latest.json?cache='+Date.now()).then(r=>{if(!r.ok)throw Error('No published snapshot yet');return r.json()}).then(d=>{rows=d.lines||[];$('status').textContent=`Updated ${new Date(d.updated_utc).toLocaleString()} · ${rows.length} lines · ${rows.filter(x=>x.projection!==null).length} independent projections${d.errors?.length?' · Feed warnings: '+d.errors.join('; '):''}`;draw()}).catch(e=>$('status').textContent='Waiting for first successful scheduled data update: '+e.message);</script></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PropEdge | Player Prop Research</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg:#080e1b;
+  --panel:#111b2e;
+  --panel2:#17243a;
+  --border:#2a3953;
+  --text:#eef3ff;
+  --muted:#9eafc9;
+  --green:#4ade80;
+  --red:#fb7185;
+  --blue:#60a5fa;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:14px system-ui,-apple-system,sans-serif;
+}
+main { max-width:1450px; margin:auto; padding:30px 20px; }
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+h1 { margin:0; font-size:32px; letter-spacing:-1px; }
+h2 { margin:0; font-size:15px; }
+p { color:var(--muted); line-height:1.6; }
+.logo { color:var(--green); }
+.subtitle { margin:8px 0 22px; }
+.status {
+  padding:12px 16px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--panel);
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:22px;
+}
+.card {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+}
+.card .label { color:var(--muted); font-size:12px; }
+.card .value { font-size:27px; font-weight:750; margin-top:6px; }
+.green { color:var(--green); }
+.red { color:var(--red); }
+.controls {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:16px 0;
+}
+input,select {
+  background:var(--panel2);
+  border:1px solid var(--border);
+  color:var(--text);
+  border-radius:9px;
+  padding:11px 12px;
+  font:inherit;
+}
+input { flex:1; min-width:190px; }
+select { min-width:145px; }
+.tablebox {
+  overflow:auto;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  min-width:950px;
+}
+th {
+  text-align:left;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  color:var(--muted);
+  background:#152139;
+  white-space:nowrap;
+}
+th,td { padding:13px 14px; border-bottom:1px solid #25334b; }
+tbody tr:hover { background:#1b2941; }
+.player { font-weight:650; }
+.small { font-size:12px; color:var(--muted); margin-top:4px; }
+.num { font-variant-numeric:tabular-nums; font-weight:650; }
+.badge {
+  display:inline-block;
+  border-radius:6px;
+  padding:5px 9px;
+  font-size:11px;
+  font-weight:750;
+  white-space:nowrap;
+}
+.normal { background:#263650; color:#dce6f8; }
+.goblin { background:#123c2c; color:#75f4aa; }
+.demon { background:#49212c; color:#ff9aab; }
+.unknown { background:#353247; color:#c8c1dc; }
+.note { font-size:12px; margin-top:15px; }
+.empty { text-align:center; padding:35px; color:var(--muted); }
+@media(max-width:750px) {
+  main { padding:20px 12px; }
+  .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  h1 { font-size:27px; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1><span class="logo">Prop</span>Edge</h1>
+  <span class="small">NBA · NFL | Independent Prop Research</span>
+</header>
+
+<p class="subtitle">
+  Compare PrizePicks lines with independent statistical projections.
+  Positive differences appear first; negative differences appear last.
+</p>
+
+<div id="status" class="status">Loading latest data...</div>
+
+<div class="cards">
+  <div class="card">
+    <div class="label">PrizePicks Lines</div>
+    <div class="value" id="total">—</div>
+  </div>
+  <div class="card">
+    <div class="label">Matched Projections</div>
+    <div class="value green" id="matched">—</div>
+  </div>
+  <div class="card">
+    <div class="label">Above Line</div>
+    <div class="value green" id="above">—</div>
+  </div>
+  <div class="card">
+    <div class="label">Below Line</div>
+    <div class="value red" id="below">—</div>
+  </div>
+</div>
+
+<h2>Player Prop Comparison</h2>
+
+<div class="controls">
+  <input id="search" placeholder="Search player, team, or stat">
+
+  <select id="league">
+    <option value="">All Sports</option>
+    <option value="NBA">NBA</option>
+    <option value="NFL">NFL</option>
+  </select>
+
+  <select id="lineType">
+    <option value="">All Line Types</option>
+    <option value="normal">Normal</option>
+    <option value="goblin">Green Goblin</option>
+    <option value="demon">Red Demon</option>
+    <option value="unknown">Unidentified</option>
+  </select>
+
+  <select id="filter">
+    <option value="">All Projections</option>
+    <option value="projected">With Projections</option>
+    <option value="unprojected">Missing Projections</option>
+  </select>
+
+  <select id="sort">
+    <option value="positive">Highest Above Line First</option>
+    <option value="negative">Lowest Below Line First</option>
+    <option value="absolute">Largest Differences First</option>
+    <option value="player">Player Name A-Z</option>
+  </select>
+</div>
+
+<div class="tablebox">
+<table>
+<thead>
+<tr>
+  <th>Sport</th>
+  <th>Player / Matchup</th>
+  <th>Statistic</th>
+  <th>Line Type</th>
+  <th>PP Line</th>
+  <th>Our Projection</th>
+  <th>Difference</th>
+  <th>Source</th>
+</tr>
+</thead>
+<tbody id="body">
+<tr><td colspan="8" class="empty">Loading...</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="note">
+  Line types are shown only when identifiable from the supplied data.
+  Unidentified lines are not assumed to be normal.
+  Green/red differences indicate model direction, not guaranteed outcomes.
+  Confirm lines and payouts directly in PrizePicks.
+</p>
+</main>
+
+<script>
+let rows = [];
+
+const $ = id => document.getElementById(id);
+
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[c]));
+}
+
+function hasProjection(r) {
+  return r.projection !== null &&
+    r.projection !== undefined &&
+    Number.isFinite(Number(r.projection));
+}
+
+function getDifference(r) {
+  if (!hasProjection(r)) return null;
+
+  const line = Number(r.line);
+  const projection = Number(r.projection);
+
+  if (!Number.isFinite(line)) return null;
+
+  return Number.isFinite(Number(r.difference))
+    && r.difference !== null
+    ? Number(r.difference)
+    : projection - line;
+}
+
+function getLineType(r) {
+  // Uses line-type metadata when the feed provides it.
+  // Does not guess from the numerical line value.
+  const candidates = [
+    r.line_type,
+    r.lineType,
+    r.odds_type,
+    r.oddsType,
+    r.pick_type,
+    r.pickType,
+    r.promotion_type
+  ];
+
+  for (const value of candidates) {
+    if (value === null || value === undefined) continue;
+
+    const v = String(value).toLowerCase().trim();
+
+    if (v.includes("goblin")) return "goblin";
+    if (v.includes("demon")) return "demon";
+
+    if (
+      v === "standard" ||
+      v === "normal" ||
+      v === "regular"
+    ) return "normal";
+  }
+
+  return "unknown";
+}
+
+function lineBadge(type) {
+  const labels = {
+    normal:"Normal",
+    goblin:"Green Goblin",
+    demon:"Red Demon",
+    unknown:"Unidentified"
+  };
+
+  return `<span class="badge ${type}">${labels[type]}</span>`;
+}
+
+function updateCards() {
+  const valid = rows.filter(hasProjection);
+
+  $("total").textContent = rows.length.toLocaleString();
+  $("matched").textContent = valid.length.toLocaleString();
+  $("above").textContent =
+    valid.filter(r => getDifference(r) > 0).length.toLocaleString();
+  $("below").textContent =
+    valid.filter(r => getDifference(r) < 0).length.toLocaleString();
+}
+
+function draw() {
+  const q = $("search").value.toLowerCase().trim();
+  const league = $("league").value;
+  const type = $("lineType").value;
+  const filter = $("filter").value;
+  const sort = $("sort").value;
+
+  let visible = rows.filter(r => {
+    const searchText = [
+      r.player, r.stat, r.team, r.opponent
+    ].join(" ").toLowerCase();
+
+    return (
+      (!league || r.league === league) &&
+      (!q || searchText.includes(q)) &&
+      (!type || getLineType(r) === type) &&
+      (!filter ||
+        (filter === "projected"
+          ? hasProjection(r)
+          : !hasProjection(r)))
+    );
+  });
+
+  visible.sort((a,b) => {
+    const da = getDifference(a);
+    const db = getDifference(b);
+
+    if (sort === "player") {
+      return String(a.player).localeCompare(String(b.player));
+    }
+
+    // Always place missing projections after ranked ones.
+    if (da === null && db !== null) return 1;
+    if (db === null && da !== null) return -1;
+    if (da === null && db === null) return 0;
+
+    if (sort === "negative") return da - db;
+    if (sort === "absolute") return Math.abs(db) - Math.abs(da);
+
+    // Default: biggest positive to biggest negative.
+    return db - da;
+  });
+
+  $("body").innerHTML = visible.map(r => {
+    const diff = getDifference(r);
+    const type = getLineType(r);
+    const valid = hasProjection(r);
+
+    const diffText = diff === null
+      ? "—"
+      : (diff > 0 ? "+" : "") + diff.toFixed(2);
+
+    const diffClass = diff === null
+      ? ""
+      : diff > 0 ? "green" : diff < 0 ? "red" : "";
+
+    const projectionText = valid
+      ? esc(r.projection)
+      : '<span class="small">No projection</span>';
+
+    return `
+      <tr>
+        <td>${esc(r.league)}</td>
+        <td>
+          <div class="player">${esc(r.player)}</div>
+          <div class="small">
+            ${esc(r.team || "")}
+            ${r.opponent ? " vs " + esc(r.opponent) : ""}
+          </div>
+        </td>
+        <td>${esc(r.stat)}</td>
+        <td>${lineBadge(type)}</td>
+        <td class="num">${esc(r.line)}</td>
+        <td class="num">${projectionText}</td>
+        <td class="num ${diffClass}">${diffText}</td>
+        <td class="small">${esc(r.source || "—")}</td>
+      </tr>`;
+  }).join("") || `
+    <tr><td colspan="8" class="empty">No matching lines found.</td></tr>`;
+}
+
+for (const id of ["search","league","lineType","filter","sort"]) {
+  $(id).addEventListener("input", draw);
+}
+
+fetch("./data/latest.json?cache=" + Date.now())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Published data not available");
+    }
+    return response.json();
+  })
+  .then(data => {
+    rows = Array.isArray(data.lines) ? data.lines : [];
+
+    const updated = data.updated_utc
+      ? new Date(data.updated_utc).toLocaleString()
+      : "Unknown";
+
+    $("status").textContent =
+      `Updated: ${updated} | ` +
+      `${rows.length.toLocaleString()} lines | ` +
+      `${rows.filter(hasProjection).length.toLocaleString()} matched projections`;
+
+    if (data.errors && data.errors.length) {
+      $("status").textContent +=
+        ` | Feed warnings: ${data.errors.join("; ")}`;
+    }
+
+    updateCards();
+    draw();
+  })
+  .catch(error => {
+    $("status").textContent =
+      "Unable to load data: " + error.message;
+
+    $("body").innerHTML =
+      '<tr><td colspan="8" class="empty">No published data available.</td></tr>';
+  });
+</script>
+</body>
+</html>
