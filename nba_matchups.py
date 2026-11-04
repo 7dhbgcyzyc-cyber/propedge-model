@@ -243,9 +243,10 @@ def main():
             'opponent_offensive_rebounds_per_game': avg(records, 'opponent_offensive_rebounds'),
             'team_defensive_rebounds_per_game': avg(records, 'team_defensive_rebounds'),
         }
-
+upcoming = upcoming_matchups(
     payload = {
         'updated_utc': datetime.now(timezone.utc).isoformat(),
+        'upcoming_matchups': upcoming,
         'window_days': DAYS_BACK,
         'games_found': len(games),
         'teams': team_data,
