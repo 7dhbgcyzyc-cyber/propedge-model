@@ -24,6 +24,9 @@ jobs:
       - name: Install NBA statistics dependencies
         run: pip install nba_api pandas requests
 
+      - name: Test ESPN connection
+        run: python test_espn.py
+
       - name: Calculate NBA projections
         run: python nba_stats.py
 
