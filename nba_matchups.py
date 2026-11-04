@@ -114,7 +114,76 @@ def completed_game_ids():
         time.sleep(0.1)
     return sorted(ids)
 
+def upcoming_matchups():
+    """Find NBA matchups scheduled over the next 7 days."""
+    schedule = {}
+    today = datetime.now(timezone.utc).date()
 
+    for offset in range(8):
+        day = (today + timedelta(days=offset)).strftime("%Y%m%d")
+
+        try:
+            data = fetch(f"{BASE}/scoreboard?dates={day}&limit=100")
+
+            for event in data.get("events", []):
+                status = event.get("status", {}).get("type", {})
+
+                if status.get("completed"):
+                    continue
+
+                for competition in event.get("competitions", []):
+                    competitors = competition.get("competitors", [])
+
+                    if len(competitors) != 2:
+                        continue
+
+                    for team in competitors:
+                        opponent = next(
+                            (x for x in competitors if x is not team),
+                            None
+                        )
+
+                        if opponent is None:
+                            continue
+
+                        abbreviation = str(
+                            team.get("team", {}).get("abbreviation", "")
+                        ).upper()
+
+                        opponent_abbreviation = str(
+                            opponent.get("team", {}).get("abbreviation", "")
+                        ).upper()
+
+                        if not abbreviation or not opponent_abbreviation:
+                            continue
+
+                        game = {
+                            "opponent": opponent_abbreviation,
+                            "home_away": team.get("homeAway"),
+                            "game_date": event.get("date"),
+                            "event_id": str(event.get("id", ""))
+                        }
+
+                        if abbreviation not in schedule:
+                            schedule[abbreviation] = game
+                        elif (
+                            game["game_date"]
+                            and game["game_date"] <
+                            str(schedule[abbreviation].get("game_date") or "")
+                        ):
+                            schedule[abbreviation] = game
+
+        except Exception as exc:
+            print(f"Upcoming schedule {day}: {exc}", flush=True)
+
+        time.sleep(0.1)
+
+    print(
+        f"Upcoming matchups identified for {len(schedule)} teams",
+        flush=True
+    )
+
+    return schedule
 def main():
     games = completed_game_ids()
     observations = defaultdict(list)
