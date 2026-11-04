@@ -244,13 +244,20 @@ if model_file.exists():
             model_file.read_text(encoding="utf-8")
         )
         for r in model_data.get("projections", []):
+            try:
+            value = r.get("projection")
+            if value is None:
+                continue
+    
             k = projection_key(
                 r["player"], r["league"], r["stat"]
             )
             projs.setdefault(k, (
-                float(r["projection"]),
+                float(value),
                 r.get("source", "PropEdge NBA model")
             ))
+        except (KeyError, ValueError, TypeError):
+            continue
     except (OSError, ValueError, KeyError, TypeError) as e:
         errors.append("NBA model load: " + str(e))
 
