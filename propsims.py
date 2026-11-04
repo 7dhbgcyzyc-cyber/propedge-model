@@ -1,9 +1,9 @@
 
-"""PropEdge NBA PropSims projection collector.
+"""Collect NBA projections from PropSims for PropEdge.
 
-Reads publicly accessible HTML table data only.
-Checks robots.txt before requesting projections.
-Does not use credentials or bypass access restrictions.
+Use only with permission from PropSims.
+Reads the public NBA projections HTML table.
+Does not bypass authentication or access restrictions.
 """
 
 import json
@@ -13,152 +13,160 @@ import urllib.robotparser
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
 
 URL = "https://propsims.com/nba/projections/"
-ROOT = Path(__file__).resolve().parent
-OUT = ROOT / "data" / "propsims.json"
-
+OUTPUT = Path(__file__).resolve().parent / "data" / "propsims.json"
 USER_AGENT = "PropEdgeResearchBot/0.1"
 
-STAT_NAMES = {
-    "pts": "Points",
-    "reb": "Rebounds",
-    "ast": "Assists",
-    "fg3m": "3-PT Made",
-    "stl": "Steals",
-    "blk": "Blocks",
-    "tov": "Turnovers",
+# Fields confirmed from the PropSims HTML.
+STAT_FIELDS = {
+    "pts_p50": "Points",
+    "pts_if_play": "Points If Playing",
+    "reb_p50": "Rebounds",
+    "ast_p50": "Assists",
+    "fg3m_p50": "3-PT Made",
+    "stl_p50": "Steals",
+    "blk_p50": "Blocks",
+    "tov_p50": "Turnovers",
 }
 
-class ProjectionParser(HTMLParser):
+class PropSimsParser(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.in_table = False
-        self.table_depth = 0
-        self.in_row = False
-        self.in_cell = False
+        self.inside_table = False
+        self.inside_row = False
+        self.inside_cell = False
+        self.row_attrs = {}
         self.cell_attrs = {}
-        self.cell_text = []
-        self.row = []
+        self.cell_parts = []
+        self.cells = []
         self.players = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
 
-        if tag == "table":
-            if attrs.get("id") == "nbaroi":
-                self.in_table = True
-                self.table_depth = 1
-            elif self.in_table:
-                self.table_depth += 1
+        if tag == "table" and attrs.get("id") == "nbaroi":
+            self.inside_table = True
+            return
 
-        if not self.in_table:
+        if not self.inside_table:
             return
 
         if tag == "tr":
-            self.in_row = True
-            self.row = []
+            self.inside_row = True
+            self.row_attrs = attrs
+            self.cells = []
 
-        elif tag in ("td", "th") and self.in_row:
-            self.in_cell = True
+        elif tag in ("td", "th") and self.inside_row:
+            self.inside_cell = True
             self.cell_attrs = attrs
-            self.cell_text = []
+            self.cell_parts = []
 
     def handle_data(self, data):
-        if self.in_cell:
-            self.cell_text.append(data)
+        if self.inside_cell:
+            self.cell_parts.append(data)
 
     def handle_endtag(self, tag):
-        if not self.in_table:
+        if not self.inside_table:
             return
 
-        if tag in ("td", "th") and self.in_cell:
-            self.row.append({
-                "attrs": self.cell_attrs,
-                "text": " ".join(
-                    "".join(self.cell_text).split()
-                ),
-            })
-            self.in_cell = False
+        if tag in ("td", "th") and self.inside_cell:
+            text = " ".join("".join(self.cell_parts).split())
 
-        elif tag == "tr" and self.in_row:
+            self.cells.append({
+                "attrs": self.cell_attrs,
+                "text": text,
+            })
+            self.inside_cell = False
+
+        elif tag == "tr" and self.inside_row:
             self.process_row()
-            self.in_row = False
+            self.inside_row = False
 
         elif tag == "table":
-            self.table_depth -= 1
-            if self.table_depth == 0:
-                self.in_table = False
+            self.inside_table = False
 
     def process_row(self):
-        values = {}
-        for cell in self.row:
-            attrs = cell["attrs"]
-            field = attrs.get("data-f", "").lower()
-            if field:
-                values[field] = (
-                    attrs.get("data-v") or cell["text"]
-                )
+        if not self.row_attrs.get("data-pid"):
+            return
 
-        player = (
-            values.get("player")
-            or next(
-                (
-                    c["text"]
-                    for c in self.row
-                    if c["attrs"].get("data-l") == "Player"
-                ),
-                ""
-            )
-        )
+        player = ""
+        team = self.row_attrs.get("data-team", "")
+        position = ""
+        status = ""
+        fields = {}
+
+        for cell in self.cells:
+            attrs = cell["attrs"]
+            label = attrs.get("data-l", "").lower()
+            field = attrs.get("data-f", "").lower()
+            value = attrs.get("data-v")
+
+            if label == "player":
+                player = cell["text"]
+            elif label == "team" and not team:
+                team = cell["text"]
+            elif label == "pos":
+                position = cell["text"]
+            elif label == "status":
+                status = cell["text"]
+
+            if field and value is not None:
+                fields[field] = value
 
         if not player:
             return
 
-        team = values.get("team", "")
         projections = {}
 
-        for source_field, stat_name in STAT_NAMES.items():
-            raw = values.get(source_field)
+        for field, stat in STAT_FIELDS.items():
+            raw = fields.get(field)
             if raw is None:
                 continue
+
             try:
-                projections[stat_name] = float(raw)
-            except (ValueError, TypeError):
-                pass
+                projections[stat] = float(raw)
+            except (TypeError, ValueError):
+                continue
 
         if not projections:
             return
 
+        # Store every numeric projection field, including
+        # future stats that aren't in STAT_FIELDS yet.
+        all_fields = {}
+
+        for field, raw in fields.items():
+            try:
+                all_fields[field] = float(raw)
+            except (TypeError, ValueError):
+                pass
+
         self.players.append({
             "player": player,
             "team": team,
+            "position": position,
+            "status": status,
+            "player_id": self.row_attrs["data-pid"],
             "league": "NBA",
             "projections": projections,
+            "raw_projection_fields": all_fields,
         })
 
 
-def main():
-    parsed = urlparse(URL)
-    robots_url = (
-        f"{parsed.scheme}://{parsed.netloc}/robots.txt"
-    )
-
+def check_robots():
     robots = urllib.robotparser.RobotFileParser()
-    robots.set_url(robots_url)
-
-    try:
-        robots.read()
-    except Exception as exc:
-        raise RuntimeError(
-            f"Could not verify robots.txt: {exc}"
-        )
+    robots.set_url("https://propsims.com/robots.txt")
+    robots.read()
 
     if not robots.can_fetch(USER_AGENT, URL):
         raise RuntimeError(
-            "Automated access not confirmed by robots.txt."
+            "PropSims robots.txt does not permit this request."
         )
+
+
+def collect():
+    check_robots()
 
     request = urllib.request.Request(
         URL,
@@ -168,54 +176,70 @@ def main():
         },
     )
 
-    with urllib.request.urlopen(
-        request, timeout=45
-    ) as response:
+    with urllib.request.urlopen(request, timeout=60) as response:
         html = response.read().decode(
             "utf-8", errors="replace"
         )
 
-    parser = ProjectionParser()
+    parser = PropSimsParser()
     parser.feed(html)
 
-    if len(parser.players) < 100:
+    players = parser.players
+
+    if len(players) < 100:
         raise RuntimeError(
-            "Only "
-            f"{len(parser.players)} player records found. "
-            "Check the table structure or access rules. "
-            "Previous data will not be overwritten."
+            f"Only {len(players)} players extracted. "
+            "Expected at least 100. "
+            "Existing data will not be overwritten."
         )
 
+    # Try to extract the model-run timestamp from the page.
+    timestamp_match = re.search(
+        r"Model run\s+(\d{4}-\d{2}-\d{2}\s+"
+        r"\d{1,2}:\d{2}\s+[A-Z]{2,4})",
+        html,
+        re.IGNORECASE,
+    )
+
+    model_run = (
+        timestamp_match.group(1)
+        if timestamp_match
+        else None
+    )
+
     payload = {
+        "source": "PropSims",
+        "source_url": URL,
+        "league": "NBA",
         "retrieved_utc": datetime.now(
             timezone.utc
         ).isoformat(),
-        "source": URL,
-        "league": "NBA",
-        "player_count": len(parser.players),
-        "players": parser.players,
-        "note": (
-            "Third-party projections from publicly "
-            "accessible PropSims HTML. "
-            "Verify freshness before comparison."
-        ),
+        "model_run": model_run,
+        "player_count": len(players),
+        "players": players,
     }
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    temporary = OUT.with_suffix(".json.tmp")
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 
+    temporary = OUTPUT.with_suffix(".json.tmp")
     temporary.write_text(
         json.dumps(payload, indent=2),
         encoding="utf-8",
     )
-    temporary.replace(OUT)
+    temporary.replace(OUTPUT)
 
     print(
-        f"Saved {len(parser.players)} PropSims players "
-        f"to {OUT}",
-        flush=True,
+        f"PropSims: saved {len(players)} NBA players "
+        f"to {OUTPUT}"
     )
+
+    if players:
+        print(
+            "Example:",
+            players[0]["player"],
+            players[0]["projections"],
+        )
 
 
 if __name__ == "__main__":
-    main()
+    collect()
