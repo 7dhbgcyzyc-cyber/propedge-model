@@ -1,64 +1,208 @@
-"""Experimental NBA PTS/REB/AST projections from independent NBA game logs.
-Fetches 2026-27 and 2025-26 regular season logs using nba_api; failure never fabricates values.
+"""PropEdge ESPN NBA game-log model. Unofficial ESPN endpoints; best effort.
+
+Discovers all 30 NBA rosters, retrieves current and prior season game logs,
+and writes data/nba_model.json. No invented statistics. Failed players are reported.
 """
-import csv, json, re, unicodedata
+import json
+import os
+import random
+import re
+import time
+import tempfile
+import unicodedata
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / 'data' / 'nba_model.json'
+CACHE = Path(tempfile.gettempdir()) / 'propedge_espn_cache'
+BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba'
+GAMELOG = 'https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/{}/gamelog?season={}'
+SEASONS = (2027, 2026)  # ESPN season end years: 2026-27 and 2025-26
+HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; PropEdge/0.2; research dashboard)', 'Accept': 'application/json'}
 
-def norm(s):
-    s = unicodedata.normalize('NFKD',str(s)).encode('ascii','ignore').decode().lower()
-    return re.sub(r'[^a-z0-9]','',s)
 
-def get_logs(season):
-    from nba_api.stats.endpoints import leaguegamelog
-    obj=leaguegamelog.LeagueGameLog(season=season,player_or_team_abbreviation='P',season_type_all_star='Regular Season',timeout=40)
-    return obj.get_data_frames()[0].to_dict('records')
+def norm(value):
+    return re.sub(r'[^a-z0-9]', '', unicodedata.normalize('NFKD', str(value)).encode('ascii', 'ignore').decode().lower())
+
+
+def fetch(url, cache_path=None, max_age_hours=18):
+    if cache_path and cache_path.exists():
+        if time.time() - cache_path.stat().st_mtime < max_age_hours * 3600:
+            return json.loads(cache_path.read_text())
+    error = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=18) as response:
+                obj = json.load(response)
+            if cache_path:
+                cache_path.parent.mkdir(parents=True, exist_ok=True)
+                cache_path.write_text(json.dumps(obj))
+            time.sleep(0.16 + random.uniform(0, 0.14))
+            return obj
+        except (urllib.error.URLError, TimeoutError, ValueError, OSError) as exc:
+            error = exc
+            if attempt < 2:
+                time.sleep((attempt + 1) * 1.5)
+    if cache_path and cache_path.exists():
+        print(f'Using cached data after request failure: {url}: {error}')
+        return json.loads(cache_path.read_text())
+    raise RuntimeError(f'{url}: {error}')
+
+
+def roster_players():
+    listing = fetch(BASE + '/teams?limit=100', CACHE / 'teams.json', 24)
+    teams = listing.get('sports', [{}])[0].get('leagues', [{}])[0].get('teams', [])
+    if len(teams) < 30:
+        raise RuntimeError(f'Expected 30 NBA teams; found {len(teams)}. ESPN roster format may have changed.')
+    players = {}
+    failures = []
+    for item in teams:
+        team = item.get('team', item)
+        tid = str(team.get('id', ''))
+        if not tid:
+            continue
+        try:
+            data = fetch(f'{BASE}/teams/{tid}/roster', CACHE / f'roster_{tid}.json', 24)
+            athletes = data.get('athletes', [])
+            # ESPN sometimes groups athletes by position rather than returning a flat array.
+            for group in athletes:
+                entries = group.get('items', []) if isinstance(group, dict) and 'items' in group else [group]
+                for athlete in entries:
+                    if not isinstance(athlete, dict):
+                        continue
+                    pid = str(athlete.get('id', ''))
+                    name = athlete.get('fullName') or athlete.get('displayName')
+                    if pid and name:
+                        players[pid] = name
+        except Exception as exc:
+            failures.append(f'{team.get("abbreviation", tid)}: {exc}')
+    print(f'Roster discovery: {len(teams)} teams; {len(players)} unique players; {len(failures)} team errors', flush=True)
+    if len(players) < 150:
+        raise RuntimeError(f'Only {len(players)} players discovered. Refusing incomplete roster run. Examples: {failures[:3]}')
+    return players, failures
+
+
+def numeric(value):
+    try:
+        return float(str(value).replace(',', '').split(':')[0])
+    except (TypeError, ValueError):
+        return None
+
+
+def parse_games(data, season):
+    """Read ESPN gamelog event references and per-event stat arrays.
+
+    Expected shape: labels [MIN,...,PTS], events {id: {date,...}},
+    seasonTypes[].categories[].events [{eventId, stats: [...]}].
+    """
+    labels = [str(v).upper() for v in data.get('labels', [])]
+    lookup = {name: i for i, name in enumerate(labels)}
+    required = ('MIN', 'PTS', 'REB', 'AST')
+    if not all(x in lookup for x in required):
+        raise ValueError(f'Missing ESPN stat columns: {required}; got {labels}')
+    event_meta = data.get('events', {})
+    if isinstance(event_meta, list):
+        event_meta = {str(x.get('id', '')): x for x in event_meta if isinstance(x, dict)}
+    found = {}
+    for stype in data.get('seasonTypes', []):
+        for category in stype.get('categories', []):
+            for entry in category.get('events', []):
+                if not isinstance(entry, dict):
+                    continue
+                event_id = str(entry.get('eventId') or entry.get('id') or '')
+                stats = entry.get('stats')
+                if not event_id or not isinstance(stats, list):
+                    continue
+                meta = event_meta.get(event_id, {})
+                date = meta.get('gameDate') or meta.get('date') or entry.get('gameDate') or entry.get('date')
+                if not date:
+                    continue
+                values = {k: numeric(stats[lookup[k]]) if len(stats) > lookup[k] else None for k in required}
+                if any(values[k] is None for k in required):
+                    continue
+                if values['MIN'] < 8:
+                    continue
+                found[event_id] = {'date': str(date), 'season': season, **values}
+    return sorted(found.values(), key=lambda x: x['date'], reverse=True)
+
+
+def rate(games, stat):
+    mins = sum(x['MIN'] for x in games)
+    return sum(x[stat] for x in games) / mins if mins else 0
+
+
+def average(games, stat):
+    return round(sum(x[stat] for x in games) / len(games), 2) if games else None
+
+
+def project(name, current, previous):
+    if len(current) < 3 or len(current) + len(previous) < 8:
+        return []
+    current.sort(key=lambda x: x['date'], reverse=True)
+    previous.sort(key=lambda x: x['date'], reverse=True)
+    # Use current season preferentially; fill longer windows from last season.
+    history = current + previous
+    last5, last10, last20 = history[:5], history[:10], history[:20]
+    minutes5 = average(last5, 'MIN')
+    minutes10 = average(last10, 'MIN')
+    expected_minutes = .65 * minutes5 + .35 * minutes10
+    result = []
+    for stat, label in (('PTS', 'Points'), ('REB', 'Rebounds'), ('AST', 'Assists')):
+        weighted_rate = .30 * rate(last5, stat) + .25 * rate(last10, stat) + .25 * rate(last20, stat) + .20 * rate(current, stat)
+        prior_rate = rate(previous, stat) if previous else weighted_rate
+        current_weight = min(.85, len(current) / (len(current) + 12))
+        predicted_rate = current_weight * weighted_rate + (1 - current_weight) * prior_rate
+        result.append({
+            'player': name, 'league': 'NBA', 'stat': label,
+            'projection': round(max(0, expected_minutes * predicted_rate), 2),
+            'source': 'PropEdge NBA v0.2 (ESPN game logs)',
+            'games_current': len(current), 'minutes_est': round(expected_minutes, 1),
+            'last5_avg': average(last5, stat), 'last10_avg': average(last10, stat),
+            'last20_avg': average(last20, stat), 'last20_games_used': len(last20)
+        })
+    return result
+
 
 def main():
-    data=[]; errors=[]
-    for season in ('2026-27','2025-26'):
-        try:
-            entries=get_logs(season)
-            for r in entries:
-                r['_season']=season
-            data.extend(entries)
-            print(f'NBA logs {season}: {len(entries)}')
-        except Exception as exc:
-            errors.append(f'{season}: {type(exc).__name__}: {exc}')
-    if not data:
-        print('No NBA logs available; keeping existing NBA projections unchanged. '+str(errors))
-        return
-    players={}
-    for r in data:
-        name=norm(r.get('PLAYER_NAME',''))
-        if not name: continue
-        players.setdefault(name,[]).append(r)
-    out=[]
-    for name,games in players.items():
-        games.sort(key=lambda r:str(r.get('GAME_DATE','')),reverse=True)
-        current=[r for r in games if r['_season']=='2026-27' and float(r.get('MIN') or 0)>=8]
-        previous=[r for r in games if r['_season']=='2025-26' and float(r.get('MIN') or 0)>=8]
-        if len(current)<3 or len(current)+len(previous)<8: continue
-        last5=current[:5]; last10=current[:10]; last20=current[:20]; season=current
-        # Project playing time separately. A 3-game window is highly uncertain.
-        min5=sum(float(x['MIN']) for x in last5)/len(last5)
-        min10=sum(float(x['MIN']) for x in last10)/len(last10)
-        expected_minutes=0.65*min5+0.35*min10
-        for stat in ('PTS','REB','AST'):
-            def rate(group):
-                return sum(float(x.get(stat) or 0) for x in group)/max(1,sum(float(x['MIN']) for x in group))
-            # Small current-season samples shrink toward previous season's per-minute production.
-            cur_rate=.30*rate(last5)+.25*rate(last10)+.25*rate(last20)+.20*rate(season)
-            prior_rate=rate(previous) if previous else cur_rate
-            current_weight=min(.85,len(current)/(len(current)+12))
-            predicted_rate=current_weight*cur_rate+(1-current_weight)*prior_rate
-            prediction=round(max(0,expected_minutes*predicted_rate),2)
-            label={'PTS':'Points','REB':'Rebounds','AST':'Assists'}[stat]
-            out.append({'player':games[0]['PLAYER_NAME'],'league':'NBA','stat':label,'projection':prediction,'source':'PropEdge NBA v0.1 (NBA game logs)','games_current':len(current),'minutes_est':round(expected_minutes,1),'last5_avg':round(sum(float(x.get(stat) or 0) for x in last5)/len(last5),2),'last10_avg':round(sum(float(x.get(stat) or 0) for x in last10)/len(last10),2),'last20_avg':round(sum(float(x.get(stat) or 0) for x in last20)/len(last20),2),'last20_games_used':len(last20)})
-    target=ROOT/'data';target.mkdir(exist_ok=True)
-    (target/'nba_model.json').write_text(json.dumps({'updated_utc':datetime.now(timezone.utc).isoformat(),'projections':out,'errors':errors,'method':'experimental per-minute model; 5/10/20/season weighted and prior-season shrinkage; not calibrated'},indent=2))
-    print(f'NBA model projections: {len(out)}; warnings: {errors}')
+    CACHE.mkdir(parents=True, exist_ok=True)
+    players, roster_errors = roster_players()
+    errors = list(roster_errors)
+    projections = []
+    with_logs = 0
+    for index, (pid, name) in enumerate(players.items(), 1):
+        logs = {}
+        for season in SEASONS:
+            try:
+                obj = fetch(GAMELOG.format(pid, season), CACHE / f'gamelog_{pid}_{season}.json', 18 if season == SEASONS[0] else 24 * 14)
+                logs[season] = parse_games(obj, season)
+            except Exception as exc:
+                errors.append(f'{name} ({season}): {str(exc)[:160]}')
+                logs[season] = []
+        if logs[SEASONS[0]] or logs[SEASONS[1]]:
+            with_logs += 1
+        projections.extend(project(name, logs[SEASONS[0]], logs[SEASONS[1]]))
+        if index % 25 == 0 or index == len(players):
+            print(f'Processed {index}/{len(players)} players; projections={len(projections)}; errors={len(errors)}', flush=True)
+    if not projections:
+        print('No projections produced; leaving existing model file unchanged. Errors:', errors[:10])
+        raise RuntimeError('ESPN player logs did not produce any projections')
+    OUT.parent.mkdir(exist_ok=True)
+    payload = {
+        'updated_utc': datetime.now(timezone.utc).isoformat(),
+        'projections': projections,
+        'errors': errors[:150],
+        'summary': {'roster_players': len(players), 'players_with_logs': with_logs, 'projected_players': len(projections) // 3, 'error_count': len(errors)},
+        'method': 'Experimental ESPN per-minute model; weighted last 5/10/20/current season; prior season shrinkage. Not backtested or calibrated.'
+    }
+    temp = OUT.with_suffix('.json.tmp')
+    temp.write_text(json.dumps(payload, indent=2))
+    temp.replace(OUT)
+    print('Saved', OUT, 'summary:', payload['summary'], flush=True)
 
-if __name__=='__main__': main()
+
+if __name__ == '__main__':
+    main()
