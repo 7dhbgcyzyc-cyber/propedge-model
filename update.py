@@ -31,6 +31,17 @@ if p.exists():
         for r in csv.DictReader(f):
             try: projs[(r['player'].strip().lower(),r['league'].strip().upper(),r['stat'].strip().lower())]=(float(r['projection']),r.get('source','Independent estimate'))
             except (KeyError,ValueError): pass
+# Independently calculated NBA model, if the game-log fetch succeeded.
+model_file=OUT/'nba_model.json'
+if model_file.exists():
+    try:
+        model_data=json.loads(model_file.read_text(encoding='utf-8'))
+        for r in model_data.get('projections',[]):
+            k=(r['player'].strip().lower(),r['league'],r['stat'].strip().lower())
+            # Keep manually supplied independent estimates as explicit overrides.
+            projs.setdefault(k,(float(r['projection']),r.get('source','PropEdge NBA model')))
+    except (OSError,ValueError,KeyError,TypeError) as e:
+        errors.append('NBA model load: '+str(e))
 for r in rows:
     k=(r['player'].strip().lower(),r['league'],r['stat'].strip().lower())
     v=projs.get(k)
