@@ -11,6 +11,7 @@ import time
 import math
 from pathlib import Path
 from collections import Counter
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / 'data'
@@ -229,6 +230,85 @@ for r in model_data.get('projections', []):
     except (KeyError, ValueError, TypeError):
         continue
 
+# Optional manually transcribed PropSims projections. These NEVER replace PropEdge.
+# The dataset must be for the current Central Time calendar date; stale snapshots
+# are ignored, so the daily workflow can continue safely on later days.
+def load_propsims():
+    path = OUT / 'propsims.json'
+    if not path.exists():
+        return {}, {'status': 'missing', 'matched': 0}
+    payload = load_json(path)
+    if not isinstance(payload, dict):
+        return {}, {'status': 'invalid', 'matched': 0}
+    if payload.get('source') != 'PropSims' or payload.get('points_definition') != 'PTS IF PLAY':
+        return {}, {'status': 'wrong_schema_or_points_definition', 'matched': 0}
+    run_text = str(payload.get('model_run') or '')
+    match = re.search(r'\b(20\d{2}-\d{2}-\d{2})\b', run_text)
+    today_ct = datetime.datetime.now(ZoneInfo('America/Chicago')).date().isoformat()
+    if not match or match.group(1) != today_ct:
+        return {}, {'status': 'stale', 'model_run': run_text, 'expected_date': today_ct, 'matched': 0}
+    columns = payload.get('columns')
+    required = ('player', 'points', 'rebounds', 'assists', 'threes')
+    if not isinstance(columns, list) or any(c not in columns for c in required):
+        return {}, {'status': 'missing_columns', 'matched': 0}
+    indices = {k: columns.index(k) for k in required}
+    players = payload.get('players')
+    if not isinstance(players, list) or len(players) < 10:
+        return {}, {'status': 'too_few_players', 'matched': 0}
+    lookup = {}
+    for item in players:
+        if not isinstance(item, list) or len(item) < len(columns):
+            continue
+        name = normalized_name(item[indices['player']])
+        if not name or name in lookup:
+            continue
+        stats = {key: numeric(item[indices[key]]) for key in required[1:]}
+        if any(value is None or value < 0 for value in stats.values()):
+            continue
+        lookup[name] = stats
+    if len(lookup) < 10:
+        return {}, {'status': 'insufficient_valid_players', 'matched': 0}
+    return lookup, {'status': 'loaded', 'model_run': run_text,
+                    'players': len(lookup), 'matched': 0}
+
+
+def propsims_stat_projection(stats, stat):
+    # Only explicit, whole-game statistical markets are supported.
+    # Unknown formats return None rather than guessing.
+    normalized = normalized_stat(stat)
+    aliases = {
+        'points': 'points', 'pts': 'points',
+        'rebounds': 'rebounds', 'rebs': 'rebounds', 'reb': 'rebounds',
+        'assists': 'assists', 'asts': 'assists', 'ast': 'assists',
+        '3ptmade': 'threes', '3ptsmade': 'threes', '3pm': 'threes',
+        '3pointersmade': 'threes', '3pointsmade': 'threes',
+        'threepointersmade': 'threes', 'threes': 'threes',
+        'pra': ('points', 'rebounds', 'assists'),
+        'pr': ('points', 'rebounds'),
+        'pa': ('points', 'assists'),
+        'ra': ('rebounds', 'assists'),
+    }
+    if normalized in ('pts+reb+ast', 'pts+rebs+asts', 'points+rebounds+assists',
+                      'pointsreboundsassists', 'ptsrebsasts', 'pts+rebs+ast'):
+        keys = ('points', 'rebounds', 'assists')
+    elif normalized in ('points+rebounds', 'pts+rebs', 'pts+reb', 'pointsrebounds'):
+        keys = ('points', 'rebounds')
+    elif normalized in ('points+assists', 'pts+asts', 'pts+ast', 'pointsassists'):
+        keys = ('points', 'assists')
+    elif normalized in ('rebounds+assists', 'rebs+asts', 'reb+ast', 'reboundsassists'):
+        keys = ('rebounds', 'assists')
+    else:
+        keys = aliases.get(normalized)
+    if not keys:
+        return None
+    if isinstance(keys, str):
+        keys = (keys,)
+    if any(stats.get(k) is None for k in keys):
+        return None
+    return round(sum(stats[k] for k in keys), 2)
+
+propsims_lookup, propsims_meta = load_propsims()
+
 for r in rows:
     v = projs.get(projection_key(r['player'], r['league'], r['stat']))
     base = v[0] if v else None
@@ -258,14 +338,45 @@ for r in rows:
                 r['matchup_adjustments'] = {k: round(x, 3) for k, x in details.items()}
                 r['matchup_applied'] = applied
     r['difference'] = round(r['projection'] - r['line'], 2) if r['projection'] is not None else None
+    # Comparisons do not change original projection/difference or matchup logic.
+    external = (propsims_lookup.get(normalized_name(r['player']))
+                if r['league'] == 'NBA' else None)
+    propsims_value = propsims_stat_projection(external, r['stat']) if external else None
+    r['propsims_projection'] = propsims_value
+    r['propsims_difference'] = (round(propsims_value - r['line'], 2)
+                                if propsims_value is not None else None)
+    original_diff = r['difference']
+    external_diff = r['propsims_difference']
+    r['model_agreement'] = None
+    if original_diff is not None and external_diff is not None:
+        if original_diff > 0 and external_diff > 0:
+            r['model_agreement'] = 'Both Over'
+        elif original_diff < 0 and external_diff < 0:
+            r['model_agreement'] = 'Both Under'
+        elif original_diff == 0 or external_diff == 0:
+            r['model_agreement'] = 'At Line'
+        else:
+            r['model_agreement'] = 'Models Disagree'
+        # Lower of the two absolute differences when both agree.
+        r['agreement_edge'] = (round(min(abs(original_diff), abs(external_diff)), 2)
+                               if r['model_agreement'] in ('Both Over', 'Both Under')
+                               else None)
+    else:
+        r['agreement_edge'] = None
+    if propsims_value is not None:
+        propsims_meta['matched'] += 1
+
 
 snapshot = {
     'updated_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
     'lines': rows, 'errors': errors,
+    'propsims': propsims_meta,
     'matchup_data_updated_utc': matchups.get('updated_utc'),
     'note': ('Experimental, unbacktested projections. Matchup adjustments apply only to supported '
              'NBA points and rebounds props when team and opponent data match. Rebound opportunity '
              'and home/away adjustments remain zero pending reliable schema validation. '
+             'PropSims manual PTS IF PLAY projections are shown separately when current; '
+             'combined markets sum components and are not separately modeled. '
              'Projection differences are research signals, not estimated win probabilities.'),
 }
 if not rows or any('Pagination incomplete' in e for e in errors):
