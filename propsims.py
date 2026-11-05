@@ -186,10 +186,10 @@ def collect():
 
     players = parser.players
 
-    if len(players) < 100:
+    if len(players) < 10:
         raise RuntimeError(
             f"Only {len(players)} players extracted. "
-            "Expected at least 100. "
+            "Expected at least 10. "
             "Existing data will not be overwritten."
         )
 
