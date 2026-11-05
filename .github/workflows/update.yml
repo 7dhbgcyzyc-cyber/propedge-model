@@ -33,6 +33,9 @@ jobs:
       - name: Calculate NBA matchup intelligence
         run: python nba_matchups.py
 
+      - name: Collect PropSims projections
+        run: python propsims.py
+
       - name: Update PrizePicks data
         env:
           PRIZEPICKS_API_KEY: ${{ secrets.PRIZEPICKS_API_KEY }}
