@@ -379,7 +379,7 @@ snapshot = {
              'combined markets sum components and are not separately modeled. '
              'Projection differences are research signals, not estimated win probabilities.'),
 }
-if not rows or any('Pagination incomplete' in e for e in errors):
+if not rows or any('NBA: Pagination incomplete' in e for e in errors):
     print(f'API errors: {errors}', flush=True)
     print('Keeping previous PrizePicks snapshot rather than publishing incomplete data.', flush=True)
 else:
