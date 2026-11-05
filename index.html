@@ -1,211 +1,306 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PropEdge | Player Prop Research</title>
+
 <style>
 :root {
-  color-scheme:dark;
-  --bg:#080e1b;
-  --panel:#111b2e;
-  --panel2:#17243a;
-  --border:#2a3953;
-  --text:#eef3ff;
-  --muted:#9eafc9;
-  --green:#4ade80;
-  --red:#fb7185;
-  --blue:#60a5fa;
+  color-scheme: dark;
+  --bg: #080e1b;
+  --panel: #111b2e;
+  --panel2: #17243a;
+  --border: #2a3953;
+  --text: #eef3ff;
+  --muted: #9eafc9;
+  --green: #4ade80;
+  --red: #fb7185;
+  --blue: #60a5fa;
+  --yellow: #facc15;
 }
-* { box-sizing:border-box; }
+
+* { box-sizing: border-box; }
+
 body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font:14px system-ui,-apple-system,sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px system-ui, -apple-system, sans-serif;
 }
+
 main {
-  max-width:1700px;
-  margin:auto;
-  padding:30px 20px;
+  max-width: 1750px;
+  margin: auto;
+  padding: 30px 20px;
 }
+
 header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-h1 { margin:0; font-size:32px; letter-spacing:-1px; }
-h2 { margin:0; font-size:15px; }
-p { color:var(--muted); line-height:1.6; }
-.logo { color:var(--green); }
-.subtitle { margin:8px 0 22px; }
+
+h1 {
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.logo { color: var(--green); }
+.subtitle { margin: 8px 0 22px; }
+
 .status {
-  padding:12px 16px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--panel);
-  color:var(--muted);
-  margin-bottom:20px;
-  line-height:1.7;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.8;
 }
+
 .cards {
-  display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:12px;
-  margin-bottom:22px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
 }
+
 .card {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
 }
-.card .label { color:var(--muted); font-size:12px; }
+
+.card .label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .card .value {
-  font-size:27px;
-  font-weight:750;
-  margin-top:6px;
+  font-size: 28px;
+  font-weight: 750;
+  margin-top: 7px;
 }
-.green { color:var(--green); }
-.red { color:var(--red); }
-.blue { color:var(--blue); }
-.muted { color:var(--muted); }
-.adjusted { color:#b7d8ff; }
+
+.green { color: var(--green); }
+.red { color: var(--red); }
+.blue { color: var(--blue); }
+.yellow { color: var(--yellow); }
+.muted { color: var(--muted); }
+.adjusted { color: #b7d8ff; }
+
 .controls {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:16px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 16px 0;
 }
-input,select {
-  background:var(--panel2);
-  border:1px solid var(--border);
-  color:var(--text);
-  border-radius:9px;
-  padding:11px 12px;
-  font:inherit;
+
+input, select {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 9px;
+  padding: 11px 12px;
+  font: inherit;
 }
-input { flex:1; min-width:190px; }
-select { min-width:145px; }
+
+input {
+  flex: 1;
+  min-width: 200px;
+}
+
+select { min-width: 145px; }
+
 .tablebox {
-  overflow:auto;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:var(--panel);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
 }
+
 table {
-  width:100%;
-  border-collapse:collapse;
-  min-width:1530px;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1650px;
 }
+
 th {
-  text-align:left;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.6px;
-  color:var(--muted);
-  background:#152139;
-  white-space:nowrap;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--muted);
+  background: #152139;
+  white-space: nowrap;
 }
-th,td {
-  padding:13px 14px;
-  border-bottom:1px solid #25334b;
+
+th, td {
+  padding: 13px 14px;
+  border-bottom: 1px solid #25334b;
 }
-tbody tr:hover { background:#1b2941; }
-.player { font-weight:650; }
+
+tbody tr:hover { background: #1b2941; }
+
+.player { font-weight: 650; }
+
 .small {
-  font-size:12px;
-  color:var(--muted);
-  margin-top:4px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
 }
+
 .num {
-  font-variant-numeric:tabular-nums;
-  font-weight:650;
-  white-space:nowrap;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  white-space: nowrap;
 }
+
 .badge {
-  display:inline-block;
-  border-radius:6px;
-  padding:5px 9px;
-  font-size:11px;
-  font-weight:750;
-  white-space:nowrap;
+  display: inline-block;
+  border-radius: 6px;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
 }
-.normal { background:#263650; color:#dce6f8; }
-.goblin { background:#123c2c; color:#75f4aa; }
-.demon { background:#49212c; color:#ff9aab; }
-.unknown { background:#353247; color:#c8c1dc; }
-.agree-over { background:#123c2c; color:#75f4aa; }
-.agree-under { background:#49212c; color:#ff9aab; }
-.disagree { background:#47391d; color:#facc15; }
-.unavailable { background:#263650; color:#9eafc9; }
-.note { font-size:12px; margin-top:15px; }
+
+.normal {
+  background: #263650;
+  color: #dce6f8;
+}
+
+.goblin, .agree-over {
+  background: #123c2c;
+  color: #75f4aa;
+}
+
+.demon, .agree-under {
+  background: #49212c;
+  color: #ff9aab;
+}
+
+.unknown {
+  background: #353247;
+  color: #c8c1dc;
+}
+
+.disagree {
+  background: #47391d;
+  color: #facc15;
+}
+
+.unavailable {
+  background: #263650;
+  color: #9eafc9;
+}
+
+.note {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
 .details {
-  background:#0d1729;
-  padding:16px 22px;
-  color:var(--muted);
+  background: #0d1729;
+  padding: 16px 22px;
+  color: var(--muted);
 }
+
 .details-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
 }
-.details strong { color:var(--text); }
+
+.details strong { color: var(--text); }
+
 .details-button {
-  background:#223653;
-  border:1px solid var(--border);
-  color:#dceaff;
-  border-radius:6px;
-  padding:6px 9px;
-  cursor:pointer;
+  background: #223653;
+  border: 1px solid var(--border);
+  color: #dceaff;
+  border-radius: 6px;
+  padding: 7px 10px;
+  cursor: pointer;
 }
-.details-button:hover { background:#304766; }
-.empty { text-align:center; color:var(--muted); }
-@media(max-width:950px) {
-  .cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+.details-button:hover { background: #304766; }
+
+.empty {
+  text-align: center;
+  color: var(--muted);
 }
-@media(max-width:750px) {
-  main { padding:20px 12px; }
-  h1 { font-size:27px; }
+
+@media(max-width: 950px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media(max-width: 750px) {
+  main { padding: 20px 12px; }
+  h1 { font-size: 28px; }
 }
 </style>
 </head>
+
 <body>
 <main>
 
 <header>
   <h1><span class="logo">Prop</span>Edge</h1>
-  <span class="small">NBA · NFL | Independent Prop Research</span>
+  <span class="small">
+    NBA · NFL | Independent Prop Research
+  </span>
 </header>
 
 <p class="subtitle">
-  Compare PrizePicks lines with PropEdge's independent statistical
-  projections and available PropSims NBA estimates.
-  Matchup-adjusted and base projections are shown separately.
+  Compare PrizePicks player prop lines against independent
+  PropEdge projections and PropSims NBA estimates.
+  Explore matchup adjustments and identify where
+  the two projection models agree or disagree.
 </p>
 
-<div id="status" class="status">Loading latest data...</div>
+<div id="status" class="status">
+  Loading latest data...
+</div>
 
 <div class="cards">
   <div class="card">
     <div class="label">PrizePicks Lines</div>
     <div class="value" id="total">—</div>
   </div>
+
   <div class="card">
     <div class="label">PropEdge Matched</div>
     <div class="value blue" id="matched">—</div>
   </div>
+
   <div class="card">
     <div class="label">PropSims Matched</div>
     <div class="value blue" id="simsMatched">—</div>
   </div>
+
   <div class="card">
     <div class="label">Both Over</div>
     <div class="value green" id="bothOver">—</div>
   </div>
+
   <div class="card">
     <div class="label">Both Under</div>
     <div class="value red" id="bothUnder">—</div>
@@ -215,7 +310,10 @@ tbody tr:hover { background:#1b2941; }
 <h2>Player Prop Comparison</h2>
 
 <div class="controls">
-  <input id="search" placeholder="Search player, team, opponent, or stat">
+  <input
+    id="search"
+    placeholder="Search player, team, opponent, or stat"
+  >
 
   <select id="league">
     <option value="">All Sports</option>
@@ -254,7 +352,7 @@ tbody tr:hover { background:#1b2941; }
   <select id="sort">
     <option value="positive">Highest Above Line First</option>
     <option value="negative">Lowest Below Line First</option>
-    <option value="absolute">Largest Differences First</option>
+    <option value="absolute">Largest PropEdge Differences</option>
     <option value="sims">Largest PropSims Differences</option>
     <option value="player">Player Name A-Z</option>
   </select>
@@ -273,55 +371,67 @@ tbody tr:hover { background:#1b2941; }
   <th>Adjusted Projection</th>
   <th>PropSims</th>
   <th>PropEdge Difference</th>
+  <th>PropSims Difference</th>
   <th>Model Agreement</th>
   <th>Matchup</th>
   <th>Source</th>
 </tr>
 </thead>
+
 <tbody id="body">
-<tr><td colspan="12" class="empty">Loading...</td></tr>
+<tr>
+  <td colspan="13" class="empty">Loading...</td>
+</tr>
 </tbody>
 </table>
 </div>
 
 <p class="note">
-  PropSims values are third-party estimates and may use different
-  statistical definitions from PropEdge. Where available, points
-  uses PropSims' "if playing" estimate; other supported statistics
-  use its p50 estimates. These are not necessarily equivalent
-  forecasting methods. Model agreement means both estimates are
-  on the same side of the listed line, not that a pick is likely
-  to win. Matchup adjustments are experimental and not backtested.
-  Check projection freshness, lines, and payouts before making decisions.
+  PropSims projections are a manually recorded snapshot,
+  not automatically updated. Points use the recorded
+  "PTS IF PLAY" estimate. Combination projections are
+  calculated by adding the recorded component estimates;
+  they are not independently modeled combination medians.
+  PropEdge and PropSims may use different statistical methods.
+  Agreement means both projections are on the same side of
+  a PrizePicks line; it does not establish winning probability.
+  Matchup adjustments are experimental and have not been
+  backtested. Verify current lines and projection dates.
 </p>
 
 </main>
 
 <script>
+"use strict";
+
 let rows = [];
 let matchupTeams = {};
 let simsPlayers = new Map();
-let simsInfo = null;
 
 const $ = id => document.getElementById(id);
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
   }[c]));
 }
 
 function finite(value) {
-  if (value === null || value === undefined || value === "") return null;
+  if (
+    value === null ||
+    value === undefined ||
+    value === ""
+  ) return null;
+
   const n = Number(value);
   return Number.isFinite(n) ? n : null;
 }
 
-function fmt(value, decimals=2) {
+function fmt(value, decimals = 2) {
   const n = finite(value);
   return n === null ? "—" : n.toFixed(decimals);
 }
@@ -363,6 +473,7 @@ function hasProjection(r) {
 function getDifference(r) {
   const projection = adjustedProjection(r);
   const line = finite(r.line);
+
   if (projection === null || line === null) return null;
   return projection - line;
 }
@@ -385,71 +496,142 @@ function getLineType(r) {
 
   for (const value of candidates) {
     if (value === null || value === undefined) continue;
+
     const v = String(value).toLowerCase().trim();
+
     if (v.includes("goblin")) return "goblin";
     if (v.includes("demon")) return "demon";
-    if (["standard","normal","regular"].includes(v)) return "normal";
+
+    if (["standard", "normal", "regular"].includes(v)) {
+      return "normal";
+    }
   }
+
   return "unknown";
 }
 
 function lineBadge(type) {
   const labels = {
-    normal:"Normal",
-    goblin:"Green Goblin",
-    demon:"Red Demon",
-    unknown:"Unidentified"
+    normal: "Normal",
+    goblin: "Green Goblin",
+    demon: "Red Demon",
+    unknown: "Unidentified"
   };
-  return `<span class="badge ${type}">${labels[type]}</span>`;
+
+  return `<span class="badge ${type}">
+    ${labels[type]}
+  </span>`;
 }
 
 /*
-  Only map stat types for which the PropSims field
-  has been identified. Unknown stat types show N/A.
+  PropSims source fields:
+  pts_if_play, reb_p50, ast_p50, fg3m_p50.
+
+  Supports individual stats and combinations.
+  Combination values are sums of component estimates.
 */
-function statField(stat) {
+
+function statFields(stat) {
   const s = String(stat || "")
     .toLowerCase()
     .replace(/[^a-z0-9]/g, "");
 
+  const pts = "pts_if_play";
+  const reb = "reb_p50";
+  const ast = "ast_p50";
+  const threes = "fg3m_p50";
+
   const mapping = {
-    points:"pts_if_play",
-    point:"pts_if_play",
-    pts:"pts_if_play",
+    points: [pts],
+    point: [pts],
+    pts: [pts],
 
-    rebounds:"reb_p50",
-    rebound:"reb_p50",
-    reb:"reb_p50",
+    rebounds: [reb],
+    rebound: [reb],
+    reb: [reb],
 
-    assists:"ast_p50",
-    assist:"ast_p50",
-    ast:"ast_p50",
+    assists: [ast],
+    assist: [ast],
+    ast: [ast],
 
-    "3ptmade":"fg3m_p50",
-    "3ptm":"fg3m_p50",
-    "3pointersmade":"fg3m_p50",
-    "3pointers":"fg3m_p50",
-    "3pointsmade":"fg3m_p50",
-    "threepointersmade":"fg3m_p50",
-    "threepointsmade":"fg3m_p50",
+    "3ptmade": [threes],
+    "3ptm": [threes],
+    "3pointersmade": [threes],
+    "3pointers": [threes],
+    "3pointsmade": [threes],
+    "threepointersmade": [threes],
+    "threepointsmade": [threes],
+    "3pm": [threes],
+    threes: [threes],
 
-    steals:"stl_p50",
-    steal:"stl_p50",
-    blocks:"blk_p50",
-    block:"blk_p50",
-    turnovers:"tov_p50",
-    turnover:"tov_p50"
+    ptsrebs: [pts, reb],
+    pointsrebounds: [pts, reb],
+    pointsrebs: [pts, reb],
+    ptsreb: [pts, reb],
+
+    ptsasts: [pts, ast],
+    pointsassists: [pts, ast],
+    ptsast: [pts, ast],
+
+    rebsasts: [reb, ast],
+    reboundsassists: [reb, ast],
+    rebast: [reb, ast],
+    rebasts: [reb, ast],
+
+    ptsrebsasts: [pts, reb, ast],
+    pointsreboundsassists: [pts, reb, ast],
+    pointsrebsassists: [pts, reb, ast],
+    ptsrebast: [pts, reb, ast],
+    ptsrebasts: [pts, reb, ast],
+
+    fantasypts: null,
+    fantasyscore: null,
+    turnovers: null,
+    blocks: null,
+    steals: null
   };
 
-  return mapping[s] || null;
+  return Object.prototype.hasOwnProperty.call(mapping, s)
+    ? mapping[s]
+    : null;
 }
+
+/*
+  Read the compact PropSims JSON:
+
+  {
+    "players": [
+      ["Nikola Jokic", 24.1, 11, 9, 1]
+    ]
+  }
+*/
 
 function buildSimsIndex(data) {
   simsPlayers = new Map();
 
   if (!data || !Array.isArray(data.players)) return;
 
-  for (const player of data.players) {
+  for (const entry of data.players) {
+    let player;
+
+    if (Array.isArray(entry)) {
+      if (entry.length < 5) continue;
+
+      player = {
+        player: entry[0],
+        raw_projection_fields: {
+          pts_if_play: entry[1],
+          reb_p50: entry[2],
+          ast_p50: entry[3],
+          fg3m_p50: entry[4]
+        }
+      };
+    } else if (entry && typeof entry === "object") {
+      player = entry;
+    } else {
+      continue;
+    }
+
     const key = normalizeName(player.player);
     if (!key) continue;
 
@@ -462,19 +644,17 @@ function buildSimsIndex(data) {
 }
 
 function findSimsPlayer(r) {
-  if (String(r.league).toUpperCase() !== "NBA") return null;
+  if (String(r.league).toUpperCase() !== "NBA") {
+    return null;
+  }
 
   const key = normalizeName(r.player);
   const candidates = simsPlayers.get(key) || [];
 
   if (candidates.length === 0) return null;
+
   if (candidates.length === 1) {
     const candidate = candidates[0];
-
-    /*
-      If both sources provide a team, require a match.
-      This prevents some incorrect same-name matches.
-    */
     const a = normalizeTeam(r.team);
     const b = normalizeTeam(candidate.team);
 
@@ -483,7 +663,6 @@ function findSimsPlayer(r) {
   }
 
   const team = normalizeTeam(r.team);
-
   if (!team) return null;
 
   const matches = candidates.filter(
@@ -497,18 +676,26 @@ function getSimsData(r) {
   const player = findSimsPlayer(r);
   if (!player) return null;
 
-  const field = statField(r.stat);
-  if (!field) return null;
+  const fields = statFields(r.stat);
+  if (!fields || fields.length === 0) return null;
 
   const raw = player.raw_projection_fields || {};
-  const projection = finite(raw[field]);
 
-  if (projection === null) return null;
+  const values = fields.map(field => finite(raw[field]));
+
+  if (values.some(value => value === null)) {
+    return null;
+  }
+
+  const projection = values.reduce(
+    (total, value) => total + value, 0
+  );
 
   return {
-    value:projection,
-    field,
-    player
+    value: projection,
+    fields: fields,
+    player: player,
+    combined: fields.length > 1
   };
 }
 
@@ -516,12 +703,24 @@ function getSimsProjection(r) {
   return getSimsData(r)?.value ?? null;
 }
 
+function getSimsDifference(r) {
+  const sims = getSimsProjection(r);
+  const line = finite(r.line);
+
+  if (sims === null || line === null) return null;
+  return sims - line;
+}
+
 function getAgreement(r) {
   const line = finite(r.line);
   const edge = adjustedProjection(r);
   const sims = getSimsProjection(r);
 
-  if (line === null || edge === null || sims === null) {
+  if (
+    line === null ||
+    edge === null ||
+    sims === null
+  ) {
     return "missing";
   }
 
@@ -531,11 +730,9 @@ function getAgreement(r) {
   if (edgeDiff > 0 && simsDiff > 0) return "over";
   if (edgeDiff < 0 && simsDiff < 0) return "under";
 
-  /*
-    A projection exactly equal to the line is neutral.
-    Don't classify it as an Over/Under disagreement.
-  */
-  if (edgeDiff === 0 || simsDiff === 0) return "missing";
+  if (edgeDiff === 0 || simsDiff === 0) {
+    return "missing";
+  }
 
   return "disagree";
 }
@@ -544,44 +741,53 @@ function agreementBadge(r) {
   const value = getAgreement(r);
 
   const labels = {
-    over:"Both Over",
-    under:"Both Under",
-    disagree:"Disagree",
-    missing:"N/A"
+    over: "Both Over",
+    under: "Both Under",
+    disagree: "Disagree",
+    missing: "N/A"
   };
 
   const classes = {
-    over:"agree-over",
-    under:"agree-under",
-    disagree:"disagree",
-    missing:"unavailable"
+    over: "agree-over",
+    under: "agree-under",
+    disagree: "disagree",
+    missing: "unavailable"
   };
 
-  return `<span class="badge ${classes[value]}">${labels[value]}</span>`;
+  return `<span class="badge ${classes[value]}">
+    ${labels[value]}
+  </span>`;
 }
 
 function updateCards() {
-  $("total").textContent = rows.length.toLocaleString();
+  $("total").textContent =
+    rows.length.toLocaleString();
 
   $("matched").textContent =
     rows.filter(hasProjection).length.toLocaleString();
 
   $("simsMatched").textContent =
-    rows.filter(r => getSimsProjection(r) !== null)
-      .length.toLocaleString();
+    rows.filter(
+      r => getSimsProjection(r) !== null
+    ).length.toLocaleString();
 
   $("bothOver").textContent =
-    rows.filter(r => getAgreement(r) === "over")
-      .length.toLocaleString();
+    rows.filter(
+      r => getAgreement(r) === "over"
+    ).length.toLocaleString();
 
   $("bothUnder").textContent =
-    rows.filter(r => getAgreement(r) === "under")
-      .length.toLocaleString();
+    rows.filter(
+      r => getAgreement(r) === "under"
+    ).length.toLocaleString();
 }
 
 function matchupDetails(r) {
   const adjustments = r.matchup_adjustments || {};
-  const team = String(r.matchup_opponent || "").toUpperCase();
+  const team = String(
+    r.matchup_opponent || ""
+  ).toUpperCase();
+
   const metrics = matchupTeams[team] || {};
   const entries = Object.entries(adjustments);
 
@@ -590,66 +796,115 @@ function matchupDetails(r) {
     : "Not available";
 
   const sims = getSimsData(r);
+  const simsDiff = getSimsDifference(r);
+
+  const fieldLabel = sims
+    ? sims.fields.join(" + ")
+    : "Unavailable";
+
+  const projectionType = sims
+    ? sims.combined
+      ? "Sum of component estimates"
+      : "Recorded individual estimate"
+    : "Unavailable";
 
   return `
     <div class="details">
       <div class="details-grid">
+
         <div>
           <strong>Opponent</strong>
-          <div>${esc(team || r.opponent || "Not available")}</div>
+          <div>
+            ${esc(team || r.opponent || "Not available")}
+          </div>
         </div>
+
         <div>
           <strong>Game date</strong>
           <div>${esc(gameDate)}</div>
         </div>
+
         <div>
           <strong>Home / Away</strong>
-          <div>${esc(r.matchup_home_away || "Unknown")}</div>
+          <div>
+            ${esc(r.matchup_home_away || "Unknown")}
+          </div>
         </div>
+
         <div>
           <strong>Opponent defensive rating proxy</strong>
-          <div>${fmt(metrics.defensive_rating_proxy)}</div>
+          <div>
+            ${fmt(metrics.defensive_rating_proxy)}
+          </div>
         </div>
+
         <div>
           <strong>Opponent pace proxy</strong>
           <div>${fmt(metrics.pace_proxy)}</div>
         </div>
+
         <div>
           <strong>Opponent missed FG / game</strong>
-          <div>${fmt(metrics.opponent_missed_fg_per_game)}</div>
+          <div>
+            ${fmt(metrics.opponent_missed_fg_per_game)}
+          </div>
         </div>
+
         <div>
           <strong>Matchup status</strong>
-          <div>${isAdjusted(r)
-            ? "Experimental adjustment applied"
-            : "Base projection only"}</div>
+          <div>
+            ${
+              isAdjusted(r)
+                ? "Experimental adjustment applied"
+                : "Base projection only"
+            }
+          </div>
         </div>
+
         <div>
-          <strong>PropSims field</strong>
-          <div>${esc(sims?.field || "Unavailable")}</div>
+          <strong>PropSims fields</strong>
+          <div>${esc(fieldLabel)}</div>
         </div>
+
         <div>
           <strong>PropSims projection</strong>
-          <div>${sims ? fmt(sims.value) : "N/A"}</div>
+          <div>
+            ${sims ? fmt(sims.value) : "N/A"}
+          </div>
         </div>
+
+        <div>
+          <strong>PropSims calculation</strong>
+          <div>${esc(projectionType)}</div>
+        </div>
+
         <div>
           <strong>PropSims minus PP line</strong>
-          <div>${sims && finite(r.line) !== null
-            ? signed(sims.value - Number(r.line))
-            : "N/A"}</div>
+          <div>
+            ${
+              simsDiff === null
+                ? "N/A"
+                : signed(simsDiff)
+            }
+          </div>
         </div>
+
       </div>
+
       <div style="margin-top:12px">
         <strong>Projection adjustments</strong>
         <div class="small">
-          ${entries.length
-            ? entries.map(([key,value]) =>
-                `${esc(key.replaceAll("_"," "))}: ${signed(value)}`
-              ).join(" · ")
-            : "No individual adjustments available"}
+          ${
+            entries.length
+              ? entries.map(([key, value]) =>
+                  `${esc(key.replaceAll("_", " "))}: ${signed(value)}`
+                ).join(" · ")
+              : "No individual adjustments available"
+          }
         </div>
       </div>
-    </div>`;
+    </div>
+  `;
 }
 
 function draw() {
@@ -671,7 +926,8 @@ function draw() {
     ].join(" ").toLowerCase();
 
     return (
-      (!league || r.league === league) &&
+      (!league ||
+        String(r.league).toUpperCase() === league) &&
       (!q || searchText.includes(q)) &&
       (!type || getLineType(r) === type) &&
       (!filter ||
@@ -687,26 +943,21 @@ function draw() {
     );
   });
 
-  visible.sort((a,b) => {
+  visible.sort((a, b) => {
     if (sort === "player") {
-      return String(a.player).localeCompare(String(b.player));
+      return String(a.player).localeCompare(
+        String(b.player)
+      );
     }
 
     if (sort === "sims") {
-      const sa = getSimsProjection(a);
-      const sb = getSimsProjection(b);
-      const la = finite(a.line);
-      const lb = finite(b.line);
-
-      const da = sa === null || la === null
-        ? null : Math.abs(sa - la);
-
-      const db = sb === null || lb === null
-        ? null : Math.abs(sb - lb);
+      const da = getSimsDifference(a);
+      const db = getSimsDifference(b);
 
       if (da === null) return db === null ? 0 : 1;
       if (db === null) return -1;
-      return db - da;
+
+      return Math.abs(db) - Math.abs(da);
     }
 
     const da = getDifference(a);
@@ -717,67 +968,134 @@ function draw() {
     if (da === null && db === null) return 0;
 
     if (sort === "negative") return da - db;
-    if (sort === "absolute") return Math.abs(db) - Math.abs(da);
+
+    if (sort === "absolute") {
+      return Math.abs(db) - Math.abs(da);
+    }
 
     return db - da;
   });
 
-  $("body").innerHTML = visible.map((r,index) => {
+  $("body").innerHTML = visible.map((r, index) => {
     const diff = getDifference(r);
+    const simsDiff = getSimsDifference(r);
+
     const type = getLineType(r);
     const base = baseProjection(r);
     const adjusted = adjustedProjection(r);
-    const sims = getSimsProjection(r);
+    const simsData = getSimsData(r);
+    const sims = simsData?.value ?? null;
 
-    const diffClass = diff === null
-      ? ""
-      : diff > 0
-        ? "green"
-        : diff < 0
-          ? "red"
-          : "";
+    const diffClass =
+      diff === null ? "" :
+      diff > 0 ? "green" :
+      diff < 0 ? "red" : "";
+
+    const simsDiffClass =
+      simsDiff === null ? "" :
+      simsDiff > 0 ? "green" :
+      simsDiff < 0 ? "red" : "";
 
     const detailId = "detail-" + index;
 
     return `
       <tr>
         <td>${esc(r.league)}</td>
+
         <td>
-          <div class="player">${esc(r.player)}</div>
+          <div class="player">
+            ${esc(r.player)}
+          </div>
           <div class="small">
             ${esc(r.team || "")}
-            ${r.opponent ? " vs " + esc(r.opponent) : ""}
+            ${
+              r.opponent
+                ? " vs " + esc(r.opponent)
+                : ""
+            }
           </div>
         </td>
+
         <td>${esc(r.stat)}</td>
+
         <td>${lineBadge(type)}</td>
-        <td class="num">${esc(r.line)}</td>
-        <td class="num">${fmt(base)}</td>
-        <td class="num adjusted">${fmt(adjusted)}</td>
-        <td class="num blue">${sims === null ? "N/A" : fmt(sims)}</td>
+
+        <td class="num">
+          ${fmt(r.line, 1)}
+        </td>
+
+        <td class="num">
+          ${fmt(base)}
+        </td>
+
+        <td class="num adjusted">
+          ${fmt(adjusted)}
+        </td>
+
+        <td class="num blue"
+            title="${esc(
+              simsData?.combined
+                ? "Sum of PropSims component estimates"
+                : "Recorded PropSims estimate"
+            )}">
+          ${sims === null ? "N/A" : fmt(sims)}
+        </td>
+
         <td class="num ${diffClass}">
           ${diff === null ? "—" : signed(diff)}
         </td>
-        <td>${agreementBadge(r)}</td>
+
+        <td class="num ${simsDiffClass}">
+          ${
+            simsDiff === null
+              ? "N/A"
+              : signed(simsDiff)
+          }
+        </td>
+
         <td>
-          <button class="details-button" data-detail="${detailId}">
+          ${agreementBadge(r)}
+        </td>
+
+        <td>
+          <button
+            class="details-button"
+            data-detail="${detailId}"
+          >
             Details
           </button>
         </td>
-        <td class="small">${esc(r.source || "—")}</td>
-      </tr>
-      <tr id="${detailId}" hidden>
-        <td colspan="12">${matchupDetails(r)}</td>
-      </tr>`;
-  }).join("") ||
-    `<tr><td colspan="12" class="empty">
-      No matching lines found.
-    </td></tr>`;
 
-  document.querySelectorAll(".details-button").forEach(button => {
+        <td class="small">
+          ${esc(r.source || "—")}
+        </td>
+      </tr>
+
+      <tr id="${detailId}" hidden>
+        <td colspan="13">
+          ${matchupDetails(r)}
+        </td>
+      </tr>
+    `;
+  }).join("") || `
+    <tr>
+      <td colspan="13" class="empty">
+        No matching lines found.
+      </td>
+    </tr>
+  `;
+
+  document.querySelectorAll(
+    ".details-button"
+  ).forEach(button => {
     button.addEventListener("click", () => {
-      const detail = document.getElementById(button.dataset.detail);
-      if (detail) detail.hidden = !detail.hidden;
+      const detail = document.getElementById(
+        button.dataset.detail
+      );
+
+      if (detail) {
+        detail.hidden = !detail.hidden;
+      }
     });
   });
 }
@@ -794,13 +1112,17 @@ for (const id of [
   $(id).addEventListener("input", draw);
 }
 
-function loadJson(path, optional=false) {
+function loadJson(path, optional = false) {
   return fetch(path + "?cache=" + Date.now())
     .then(response => {
       if (!response.ok) {
         if (optional) return null;
-        throw new Error("Published data not available: " + path);
+
+        throw new Error(
+          "Published data not available: " + path
+        );
       }
+
       return response.json();
     })
     .catch(error => {
@@ -814,27 +1136,29 @@ Promise.all([
   loadJson("./data/nba_matchups.json", true),
   loadJson("./data/propsims.json", true)
 ]).then(([data, matchupData, propsimsData]) => {
-  rows = Array.isArray(data.lines) ? data.lines : [];
+
+  rows = Array.isArray(data.lines)
+    ? data.lines
+    : [];
 
   matchupTeams =
     matchupData && matchupData.teams
       ? matchupData.teams
       : {};
 
-  simsInfo = propsimsData;
   buildSimsIndex(propsimsData);
 
   const updated = data.updated_utc
     ? new Date(data.updated_utc).toLocaleString()
     : "Unknown";
 
-  const simsCount = propsimsData &&
-    Array.isArray(propsimsData.players)
+  const simsCount =
+    propsimsData && Array.isArray(propsimsData.players)
       ? propsimsData.players.length
       : 0;
 
-  const simsUpdated = propsimsData?.retrieved_utc
-    ? new Date(propsimsData.retrieved_utc).toLocaleString()
+  const simsModelRun = propsimsData?.model_run
+    ? new Date(propsimsData.model_run).toLocaleString()
     : "Not available";
 
   $("status").textContent =
@@ -843,11 +1167,11 @@ Promise.all([
     `${rows.filter(hasProjection).length.toLocaleString()} PropEdge projections | ` +
     `${rows.filter(isAdjusted).length.toLocaleString()} matchup-adjusted | ` +
     `PropSims: ${simsCount.toLocaleString()} players | ` +
-    `PropSims retrieved: ${simsUpdated}`;
+    `PropSims model run: ${simsModelRun} (static snapshot)`;
 
   if (!propsimsData) {
     $("status").textContent +=
-      " | PropSims data not published yet";
+      " | PropSims data unavailable";
   }
 
   if (data.errors && data.errors.length) {
@@ -857,14 +1181,18 @@ Promise.all([
 
   updateCards();
   draw();
+
 }).catch(error => {
+
   $("status").textContent =
     "Unable to load data: " + error.message;
 
   $("body").innerHTML =
-    '<tr><td colspan="12" class="empty">' +
+    '<tr><td colspan="13" class="empty">' +
     'No published data available.</td></tr>';
+
 });
 </script>
+
 </body>
 </html>
