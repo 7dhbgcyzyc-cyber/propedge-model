@@ -1,102 +1,6 @@
 {
-  "updated_utc": "2026-11-16T16:43:24.603788+00:00",
+  "updated_utc": "2026-11-17T15:58:27.254519+00:00",
   "upcoming_matchups": {
-    "BOS": {
-      "opponent": "ORL",
-      "home_away": "home",
-      "game_date": "2026-11-17T00:00Z",
-      "event_id": "401909994"
-    },
-    "ORL": {
-      "opponent": "BOS",
-      "home_away": "away",
-      "game_date": "2026-11-17T00:00Z",
-      "event_id": "401909994"
-    },
-    "CLE": {
-      "opponent": "CHI",
-      "home_away": "home",
-      "game_date": "2026-11-17T00:00Z",
-      "event_id": "401909995"
-    },
-    "CHI": {
-      "opponent": "CLE",
-      "home_away": "away",
-      "game_date": "2026-11-17T00:00Z",
-      "event_id": "401909995"
-    },
-    "WSH": {
-      "opponent": "MEM",
-      "home_away": "home",
-      "game_date": "2026-11-17T00:00Z",
-      "event_id": "401909996"
-    },
-    "MEM": {
-      "opponent": "WSH",
-      "home_away": "away",
-      "game_date": "2026-11-17T00:00Z",
-      "event_id": "401909996"
-    },
-    "BKN": {
-      "opponent": "PHI",
-      "home_away": "home",
-      "game_date": "2026-11-17T00:30Z",
-      "event_id": "401909997"
-    },
-    "PHI": {
-      "opponent": "BKN",
-      "home_away": "away",
-      "game_date": "2026-11-17T00:30Z",
-      "event_id": "401909997"
-    },
-    "MIA": {
-      "opponent": "HOU",
-      "home_away": "home",
-      "game_date": "2026-11-17T00:30Z",
-      "event_id": "401909998"
-    },
-    "HOU": {
-      "opponent": "MIA",
-      "home_away": "away",
-      "game_date": "2026-11-17T00:30Z",
-      "event_id": "401909998"
-    },
-    "MIN": {
-      "opponent": "POR",
-      "home_away": "home",
-      "game_date": "2026-11-17T01:00Z",
-      "event_id": "401909999"
-    },
-    "POR": {
-      "opponent": "MIN",
-      "home_away": "away",
-      "game_date": "2026-11-17T01:00Z",
-      "event_id": "401909999"
-    },
-    "NO": {
-      "opponent": "GS",
-      "home_away": "home",
-      "game_date": "2026-11-17T01:00Z",
-      "event_id": "401910000"
-    },
-    "GS": {
-      "opponent": "NO",
-      "home_away": "away",
-      "game_date": "2026-11-17T01:00Z",
-      "event_id": "401910000"
-    },
-    "DEN": {
-      "opponent": "PHX",
-      "home_away": "home",
-      "game_date": "2026-11-17T02:00Z",
-      "event_id": "401910001"
-    },
-    "PHX": {
-      "opponent": "DEN",
-      "home_away": "away",
-      "game_date": "2026-11-17T02:00Z",
-      "event_id": "401910001"
-    },
     "TOR": {
       "opponent": "NY",
       "home_away": "home",
@@ -108,6 +12,18 @@
       "home_away": "away",
       "game_date": "2026-11-18T00:30Z",
       "event_id": "401910002"
+    },
+    "MIN": {
+      "opponent": "POR",
+      "home_away": "home",
+      "game_date": "2026-11-18T01:00Z",
+      "event_id": "401910003"
+    },
+    "POR": {
+      "opponent": "MIN",
+      "home_away": "away",
+      "game_date": "2026-11-18T01:00Z",
+      "event_id": "401910003"
     },
     "SA": {
       "opponent": "DET",
@@ -145,17 +61,77 @@
       "game_date": "2026-11-18T04:00Z",
       "event_id": "401910005"
     },
+    "CLE": {
+      "opponent": "MEM",
+      "home_away": "home",
+      "game_date": "2026-11-19T00:00Z",
+      "event_id": "401910007"
+    },
+    "MEM": {
+      "opponent": "CLE",
+      "home_away": "away",
+      "game_date": "2026-11-19T00:00Z",
+      "event_id": "401910007"
+    },
     "IND": {
       "opponent": "HOU",
       "home_away": "home",
       "game_date": "2026-11-19T00:00Z",
       "event_id": "401910008"
     },
+    "HOU": {
+      "opponent": "IND",
+      "home_away": "away",
+      "game_date": "2026-11-19T00:00Z",
+      "event_id": "401910008"
+    },
+    "MIA": {
+      "opponent": "MIL",
+      "home_away": "home",
+      "game_date": "2026-11-19T00:00Z",
+      "event_id": "401910009"
+    },
     "MIL": {
       "opponent": "MIA",
       "home_away": "away",
       "game_date": "2026-11-19T00:00Z",
       "event_id": "401910009"
+    },
+    "ORL": {
+      "opponent": "PHI",
+      "home_away": "home",
+      "game_date": "2026-11-19T00:00Z",
+      "event_id": "401910010"
+    },
+    "PHI": {
+      "opponent": "ORL",
+      "home_away": "away",
+      "game_date": "2026-11-19T00:00Z",
+      "event_id": "401910010"
+    },
+    "BKN": {
+      "opponent": "CHI",
+      "home_away": "home",
+      "game_date": "2026-11-19T00:30Z",
+      "event_id": "401910011"
+    },
+    "CHI": {
+      "opponent": "BKN",
+      "home_away": "away",
+      "game_date": "2026-11-19T00:30Z",
+      "event_id": "401910011"
+    },
+    "WSH": {
+      "opponent": "TOR",
+      "home_away": "away",
+      "game_date": "2026-11-19T00:30Z",
+      "event_id": "401910012"
+    },
+    "NO": {
+      "opponent": "DET",
+      "home_away": "home",
+      "game_date": "2026-11-19T01:00Z",
+      "event_id": "401910013"
     },
     "OKC": {
       "opponent": "ATL",
@@ -175,79 +151,103 @@
       "game_date": "2026-11-19T01:00Z",
       "event_id": "401910016"
     },
+    "GS": {
+      "opponent": "DAL",
+      "home_away": "away",
+      "game_date": "2026-11-19T01:00Z",
+      "event_id": "401910016"
+    },
+    "DEN": {
+      "opponent": "BOS",
+      "home_away": "home",
+      "game_date": "2026-11-19T02:30Z",
+      "event_id": "401910015"
+    },
+    "BOS": {
+      "opponent": "DEN",
+      "home_away": "away",
+      "game_date": "2026-11-19T02:30Z",
+      "event_id": "401910015"
+    },
     "SAC": {
       "opponent": "PHX",
       "home_away": "home",
       "game_date": "2026-11-19T03:00Z",
       "event_id": "401910018"
+    },
+    "PHX": {
+      "opponent": "SAC",
+      "home_away": "away",
+      "game_date": "2026-11-19T03:00Z",
+      "event_id": "401910018"
     }
   },
   "window_days": 21,
-  "games_found": 154,
+  "games_found": 153,
   "teams": {
     "ATL": {
-      "games": 11,
-      "pace_proxy": 106.19,
-      "defensive_rating_proxy": 111.13,
-      "opponent_missed_fg_per_game": 44.45,
-      "opponent_offensive_rebounds_per_game": 11.0,
-      "team_defensive_rebounds_per_game": 31.0
+      "games": 10,
+      "pace_proxy": 106.24,
+      "defensive_rating_proxy": 110.89,
+      "opponent_missed_fg_per_game": 45.1,
+      "opponent_offensive_rebounds_per_game": 10.9,
+      "team_defensive_rebounds_per_game": 31.9
     },
     "BKN": {
-      "games": 9,
-      "pace_proxy": 100.44,
-      "defensive_rating_proxy": 113.45,
-      "opponent_missed_fg_per_game": 45.89,
-      "opponent_offensive_rebounds_per_game": 11.11,
-      "team_defensive_rebounds_per_game": 31.67
+      "games": 10,
+      "pace_proxy": 100.63,
+      "defensive_rating_proxy": 115.29,
+      "opponent_missed_fg_per_game": 45.6,
+      "opponent_offensive_rebounds_per_game": 11.4,
+      "team_defensive_rebounds_per_game": 31.2
     },
     "BOS": {
       "games": 11,
-      "pace_proxy": 98.18,
-      "defensive_rating_proxy": 102.6,
-      "opponent_missed_fg_per_game": 50.09,
-      "opponent_offensive_rebounds_per_game": 12.55,
-      "team_defensive_rebounds_per_game": 32.73
+      "pace_proxy": 97.13,
+      "defensive_rating_proxy": 105.06,
+      "opponent_missed_fg_per_game": 49.18,
+      "opponent_offensive_rebounds_per_game": 12.18,
+      "team_defensive_rebounds_per_game": 32.36
     },
     "CHA": {
-      "games": 10,
-      "pace_proxy": 96.08,
-      "defensive_rating_proxy": 113.1,
-      "opponent_missed_fg_per_game": 42.2,
-      "opponent_offensive_rebounds_per_game": 8.1,
-      "team_defensive_rebounds_per_game": 31.4
+      "games": 9,
+      "pace_proxy": 96.09,
+      "defensive_rating_proxy": 113.76,
+      "opponent_missed_fg_per_game": 42.0,
+      "opponent_offensive_rebounds_per_game": 7.89,
+      "team_defensive_rebounds_per_game": 31.11
     },
     "CHI": {
       "games": 9,
-      "pace_proxy": 105.47,
-      "defensive_rating_proxy": 119.07,
-      "opponent_missed_fg_per_game": 49.56,
-      "opponent_offensive_rebounds_per_game": 14.44,
+      "pace_proxy": 105.53,
+      "defensive_rating_proxy": 118.19,
+      "opponent_missed_fg_per_game": 49.44,
+      "opponent_offensive_rebounds_per_game": 14.0,
       "team_defensive_rebounds_per_game": 31.0
     },
     "CLE": {
       "games": 12,
-      "pace_proxy": 100.3,
-      "defensive_rating_proxy": 115.41,
-      "opponent_missed_fg_per_game": 50.33,
-      "opponent_offensive_rebounds_per_game": 12.58,
-      "team_defensive_rebounds_per_game": 34.67
+      "pace_proxy": 100.11,
+      "defensive_rating_proxy": 114.86,
+      "opponent_missed_fg_per_game": 50.0,
+      "opponent_offensive_rebounds_per_game": 12.08,
+      "team_defensive_rebounds_per_game": 34.58
     },
     "DAL": {
-      "games": 11,
-      "pace_proxy": 101.03,
-      "defensive_rating_proxy": 112.41,
-      "opponent_missed_fg_per_game": 46.91,
-      "opponent_offensive_rebounds_per_game": 12.0,
-      "team_defensive_rebounds_per_game": 30.55
+      "games": 10,
+      "pace_proxy": 100.62,
+      "defensive_rating_proxy": 113.28,
+      "opponent_missed_fg_per_game": 46.5,
+      "opponent_offensive_rebounds_per_game": 12.2,
+      "team_defensive_rebounds_per_game": 29.8
     },
     "DEN": {
       "games": 9,
-      "pace_proxy": 98.29,
-      "defensive_rating_proxy": 114.38,
-      "opponent_missed_fg_per_game": 47.56,
-      "opponent_offensive_rebounds_per_game": 12.44,
-      "team_defensive_rebounds_per_game": 31.44
+      "pace_proxy": 98.4,
+      "defensive_rating_proxy": 112.29,
+      "opponent_missed_fg_per_game": 48.22,
+      "opponent_offensive_rebounds_per_game": 13.0,
+      "team_defensive_rebounds_per_game": 31.89
     },
     "DET": {
       "games": 9,
@@ -259,27 +259,27 @@
     },
     "GS": {
       "games": 10,
-      "pace_proxy": 101.21,
-      "defensive_rating_proxy": 107.97,
-      "opponent_missed_fg_per_game": 50.1,
-      "opponent_offensive_rebounds_per_game": 12.1,
-      "team_defensive_rebounds_per_game": 34.6
+      "pace_proxy": 101.38,
+      "defensive_rating_proxy": 107.87,
+      "opponent_missed_fg_per_game": 51.6,
+      "opponent_offensive_rebounds_per_game": 13.1,
+      "team_defensive_rebounds_per_game": 35.0
     },
     "HOU": {
       "games": 11,
-      "pace_proxy": 98.39,
-      "defensive_rating_proxy": 109.1,
-      "opponent_missed_fg_per_game": 48.27,
+      "pace_proxy": 97.75,
+      "defensive_rating_proxy": 111.43,
+      "opponent_missed_fg_per_game": 47.36,
       "opponent_offensive_rebounds_per_game": 12.36,
-      "team_defensive_rebounds_per_game": 32.09
+      "team_defensive_rebounds_per_game": 31.27
     },
     "IND": {
-      "games": 11,
-      "pace_proxy": 100.98,
-      "defensive_rating_proxy": 112.7,
-      "opponent_missed_fg_per_game": 48.27,
-      "opponent_offensive_rebounds_per_game": 11.45,
-      "team_defensive_rebounds_per_game": 31.73
+      "games": 10,
+      "pace_proxy": 100.97,
+      "defensive_rating_proxy": 113.09,
+      "opponent_missed_fg_per_game": 47.7,
+      "opponent_offensive_rebounds_per_game": 11.0,
+      "team_defensive_rebounds_per_game": 31.5
     },
     "LAC": {
       "games": 9,
@@ -299,43 +299,43 @@
     },
     "MEM": {
       "games": 10,
-      "pace_proxy": 102.68,
-      "defensive_rating_proxy": 110.01,
-      "opponent_missed_fg_per_game": 50.3,
-      "opponent_offensive_rebounds_per_game": 11.7,
-      "team_defensive_rebounds_per_game": 34.7
+      "pace_proxy": 102.91,
+      "defensive_rating_proxy": 111.23,
+      "opponent_missed_fg_per_game": 49.4,
+      "opponent_offensive_rebounds_per_game": 11.4,
+      "team_defensive_rebounds_per_game": 34.4
     },
     "MIA": {
       "games": 10,
-      "pace_proxy": 104.39,
-      "defensive_rating_proxy": 113.54,
-      "opponent_missed_fg_per_game": 46.0,
-      "opponent_offensive_rebounds_per_game": 10.9,
-      "team_defensive_rebounds_per_game": 32.9
+      "pace_proxy": 103.74,
+      "defensive_rating_proxy": 113.94,
+      "opponent_missed_fg_per_game": 46.3,
+      "opponent_offensive_rebounds_per_game": 11.7,
+      "team_defensive_rebounds_per_game": 32.4
     },
     "MIL": {
-      "games": 11,
-      "pace_proxy": 99.37,
-      "defensive_rating_proxy": 118.1,
-      "opponent_missed_fg_per_game": 49.73,
-      "opponent_offensive_rebounds_per_game": 15.27,
-      "team_defensive_rebounds_per_game": 30.82
+      "games": 10,
+      "pace_proxy": 99.2,
+      "defensive_rating_proxy": 119.82,
+      "opponent_missed_fg_per_game": 49.0,
+      "opponent_offensive_rebounds_per_game": 15.4,
+      "team_defensive_rebounds_per_game": 29.4
     },
     "MIN": {
       "games": 10,
-      "pace_proxy": 103.22,
-      "defensive_rating_proxy": 106.04,
-      "opponent_missed_fg_per_game": 51.0,
-      "opponent_offensive_rebounds_per_game": 13.4,
-      "team_defensive_rebounds_per_game": 33.6
+      "pace_proxy": 102.35,
+      "defensive_rating_proxy": 104.19,
+      "opponent_missed_fg_per_game": 51.2,
+      "opponent_offensive_rebounds_per_game": 13.3,
+      "team_defensive_rebounds_per_game": 33.8
     },
     "NO": {
-      "games": 11,
-      "pace_proxy": 104.4,
-      "defensive_rating_proxy": 119.3,
-      "opponent_missed_fg_per_game": 44.18,
-      "opponent_offensive_rebounds_per_game": 11.18,
-      "team_defensive_rebounds_per_game": 29.82
+      "games": 12,
+      "pace_proxy": 103.89,
+      "defensive_rating_proxy": 117.32,
+      "opponent_missed_fg_per_game": 45.17,
+      "opponent_offensive_rebounds_per_game": 11.42,
+      "team_defensive_rebounds_per_game": 30.5
     },
     "NY": {
       "games": 10,
@@ -346,44 +346,44 @@
       "team_defensive_rebounds_per_game": 34.0
     },
     "OKC": {
-      "games": 11,
-      "pace_proxy": 100.53,
-      "defensive_rating_proxy": 109.63,
-      "opponent_missed_fg_per_game": 51.91,
-      "opponent_offensive_rebounds_per_game": 11.91,
-      "team_defensive_rebounds_per_game": 35.09
+      "games": 10,
+      "pace_proxy": 100.44,
+      "defensive_rating_proxy": 109.35,
+      "opponent_missed_fg_per_game": 51.9,
+      "opponent_offensive_rebounds_per_game": 11.7,
+      "team_defensive_rebounds_per_game": 35.0
     },
     "ORL": {
-      "games": 9,
-      "pace_proxy": 99.15,
-      "defensive_rating_proxy": 112.51,
-      "opponent_missed_fg_per_game": 43.33,
-      "opponent_offensive_rebounds_per_game": 8.67,
-      "team_defensive_rebounds_per_game": 31.0
+      "games": 10,
+      "pace_proxy": 99.01,
+      "defensive_rating_proxy": 112.0,
+      "opponent_missed_fg_per_game": 44.2,
+      "opponent_offensive_rebounds_per_game": 8.7,
+      "team_defensive_rebounds_per_game": 31.5
     },
     "PHI": {
-      "games": 10,
-      "pace_proxy": 99.34,
-      "defensive_rating_proxy": 112.54,
-      "opponent_missed_fg_per_game": 46.0,
-      "opponent_offensive_rebounds_per_game": 9.8,
-      "team_defensive_rebounds_per_game": 32.9
+      "games": 11,
+      "pace_proxy": 99.62,
+      "defensive_rating_proxy": 113.23,
+      "opponent_missed_fg_per_game": 45.82,
+      "opponent_offensive_rebounds_per_game": 9.91,
+      "team_defensive_rebounds_per_game": 32.91
     },
     "PHX": {
       "games": 10,
-      "pace_proxy": 101.02,
-      "defensive_rating_proxy": 115.02,
-      "opponent_missed_fg_per_game": 45.5,
-      "opponent_offensive_rebounds_per_game": 13.3,
-      "team_defensive_rebounds_per_game": 28.0
+      "pace_proxy": 100.65,
+      "defensive_rating_proxy": 113.44,
+      "opponent_missed_fg_per_game": 45.6,
+      "opponent_offensive_rebounds_per_game": 13.0,
+      "team_defensive_rebounds_per_game": 28.9
     },
     "POR": {
-      "games": 10,
-      "pace_proxy": 101.56,
-      "defensive_rating_proxy": 112.07,
-      "opponent_missed_fg_per_game": 47.7,
-      "opponent_offensive_rebounds_per_game": 11.5,
-      "team_defensive_rebounds_per_game": 32.1
+      "games": 11,
+      "pace_proxy": 101.68,
+      "defensive_rating_proxy": 111.25,
+      "opponent_missed_fg_per_game": 48.27,
+      "opponent_offensive_rebounds_per_game": 11.73,
+      "team_defensive_rebounds_per_game": 32.55
     },
     "SA": {
       "games": 11,
@@ -410,20 +410,20 @@
       "team_defensive_rebounds_per_game": 27.4
     },
     "UTAH": {
-      "games": 11,
-      "pace_proxy": 102.15,
-      "defensive_rating_proxy": 113.92,
-      "opponent_missed_fg_per_game": 48.64,
-      "opponent_offensive_rebounds_per_game": 11.55,
-      "team_defensive_rebounds_per_game": 32.64
+      "games": 10,
+      "pace_proxy": 102.23,
+      "defensive_rating_proxy": 114.45,
+      "opponent_missed_fg_per_game": 48.7,
+      "opponent_offensive_rebounds_per_game": 12.1,
+      "team_defensive_rebounds_per_game": 32.4
     },
     "WSH": {
       "games": 11,
-      "pace_proxy": 100.84,
-      "defensive_rating_proxy": 117.12,
-      "opponent_missed_fg_per_game": 49.91,
-      "opponent_offensive_rebounds_per_game": 14.45,
-      "team_defensive_rebounds_per_game": 30.91
+      "pace_proxy": 101.58,
+      "defensive_rating_proxy": 118.58,
+      "opponent_missed_fg_per_game": 48.73,
+      "opponent_offensive_rebounds_per_game": 14.0,
+      "team_defensive_rebounds_per_game": 29.91
     }
   },
   "errors": [],
